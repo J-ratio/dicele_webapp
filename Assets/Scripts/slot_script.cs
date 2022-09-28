@@ -158,6 +158,7 @@ public class slot_script : MonoBehaviour , IPointerDownHandler
             pixel.GetComponent<SpriteRenderer>().enabled = true;
     }
 
+
     void Update(){
         if(slot_dice_script.Yellow_selected){
             if(slot_dice_script.selected_slot_dice.GetComponent<slot_dice_script>().parent_slot.GetComponent<slot_script>().slot_pos[0] == slot_pos[0] && slot_dice_script.selected_slot_dice.GetComponent<slot_dice_script>().parent_slot.GetComponent<slot_script>().slot_pos[1] != slot_pos[1]){
@@ -173,4 +174,5 @@ public class slot_script : MonoBehaviour , IPointerDownHandler
             greenborder.GetComponent<SpriteRenderer>().enabled = false;
             }
     }
+    
 }

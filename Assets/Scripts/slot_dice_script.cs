@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class slot_dice_script : MonoBehaviour , IPointerDownHandler, IPointerUpHandler
+public class slot_dice_script : MonoBehaviour //, IPointerDownHandler, IPointerUpHandler
 {
     //Gameobjects
     public GameObject parent_slot; //store the slot in which this slot dice is stores
@@ -24,11 +24,12 @@ public class slot_dice_script : MonoBehaviour , IPointerDownHandler, IPointerUpH
     private Vector3 delta1 = new Vector3(0.01f,0.01f,0);
     public bool isboping = false;
     public static int dice_moved = 1;
+    private bool ismousedown = false;
 
 
 
 
-    public void OnPointerDown(PointerEventData eventData){
+    /*public void OnPointerDown(PointerEventData eventData){
         if(GetComponent<SpriteRenderer>().color != Color.green)
             {
             this.transform.localScale -= delta;
@@ -109,8 +110,93 @@ public class slot_dice_script : MonoBehaviour , IPointerDownHandler, IPointerUpH
 
     public void OnPointerUp(PointerEventData eventData){
         this.transform.localScale += delta;
+    }*/
+
+    void dothis0(){
+        if(GetComponent<SpriteRenderer>().color != Color.green && !ismousedown)
+            {
+            this.transform.localScale -= delta;
+            ismousedown = true;
+            if(!(slot_dice_tag))
+                {
+                slot_script.slot_dice_sprite = GetComponent<SpriteRenderer>().sprite;
+                slot_dice_tag = true;
+                selected_slot_dice = this.gameObject;
+                selected_slot_dice_color = GetComponent<SpriteRenderer>().color;
+                selected_slot_dice_number = this.GetComponent<slot_dice_script>().dice_number;
+                if(GetComponent<SpriteRenderer>().color == Color.yellow){
+                    Yellow_selected = true;
+                }
+                else{
+                    White_selected = true;
+                }
+                GetComponent<SpriteRenderer>().color = Color.gray;
+                if(dice_script.selected_dice !=null){
+                    dice_script.selected_dice.GetComponent<SpriteRenderer>().color = Color.white;
+                }
+                
+
+                }
+            else if(selected_slot_dice != this.gameObject)
+                {
+                slot_script.board_dice_count[parent_slot.GetComponent<slot_script>().slot_pos[0],dice_number] --;
+                slot_script.board_dice_count[selected_slot_dice.GetComponent<slot_dice_script>().parent_slot.GetComponent<slot_script>().slot_pos[0],selected_slot_dice_number] --;
+
+                Yellow_selected = false;
+                White_selected = false;
+                if(isboping){
+                    dice_moved++;
+                }
+                if(selected_slot_dice.GetComponent<slot_dice_script>().isboping){
+                    dice_moved++;
+                }                
+                Stop_boping();
+                selected_slot_dice.GetComponent<slot_dice_script>().Stop_boping();
+
+                selected_slot_dice.GetComponent<SpriteRenderer>().sprite = this.GetComponent<SpriteRenderer>().sprite;
+                this.GetComponent<SpriteRenderer>().sprite =  slot_script.slot_dice_sprite;
+                selected_slot_dice.GetComponent<slot_dice_script>().dice_number = dice_number;
+                dice_number = slot_dice_script.selected_slot_dice_number;
+                temp = Correct_column;
+                Correct_column = selected_slot_dice.GetComponent<slot_dice_script>().Correct_column;
+                selected_slot_dice.GetComponent<slot_dice_script>().Correct_column = temp;
+
+                if(Correct_column == parent_slot.GetComponent<slot_script>().slot_pos[0])
+                    {
+                    GetComponent<SpriteRenderer>().color = Color.yellow;
+                    }
+                else
+                    {
+                    GetComponent<SpriteRenderer>().color = Color.white;
+                    }
+
+                if(selected_slot_dice.GetComponent<slot_dice_script>().Correct_column == selected_slot_dice.GetComponent<slot_dice_script>().parent_slot.GetComponent<slot_script>().slot_pos[0])
+                    {
+                    selected_slot_dice.GetComponent<SpriteRenderer>().color = Color.yellow;
+                    }
+                else
+                    {
+                    selected_slot_dice.GetComponent<SpriteRenderer>().color = Color.white;
+                    }
+
+
+                slot_script.board_dice_count[parent_slot.GetComponent<slot_script>().slot_pos[0],dice_number] ++;
+                slot_script.board_dice_count[selected_slot_dice.GetComponent<slot_dice_script>().parent_slot.GetComponent<slot_script>().slot_pos[0],selected_slot_dice.GetComponent<slot_dice_script>().dice_number] ++;
+                slot_dice_script.selected_slot_dice = null;
+                slot_dice_tag = false;
+                moves ++;
+
+                parent_slot.GetComponent<slot_script>().check_enable_playBtn();  
+                }
+            }
     }
 
+    void dothis1(){
+        if(this.transform.localScale.x < 0.9f && ismousedown){
+            this.transform.localScale += delta;
+        }
+        ismousedown = false;
+    }
 
     // Update is called once per frame
     void Update()
@@ -128,6 +214,22 @@ public class slot_dice_script : MonoBehaviour , IPointerDownHandler, IPointerUpH
             selected_slot_dice = null;
             moves ++;
             }
+
+        if(Input.GetMouseButtonDown(0)){
+            Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+            RaycastHit2D[] hits = Physics2D.GetRayIntersectionAll (ray, Mathf.Infinity);
+            foreach (var hit in hits) {
+                if (hit.collider.name == this.gameObject.name) {
+                dothis0();
+                break;
+                }
+            }
+        }
+
+        if (Input.GetMouseButtonUp(0)){
+            dothis1();
+        }
+        
     }
 
     public void Start_bopping(){

@@ -5,7 +5,8 @@ using UnityEngine.EventSystems;
 
 
 
-public class dice_script : MonoBehaviour , IPointerDownHandler, IPointerUpHandler{
+public class dice_script : MonoBehaviour //, IPointerDownHandler, IPointerUpHandler
+{
    
     //GameObjects
     public static GameObject selected_dice; //stores the spawn dice gameobject when selected
@@ -18,7 +19,7 @@ public class dice_script : MonoBehaviour , IPointerDownHandler, IPointerUpHandle
     public static int dice_onboard;
 
 
-    public void OnPointerDown(PointerEventData eventData)
+    /*public void OnPointerDown(PointerEventData eventData)
     {
     slot_script.dice_sprite = GetComponent<SpriteRenderer>().sprite; //send the selected dice sprite to slot 
     dice_tag = true;
@@ -36,12 +37,43 @@ public class dice_script : MonoBehaviour , IPointerDownHandler, IPointerUpHandle
     public void OnPointerUp(PointerEventData eventData)
     {
     this.transform.localScale +=delta;
-    }
+    }*/
 
     void Start()
     {
         dice_tag = false;
     }
+
+
+
+    public void dothis0(){
+        Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+        RaycastHit2D[] hits = Physics2D.GetRayIntersectionAll (ray, Mathf.Infinity);
+        foreach (var hit in hits) {
+            if (hit.collider.CompareTag("spawn_dice")) {
+                slot_script.dice_sprite = GetComponent<SpriteRenderer>().sprite; //send the selected dice sprite to slot 
+                dice_tag = true;
+                selected_dice = this.gameObject;
+                selected_dice_number = dice_number;
+                slot_dice_script.slot_dice_tag = false;
+                
+                slot_dice_script.Yellow_selected =false;
+                slot_dice_script.White_selected = false;
+                if(slot_dice_script.selected_slot_dice != null){
+                    slot_dice_script.selected_slot_dice.GetComponent<SpriteRenderer>().color = slot_dice_script.selected_slot_dice_color;
+                }
+                GetComponent<SpriteRenderer>().color = Color.gray;
+                this.transform.localScale -= delta;
+            }
+        }
+    }
+
+    public void dothis1(){
+        if (this.transform.localScale.x < 1.0f) {
+                this.transform.localScale +=delta;
+            }
+    }
+
 
     void Update()
     {
@@ -50,6 +82,13 @@ public class dice_script : MonoBehaviour , IPointerDownHandler, IPointerUpHandle
             Destroy(selected_dice);
             dice_tag = false;
             slot_script.slot_tag = false;
+        }
+
+        if (Input.GetMouseButtonDown(0)){
+            dothis0();
+        }
+        if (Input.GetMouseButtonUp(0)){
+            dothis1();
         }
     }
 }
