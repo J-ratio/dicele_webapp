@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Dragger : MonoBehaviour
 {   [SerializeField]
@@ -10,6 +11,10 @@ public class Dragger : MonoBehaviour
     private Camera cam;
     [SerializeField]
     private float speed;
+    [SerializeField]
+    private GameObject HowToPlay;
+    [SerializeField]
+    private Button Help;
 
     public int dice_number;
 
@@ -22,9 +27,20 @@ public class Dragger : MonoBehaviour
 
     void Awake(){
         cam = Camera.main;
+        Help.onClick.AddListener(HelpScreen);
+    }
+
+    void HelpScreen(){
+        if(GetComponent<BoxCollider2D>().enabled){
+            GetComponent<BoxCollider2D>().enabled = false;
+        }
+        else{
+            GetComponent<BoxCollider2D>().enabled = true;
+        }
     }
 
     void OnMouseDown(){
+        if(!tag){
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit2D[] hits = Physics2D.GetRayIntersectionAll(ray, Mathf.Infinity);
         foreach (var hit in hits) {
@@ -36,6 +52,7 @@ public class Dragger : MonoBehaviour
             }
         }
         drag_offset = transform.position - GetMousePos();
+        }
         
     }
 
@@ -45,12 +62,11 @@ public class Dragger : MonoBehaviour
         }
     }
 
-    void OnMouseUp(){
-        
+    void OnMouseUp(){        
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit2D[] hits = Physics2D.GetRayIntersectionAll(ray, Mathf.Infinity);
         foreach (var hit in hits) {
-            if (hit.collider.CompareTag("slot") && tag) {
+            if (hit.collider.CompareTag("slot") && tag && hit.collider.gameObject != current_slot) {
                 StartCoroutine(Routine2(hit.collider.gameObject));
                 transform.localScale -=delta;
                 GetComponent<SpriteRenderer>().sortingOrder --;
@@ -66,6 +82,7 @@ public class Dragger : MonoBehaviour
             StartCoroutine(Routine1());
             transform.localScale -=delta;
             GetComponent<SpriteRenderer>().sortingOrder --;
+            tag = false;
         }
     }
 
@@ -99,5 +116,6 @@ public class Dragger : MonoBehaviour
         mousePos.z = 0;
         return mousePos;
     }
+    
 
 }

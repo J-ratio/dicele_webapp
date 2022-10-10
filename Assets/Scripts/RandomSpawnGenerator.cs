@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Runtime.InteropServices;
 
 
 public class RandomSpawnGenerator : MonoBehaviour
@@ -20,12 +21,17 @@ public class RandomSpawnGenerator : MonoBehaviour
 
     public Sprite[] dice_images;
     public static List<GameObject> slotList = new List<GameObject>();
-    public Button Play_btn;
-    public Button Restart_btn;
+    //public Button Play_btn;
+    public Button Help;
+    [SerializeField]
+    private Button Share;
+    //public Button Restart_btn;
     public Toggle row_toggle;
     public Toggle rowSum_toggle;
     [SerializeField]
     private GameObject RowSum;
+    [SerializeField]
+    private GameObject HowToPlay;
 
     [SerializeField]
     TextMeshProUGUI[] rowSumText;
@@ -37,39 +43,21 @@ public class RandomSpawnGenerator : MonoBehaviour
     TextMeshProUGUI Sol;
     [SerializeField]
     public TextMeshProUGUI swapCount;
+    [SerializeField]
+    GameObject msg;
+
+    [DllImport("__Internal")]
+    public static extern void shareTrigger();
     
 
 
-
-    // Start is called before the first frame update
     void Start()
     {
-        Play_btn.onClick.AddListener(Play);
-        Restart_btn.onClick.AddListener(Restart);
-    }
+        //Play_btn.onClick.AddListener(Play);
+        //Restart_btn.onClick.AddListener(Restart);
 
-    void Restart(){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-
-    void Play(){
-
-        green_no = int.Parse(greenMinBound.text);
-        Debug.Log(greenMinBound.text.ToString());
-
-        if(row_toggle.isOn){
-            RowLogic = true;
-        }
-        else{
-            RowLogic = false;
-        }
-
-        if(rowSum_toggle.isOn){
-            RowSum.SetActive(true);
-        }
-        else{
-            RowSum.SetActive(false);
-        }
+        Help.onClick.AddListener(HelpScreen);
+        Share.onClick.AddListener(Share_msg);
 
 
         for (var i=0; i<5; i++){
@@ -84,7 +72,7 @@ public class RandomSpawnGenerator : MonoBehaviour
             }
         }
 
-        update_sol();
+        //update_sol();
 
         for(var i=0; i<5; i++){
             if(i == 1 || i == 3){
@@ -105,16 +93,6 @@ public class RandomSpawnGenerator : MonoBehaviour
             }
             
         }
-
-        for (var i=0; i<5; i++){
-            for(var j=0; j<5; j++){
-                Debug.Log(solutionArr[i,j]);
-            }
-        }
-
-        Debug.Log("-------------------------------------------------------------------");
-
-
 
         for (var i=0; i<5; i++){
             for(var j=0; j<5; j++){
@@ -139,7 +117,6 @@ public class RandomSpawnGenerator : MonoBehaviour
         for(var i=0; i<6; i++){
             sum = sum + freq_Arr[i];
         }
-        Debug.Log(sum);
         int rand;
         for (var i=0; i<5; i++){
             for(var j=0; j<5; j++){
@@ -165,13 +142,48 @@ public class RandomSpawnGenerator : MonoBehaviour
                 }
             }
         }
+    }
+
+    void Share_msg(){
+        shareTrigger();
+        msg.SetActive(true);
+    }
+
+
+    void HelpScreen(){
+        if(HowToPlay.activeSelf){
+            HowToPlay.SetActive(false);
+        }
+        else{
+            HowToPlay.SetActive(true);
+        }
+    }
+
+    /*void Restart(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    void Play(){
+
+        green_no = int.Parse(greenMinBound.text);
+        Debug.Log(greenMinBound.text.ToString());
+
+        if(row_toggle.isOn){
+            RowLogic = true;
+        }
+        else{
+            RowLogic = false;
+        }
+
+        if(rowSum_toggle.isOn){
+            RowSum.SetActive(true);
+        }
+        else{
+            RowSum.SetActive(false);
+        }
+
 
         
-        for (var i=0; i<5; i++){
-            for(var j=0; j<5; j++){
-                Debug.Log(spawn_Arr[i,j]);
-            }
-        }        
     }
 
     public void update_sol(){
@@ -187,7 +199,7 @@ public class RandomSpawnGenerator : MonoBehaviour
         }
 
         Sol.text = "Solution Array: {" + strings[0] + "},{" + strings[1] + "},{" + strings[2] + "},{" + strings[3] + "},{" + strings[4] + "}";
-    }
+    }*/
 
 
     public List<int> Get_Yellow_numbers(int slot_pos0, int slot_pos1){
@@ -229,7 +241,6 @@ public class RandomSpawnGenerator : MonoBehaviour
         for(var m=0; m<a; m++){
             slot_pos[0] = slot_pos_generator(Array_number[m])[0];
             slot_pos[1] = slot_pos_generator(Array_number[m])[1];
-            Debug.Log(slot_pos[0] + "    " + slot_pos[1]);
             spawn_Arr[slot_pos[0],slot_pos[1]] = solutionArr[slot_pos[0],slot_pos[1]];
         }
     }

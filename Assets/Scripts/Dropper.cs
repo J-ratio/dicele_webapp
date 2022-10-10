@@ -8,24 +8,29 @@ public class Dropper : MonoBehaviour
     public GameObject current_dice;
     [SerializeField]
     public GameObject GameManager;
+    [SerializeField]
+    private GameObject WinningScreen;
+    [SerializeField]
+    private GameObject GameoverScreen;
     public int[] slot_pos = new int[2];
     Vector3 delta2 = new Vector3 (0,0,-0.1f);
     public List<int> yellow_arr = new List<int>();
     private int green_number;
-    public static int swap_count = 0;
+    public static int swap_count;
+    public static int matched;
     
 
     void Awake(){
+        swap_count = 21;
+        matched = 0;
+        GameManager.GetComponent<RandomSpawnGenerator>().swapCount.text = swap_count.ToString();
         RandomSpawnGenerator.slotList.Remove(this.gameObject);
-        GameManager.GetComponent<RandomSpawnGenerator>().Play_btn.onClick.AddListener(Play);
-    }
-
-    void Play(){
+        //GameManager.GetComponent<RandomSpawnGenerator>().Play_btn.onClick.AddListener(Play);
         StartCoroutine("delay");
     }
 
     IEnumerator delay(){
-        yield return new WaitForSeconds(2f*Time.deltaTime);
+        yield return new WaitForSeconds(0.1f*Time.deltaTime);
         gameObject.GetComponent<Dropper>().enabled = true;
     }
 
@@ -41,22 +46,24 @@ public class Dropper : MonoBehaviour
     public void Check_color(){
         
         if(current_dice.GetComponent<Dragger>().dice_number == green_number){
-            current_dice.GetComponent<SpriteRenderer>().color = Color.green;
+            current_dice.GetComponent<SpriteRenderer>().color = new Color(106/255f,192/255f,81/255f);
             GameManager.GetComponent<RandomSpawnGenerator>().solutionArr[slot_pos[0],slot_pos[1]] = 6;
             GetComponent<BoxCollider2D>().enabled = false;
             current_dice.GetComponent<BoxCollider2D>().enabled = false;
+            matched++;
+            if(matched == 21){
+                WinningScreen.SetActive(true);
+            }
             StartCoroutine("delay3");
         }
         else{
             StartCoroutine("delay2");
         }
         
-    }
-
-    
+    }    
 
     IEnumerator delay3(){
-        yield return new WaitForSeconds(2f*Time.deltaTime);
+        yield return new WaitForSeconds(1f*Time.deltaTime);
         RandomSpawnGenerator.slotList.Remove(this.gameObject);
     }
 
@@ -64,7 +71,7 @@ public class Dropper : MonoBehaviour
         yield return new WaitForSeconds(0.5f*Time.deltaTime);
         yellow_arr = GameManager.GetComponent<RandomSpawnGenerator>().Get_Yellow_numbers(slot_pos[0],slot_pos[1]);
             if(yellow_arr.Contains(current_dice.GetComponent<Dragger>().dice_number)){
-            current_dice.GetComponent<SpriteRenderer>().color = Color.yellow;
+            current_dice.GetComponent<SpriteRenderer>().color = new Color(243/255f,193/255f,58/255f);;
             }
             else{
             current_dice.GetComponent<SpriteRenderer>().color = Color.white;
@@ -76,8 +83,15 @@ public class Dropper : MonoBehaviour
         StartCoroutine(Routine1(new_slot,current_dice));
         new_slot.GetComponent<Dropper>().current_dice = current_dice;
         current_dice.GetComponent<Dragger>().current_slot = new_slot;
-        swap_count++;
-        GameManager.GetComponent<RandomSpawnGenerator>().swapCount.text = "Swaps: " + swap_count.ToString();      
+        swap_count--;
+        GameManager.GetComponent<RandomSpawnGenerator>().swapCount.text = swap_count.ToString();
+        if(swap_count == 0 && matched!=19){
+            GameoverScreen.SetActive(true);
+            foreach(GameObject slot in RandomSpawnGenerator.slotList){
+                slot.GetComponent<Dropper>().current_dice.GetComponent<BoxCollider2D>().enabled = false;
+                slot.GetComponent<BoxCollider2D>().enabled = false;
+            }
+        }         
     }
 
     public IEnumerator Routine1(GameObject new_slot,GameObject current_dice)
