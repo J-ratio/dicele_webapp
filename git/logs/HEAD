@@ -1,0 +1,30 @@
+0000000000000000000000000000000000000000 32b6d29a4bf551a84d39d160198a7cc07deb7c76 r_@tio <86887365+J-ratio@users.noreply.github.com> 1662563446 +0530	clone: from https://github.com/J-ratio/dicele_webapp.git
+32b6d29a4bf551a84d39d160198a7cc07deb7c76 f7f62ee162adfec2458474b823660baea0679347 r_@tio <86887365+J-ratio@users.noreply.github.com> 1662563898 +0530	commit: initial commit
+f7f62ee162adfec2458474b823660baea0679347 f42155bdae4bf4e2d318fd0aa9294aeff7ecf6bc r_@tio <86887365+J-ratio@users.noreply.github.com> 1663067290 +0530	commit: dicele prototype copied
+f42155bdae4bf4e2d318fd0aa9294aeff7ecf6bc f42155bdae4bf4e2d318fd0aa9294aeff7ecf6bc r_@tio <86887365+J-ratio@users.noreply.github.com> 1663314453 +0530	reset: moving to HEAD
+f42155bdae4bf4e2d318fd0aa9294aeff7ecf6bc f42155bdae4bf4e2d318fd0aa9294aeff7ecf6bc r_@tio <86887365+J-ratio@users.noreply.github.com> 1664367315 +0530	reset: moving to HEAD
+f42155bdae4bf4e2d318fd0aa9294aeff7ecf6bc f42155bdae4bf4e2d318fd0aa9294aeff7ecf6bc r_@tio <86887365+J-ratio@users.noreply.github.com> 1664367315 +0530	checkout: moving from main to touch_fix
+f42155bdae4bf4e2d318fd0aa9294aeff7ecf6bc f42155bdae4bf4e2d318fd0aa9294aeff7ecf6bc r_@tio <86887365+J-ratio@users.noreply.github.com> 1664367436 +0530	checkout: moving from touch_fix to main
+f42155bdae4bf4e2d318fd0aa9294aeff7ecf6bc f42155bdae4bf4e2d318fd0aa9294aeff7ecf6bc r_@tio <86887365+J-ratio@users.noreply.github.com> 1664367513 +0530	reset: moving to HEAD
+f42155bdae4bf4e2d318fd0aa9294aeff7ecf6bc f42155bdae4bf4e2d318fd0aa9294aeff7ecf6bc r_@tio <86887365+J-ratio@users.noreply.github.com> 1664367513 +0530	checkout: moving from main to touch_fix
+f42155bdae4bf4e2d318fd0aa9294aeff7ecf6bc f42155bdae4bf4e2d318fd0aa9294aeff7ecf6bc r_@tio <86887365+J-ratio@users.noreply.github.com> 1664367665 +0530	checkout: moving from touch_fix to main
+f42155bdae4bf4e2d318fd0aa9294aeff7ecf6bc d94aa0df1d8ce0d9731cf236a8006d3884f14abe r_@tio <86887365+J-ratio@users.noreply.github.com> 1664368127 +0530	commit: added green border on selection logic
+d94aa0df1d8ce0d9731cf236a8006d3884f14abe f42155bdae4bf4e2d318fd0aa9294aeff7ecf6bc r_@tio <86887365+J-ratio@users.noreply.github.com> 1664368139 +0530	checkout: moving from main to touch_fix
+f42155bdae4bf4e2d318fd0aa9294aeff7ecf6bc d94aa0df1d8ce0d9731cf236a8006d3884f14abe r_@tio <86887365+J-ratio@users.noreply.github.com> 1664368148 +0530	checkout: moving from touch_fix to main
+d94aa0df1d8ce0d9731cf236a8006d3884f14abe d94aa0df1d8ce0d9731cf236a8006d3884f14abe r_@tio <86887365+J-ratio@users.noreply.github.com> 1664368171 +0530	checkout: moving from main to touch_fix
+d94aa0df1d8ce0d9731cf236a8006d3884f14abe fd23a5682fa3a8d0c641733c4df3381fe445266d r_@tio <86887365+J-ratio@users.noreply.github.com> 1664399802 +0530	commit: touch_bugs fixed
+fd23a5682fa3a8d0c641733c4df3381fe445266d fd23a5682fa3a8d0c641733c4df3381fe445266d r_@tio <86887365+J-ratio@users.noreply.github.com> 1664418673 +0530	reset: moving to HEAD
+fd23a5682fa3a8d0c641733c4df3381fe445266d d94aa0df1d8ce0d9731cf236a8006d3884f14abe r_@tio <86887365+J-ratio@users.noreply.github.com> 1664418673 +0530	checkout: moving from touch_fix to new_dicele
+d94aa0df1d8ce0d9731cf236a8006d3884f14abe f4222b05ac22df85b839883ff8defd2340660be9 r_@tio <86887365+J-ratio@users.noreply.github.com> 1664418688 +0530	revert: Revert "added green border on selection logic"
+f4222b05ac22df85b839883ff8defd2340660be9 c26953ca9a3ce913bc6b37fdfbe5be6aae769006 r_@tio <86887365+J-ratio@users.noreply.github.com> 1664418717 +0530	revert: Revert "dicele prototype copied"
+c26953ca9a3ce913bc6b37fdfbe5be6aae769006 c26953ca9a3ce913bc6b37fdfbe5be6aae769006 r_@tio <86887365+J-ratio@users.noreply.github.com> 1664513453 +0530	reset: moving to HEAD
+c26953ca9a3ce913bc6b37fdfbe5be6aae769006 d94aa0df1d8ce0d9731cf236a8006d3884f14abe r_@tio <86887365+J-ratio@users.noreply.github.com> 1664513453 +0530	checkout: moving from new_dicele to main
+d94aa0df1d8ce0d9731cf236a8006d3884f14abe c26953ca9a3ce913bc6b37fdfbe5be6aae769006 r_@tio <86887365+J-ratio@users.noreply.github.com> 1664513494 +0530	checkout: moving from main to new_dicele
+c26953ca9a3ce913bc6b37fdfbe5be6aae769006 c26953ca9a3ce913bc6b37fdfbe5be6aae769006 r_@tio <86887365+J-ratio@users.noreply.github.com> 1664515540 +0530	reset: moving to HEAD
+c26953ca9a3ce913bc6b37fdfbe5be6aae769006 fd23a5682fa3a8d0c641733c4df3381fe445266d r_@tio <86887365+J-ratio@users.noreply.github.com> 1664515541 +0530	checkout: moving from new_dicele to touch_fix
+fd23a5682fa3a8d0c641733c4df3381fe445266d c26953ca9a3ce913bc6b37fdfbe5be6aae769006 r_@tio <86887365+J-ratio@users.noreply.github.com> 1664515571 +0530	checkout: moving from touch_fix to new_dicele
+c26953ca9a3ce913bc6b37fdfbe5be6aae769006 3899756a9113c873fe392a05a5027a2970fa793c r_@tio <86887365+J-ratio@users.noreply.github.com> 1664876772 +0530	commit: initial_commit
+3899756a9113c873fe392a05a5027a2970fa793c 3dea555040262a012c9eab2a61a9bbd9519fa48d r_@tio <86887365+J-ratio@users.noreply.github.com> 1665439335 +0530	commit: DiceleV1.1
+3dea555040262a012c9eab2a61a9bbd9519fa48d 3dea555040262a012c9eab2a61a9bbd9519fa48d r_@tio <86887365+J-ratio@users.noreply.github.com> 1665462294 +0530	reset: moving to HEAD
+3dea555040262a012c9eab2a61a9bbd9519fa48d d94aa0df1d8ce0d9731cf236a8006d3884f14abe r_@tio <86887365+J-ratio@users.noreply.github.com> 1665462295 +0530	checkout: moving from new_dicele to main
+d94aa0df1d8ce0d9731cf236a8006d3884f14abe 3dea555040262a012c9eab2a61a9bbd9519fa48d r_@tio <86887365+J-ratio@users.noreply.github.com> 1665462364 +0530	checkout: moving from main to new_dicele
