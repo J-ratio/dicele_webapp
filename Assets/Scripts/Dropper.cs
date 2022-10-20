@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Runtime.InteropServices;
 
 public class Dropper : MonoBehaviour
 {
@@ -12,25 +13,38 @@ public class Dropper : MonoBehaviour
     private GameObject WinningScreen;
     [SerializeField]
     private GameObject GameoverScreen;
+    [SerializeField]
+    private GameObject[] Stars;
+    [SerializeField]
+    private Sprite Star;
+
     public int[] slot_pos = new int[2];
     Vector3 delta2 = new Vector3 (0,0,-0.1f);
     public List<int> yellow_arr = new List<int>();
     private int green_number;
     public static int swap_count;
     public static int matched;
+    public int star_count = 5;
+    
+
+    [DllImport("__Internal")]
+    public static extern void OnFinish(bool isSolved, string finalArr,int swap_count);
     
 
     void Awake(){
-        swap_count = 21;
-        matched = 0;
-        GameManager.GetComponent<RandomSpawnGenerator>().swapCount.text = swap_count.ToString();
         RandomSpawnGenerator.slotList.Remove(this.gameObject);
-        //GameManager.GetComponent<RandomSpawnGenerator>().Play_btn.onClick.AddListener(Play);
         StartCoroutine("delay");
     }
 
     IEnumerator delay(){
         yield return new WaitForSeconds(0.1f*Time.deltaTime);
+        if(!RandomSpawnGenerator.isSolved){
+        swap_count = 21;
+        matched = 0;
+        GetComponent<BoxCollider2D>().enabled = true;
+        current_dice.GetComponent<BoxCollider2D>().enabled = true;
+        }
+        GameManager.GetComponent<RandomSpawnGenerator>().swapCount.text = swap_count.ToString();
         gameObject.GetComponent<Dropper>().enabled = true;
     }
 
@@ -52,7 +66,28 @@ public class Dropper : MonoBehaviour
             current_dice.GetComponent<BoxCollider2D>().enabled = false;
             matched++;
             if(matched == 21){
-                WinningScreen.SetActive(true);
+                if(swap_count<6){
+                    star_count = swap_count;
+                }
+                string finalArr1 = "[";
+                for(var i=0;i<5;i++){
+                    finalArr1 = finalArr1 + "[";
+                        for(var j=0;j<5;j++){
+                        finalArr1 = finalArr1 + GameManager.GetComponent<RandomSpawnGenerator>().spawn_Arr[i,j].ToString();
+                        if(j!=4){
+                            finalArr1 = finalArr1 + ",";
+                        }
+                        }
+                    finalArr1 = finalArr1 + "]";
+                    if(i!=4){
+                        finalArr1 = finalArr1 + ",";
+                    }
+                }
+                finalArr1 = finalArr1 + "]";
+
+                ShowStars();
+                MakeWinShare();
+                OnFinish(true,finalArr1,swap_count);
             }
             StartCoroutine("delay3");
         }
@@ -60,6 +95,12 @@ public class Dropper : MonoBehaviour
             StartCoroutine("delay2");
         }
         
+    }
+
+    void ShowStars(){
+        for(var i=0; i<star_count; i++){
+            Stars[i].GetComponent<SpriteRenderer>().sprite = Star;
+        }
     }    
 
     IEnumerator delay3(){
@@ -81,19 +122,37 @@ public class Dropper : MonoBehaviour
 
     public void MoveToSlot(GameObject new_slot){
         StartCoroutine(Routine1(new_slot,current_dice));
+        GameManager.GetComponent<RandomSpawnGenerator>().spawn_Arr[new_slot.GetComponent<Dropper>().slot_pos[0],new_slot.GetComponent<Dropper>().slot_pos[1]] = current_dice.GetComponent<Dragger>().dice_number;
+        GameManager.GetComponent<RandomSpawnGenerator>().spawn_Arr[slot_pos[0],slot_pos[1]] = new_slot.GetComponent<Dropper>().current_dice.GetComponent<Dragger>().dice_number;
         new_slot.GetComponent<Dropper>().current_dice = current_dice;
         current_dice.GetComponent<Dragger>().current_slot = new_slot;
         swap_count--;
         GameManager.GetComponent<RandomSpawnGenerator>().swapCount.text = swap_count.ToString();
         if(swap_count == 0 && matched!=19){
-            GameoverScreen.SetActive(true);
+            string final_Arr = "[";
+            for(var i=0;i<5;i++){
+                final_Arr = final_Arr + "[";
+                for(var j=0;j<5;j++){
+                    final_Arr = final_Arr + (GameManager.GetComponent<RandomSpawnGenerator>().spawn_Arr[i,j]).ToString();
+                    if(j!=4){
+                        final_Arr = final_Arr + ",";
+                    }
+                }
+                final_Arr = final_Arr + "]";
+                if(i!=4){
+                        final_Arr = final_Arr + ",";
+                    }
+            }
+            final_Arr = final_Arr + "]";
+            OnFinish(false,final_Arr,swap_count);
             foreach(GameObject slot in RandomSpawnGenerator.slotList){
                 slot.GetComponent<Dropper>().current_dice.GetComponent<BoxCollider2D>().enabled = false;
                 slot.GetComponent<BoxCollider2D>().enabled = false;
             }
+            
         }         
     }
-
+    
     public IEnumerator Routine1(GameObject new_slot,GameObject current_dice)
     {
         while(Vector3.Distance(current_dice.transform.position,new_slot.transform.position)>0.01)
@@ -104,6 +163,28 @@ public class Dropper : MonoBehaviour
         current_dice.transform.position += delta2;
         yield break;
          
+    }
+
+    void MakeWinShare(){
+        if(star_count == 0){
+            GameManager.GetComponent<RandomSpawnGenerator>().ShareMsg = "🟩🟩🟩🟩🟩\n🟩⬜🟩⬜🟩\n🟩🟩🟩🟩🟩\n🟩⬜🟩⬜🟩\n🟩🟩🟩🟩🟩";
+        }
+        else if(star_count ==1){
+            GameManager.GetComponent<RandomSpawnGenerator>().ShareMsg = "🟩🟩🟩🟩🟩\n🟩⬜🟩⬜🟩\n🟩🟩⭐🟩🟩\n🟩⬜🟩⬜🟩\n🟩🟩🟩🟩🟩";
+        }
+        else if(star_count == 2){
+            GameManager.GetComponent<RandomSpawnGenerator>().ShareMsg = "🟩🟩🟩🟩🟩\n🟩⭐🟩⬜🟩\n🟩🟩🟩🟩🟩\n🟩⬜🟩⭐🟩\n🟩🟩🟩🟩🟩";
+        }
+        else if(star_count == 3){
+            GameManager.GetComponent<RandomSpawnGenerator>().ShareMsg = "🟩🟩🟩🟩🟩\n🟩⭐🟩⬜🟩\n🟩🟩⭐🟩🟩\n🟩⬜🟩⭐🟩\n🟩🟩🟩🟩🟩";
+        }
+        else if(star_count == 4){
+            GameManager.GetComponent<RandomSpawnGenerator>().ShareMsg = "🟩🟩🟩🟩🟩\n🟩⭐🟩⭐🟩\n🟩🟩🟩🟩🟩\n🟩⭐🟩⭐🟩\n🟩🟩🟩🟩🟩";
+        }
+        else{
+            GameManager.GetComponent<RandomSpawnGenerator>().ShareMsg = "🟩🟩🟩🟩🟩\n🟩⭐🟩⭐🟩\n🟩🟩⭐🟩🟩\n🟩⭐🟩⭐🟩\n🟩🟩🟩🟩🟩";
+        }
+        Debug.Log(GameManager.GetComponent<RandomSpawnGenerator>().ShareMsg);
     }
 
 }

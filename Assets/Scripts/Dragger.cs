@@ -75,6 +75,8 @@ public class Dragger : MonoBehaviour
                 current_slot.GetComponent<Dropper>().current_dice = this.gameObject;
                 tag = false;
                 RandomSpawnGenerator.update_color();
+                if(Dropper.swap_count == 0 && Dropper.matched!=19){
+                    current_slot.GetComponent<Dropper>().GameManager.GetComponent<RandomSpawnGenerator>().MakeLoseShareMsg();                }
                 break;
             }   
         }
