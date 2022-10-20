@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 
 
-public class dice_script : MonoBehaviour , IPointerDownHandler, IPointerUpHandler{
+public class dice_script : MonoBehaviour , IPointerDownHandler{
    
     //GameObjects
     public static GameObject selected_dice; //stores the spawn dice gameobject when selected
@@ -14,8 +14,6 @@ public class dice_script : MonoBehaviour , IPointerDownHandler, IPointerUpHandle
     public int dice_number; 
     public static bool dice_tag; //is true when the dice is selected
     public static int selected_dice_number;// stores number of the number of selected spawn dice
-    private Vector3 delta = new Vector3(0.1f,0.1f,0);
-    public static int dice_onboard;
 
 
     public void OnPointerDown(PointerEventData eventData)
@@ -25,18 +23,8 @@ public class dice_script : MonoBehaviour , IPointerDownHandler, IPointerUpHandle
     selected_dice = this.gameObject;
     selected_dice_number = dice_number;
     slot_dice_script.slot_dice_tag = false;
-    this.transform.localScale -= delta;
-    slot_dice_script.Yellow_selected =false;
-    slot_dice_script.White_selected = false;
-    if(slot_dice_script.selected_slot_dice != null){
-        slot_dice_script.selected_slot_dice.GetComponent<SpriteRenderer>().color = slot_dice_script.selected_slot_dice_color;
     }
-    GetComponent<SpriteRenderer>().color = Color.gray;
-    }
-    public void OnPointerUp(PointerEventData eventData)
-    {
-    this.transform.localScale +=delta;
-    }
+
 
     void Start()
     {

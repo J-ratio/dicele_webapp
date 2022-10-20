@@ -19,7 +19,7 @@ public class JavaScriptHook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(slot_script.matched == 25 && x)
+        if(slot_script.matched == 5 && x)
         {   
             x = false;
             storeMovesCount(slot_dice_script.moves, timer_script.minutes, timer_script.seconds);
