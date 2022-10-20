@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+<<<<<<< Updated upstream
 using System.Runtime.InteropServices;
+=======
+>>>>>>> Stashed changes
 
 public class Dropper : MonoBehaviour
 {
@@ -13,17 +16,21 @@ public class Dropper : MonoBehaviour
     private GameObject WinningScreen;
     [SerializeField]
     private GameObject GameoverScreen;
+<<<<<<< Updated upstream
     [SerializeField]
     private GameObject[] Stars;
     [SerializeField]
     private Sprite Star;
 
+=======
+>>>>>>> Stashed changes
     public int[] slot_pos = new int[2];
     Vector3 delta2 = new Vector3 (0,0,-0.1f);
     public List<int> yellow_arr = new List<int>();
     private int green_number;
     public static int swap_count;
     public static int matched;
+<<<<<<< Updated upstream
     public int star_count = 5;
     
 
@@ -33,11 +40,22 @@ public class Dropper : MonoBehaviour
 
     void Awake(){
         RandomSpawnGenerator.slotList.Remove(this.gameObject);
+=======
+    
+
+    void Awake(){
+        swap_count = 21;
+        matched = 0;
+        GameManager.GetComponent<RandomSpawnGenerator>().swapCount.text = swap_count.ToString();
+        RandomSpawnGenerator.slotList.Remove(this.gameObject);
+        //GameManager.GetComponent<RandomSpawnGenerator>().Play_btn.onClick.AddListener(Play);
+>>>>>>> Stashed changes
         StartCoroutine("delay");
     }
 
     IEnumerator delay(){
         yield return new WaitForSeconds(0.1f*Time.deltaTime);
+<<<<<<< Updated upstream
         if(!RandomSpawnGenerator.isSolved){
         swap_count = 21;
         matched = 0;
@@ -45,6 +63,8 @@ public class Dropper : MonoBehaviour
         current_dice.GetComponent<BoxCollider2D>().enabled = true;
         }
         GameManager.GetComponent<RandomSpawnGenerator>().swapCount.text = swap_count.ToString();
+=======
+>>>>>>> Stashed changes
         gameObject.GetComponent<Dropper>().enabled = true;
     }
 
@@ -66,6 +86,7 @@ public class Dropper : MonoBehaviour
             current_dice.GetComponent<BoxCollider2D>().enabled = false;
             matched++;
             if(matched == 21){
+<<<<<<< Updated upstream
                 if(swap_count<6){
                     star_count = swap_count;
                 }
@@ -88,6 +109,9 @@ public class Dropper : MonoBehaviour
                 ShowStars();
                 MakeWinShare();
                 OnFinish(true,finalArr1,swap_count);
+=======
+                WinningScreen.SetActive(true);
+>>>>>>> Stashed changes
             }
             StartCoroutine("delay3");
         }
@@ -95,12 +119,15 @@ public class Dropper : MonoBehaviour
             StartCoroutine("delay2");
         }
         
+<<<<<<< Updated upstream
     }
 
     void ShowStars(){
         for(var i=0; i<star_count; i++){
             Stars[i].GetComponent<SpriteRenderer>().sprite = Star;
         }
+=======
+>>>>>>> Stashed changes
     }    
 
     IEnumerator delay3(){
@@ -122,13 +149,17 @@ public class Dropper : MonoBehaviour
 
     public void MoveToSlot(GameObject new_slot){
         StartCoroutine(Routine1(new_slot,current_dice));
+<<<<<<< Updated upstream
         GameManager.GetComponent<RandomSpawnGenerator>().spawn_Arr[new_slot.GetComponent<Dropper>().slot_pos[0],new_slot.GetComponent<Dropper>().slot_pos[1]] = current_dice.GetComponent<Dragger>().dice_number;
         GameManager.GetComponent<RandomSpawnGenerator>().spawn_Arr[slot_pos[0],slot_pos[1]] = new_slot.GetComponent<Dropper>().current_dice.GetComponent<Dragger>().dice_number;
+=======
+>>>>>>> Stashed changes
         new_slot.GetComponent<Dropper>().current_dice = current_dice;
         current_dice.GetComponent<Dragger>().current_slot = new_slot;
         swap_count--;
         GameManager.GetComponent<RandomSpawnGenerator>().swapCount.text = swap_count.ToString();
         if(swap_count == 0 && matched!=19){
+<<<<<<< Updated upstream
             string final_Arr = "[";
             for(var i=0;i<5;i++){
                 final_Arr = final_Arr + "[";
@@ -145,14 +176,23 @@ public class Dropper : MonoBehaviour
             }
             final_Arr = final_Arr + "]";
             OnFinish(false,final_Arr,swap_count);
+=======
+            GameoverScreen.SetActive(true);
+>>>>>>> Stashed changes
             foreach(GameObject slot in RandomSpawnGenerator.slotList){
                 slot.GetComponent<Dropper>().current_dice.GetComponent<BoxCollider2D>().enabled = false;
                 slot.GetComponent<BoxCollider2D>().enabled = false;
             }
+<<<<<<< Updated upstream
             
         }         
     }
     
+=======
+        }         
+    }
+
+>>>>>>> Stashed changes
     public IEnumerator Routine1(GameObject new_slot,GameObject current_dice)
     {
         while(Vector3.Distance(current_dice.transform.position,new_slot.transform.position)>0.01)
@@ -165,6 +205,7 @@ public class Dropper : MonoBehaviour
          
     }
 
+<<<<<<< Updated upstream
     void MakeWinShare(){
         if(star_count == 0){
             GameManager.GetComponent<RandomSpawnGenerator>().ShareMsg = "🟩🟩🟩🟩🟩\n🟩⬜🟩⬜🟩\n🟩🟩🟩🟩🟩\n🟩⬜🟩⬜🟩\n🟩🟩🟩🟩🟩";
@@ -187,4 +228,6 @@ public class Dropper : MonoBehaviour
         Debug.Log(GameManager.GetComponent<RandomSpawnGenerator>().ShareMsg);
     }
 
+=======
+>>>>>>> Stashed changes
 }
