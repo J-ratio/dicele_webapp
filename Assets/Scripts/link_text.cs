@@ -47,8 +47,4 @@ public class link_text : MonoBehaviour
             tag0 = false;
         }
     }
-<<<<<<< Updated upstream
 }
-=======
-}
->>>>>>> Stashed changes
