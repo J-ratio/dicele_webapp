@@ -35,16 +35,27 @@ public class RandomSpawnGenerator : MonoBehaviour
     TextMeshProUGUI[] rowSumText;
     [SerializeField]
     TextMeshProUGUI[] ColumnSumText;
-    [SerializeField]
     public TextMeshProUGUI swapCount;
+    [SerializeField]
+    TextMeshProUGUI DayHeader;
+    [SerializeField]
+    TextMeshProUGUI[] gamesPlayed;
+    [SerializeField]
+    TextMeshProUGUI[] starsCollected;
+    [SerializeField]
+    TextMeshProUGUI[] currentStreak;
+    [SerializeField]
+    TextMeshProUGUI[] highestStreak;
     [SerializeField]
     GameObject msg;
     public GameObject WinningScreen;
     public GameObject GameoverScreen;
+    public GameObject ResultScreen;
     [SerializeField]
     Button CloseWin;
     [SerializeField]
     Button CloseLose;
+
 
     [DllImport("__Internal")]
     public static extern void shareTrigger(string msg);
@@ -52,10 +63,19 @@ public class RandomSpawnGenerator : MonoBehaviour
     
     public void GetDay(string day){
         Day = int.Parse(day);
+        DayHeader.text = "#" + day;
     }
 
     public void UpdateStats(string temp){
         string[] Temp = temp.Split(",");
+        gamesPlayed[0].text = Temp[0];
+        starsCollected[0].text = Temp[1];
+        currentStreak[0].text = Temp[2];
+        highestStreak[0].text = Temp[3];
+        gamesPlayed[1].text = Temp[0];
+        starsCollected[1].text = Temp[1];
+        currentStreak[1].text = Temp[2];
+        highestStreak[1].text = Temp[3];
         GamesPlayed = int.Parse(Temp[0]);
         StarsCollected = int.Parse(Temp[1]);
         CurrentStreak = int.Parse(Temp[2]);
@@ -63,6 +83,7 @@ public class RandomSpawnGenerator : MonoBehaviour
         for(var i =0; i<5;i++){
             starFreq[i] = int.Parse(Temp[i+4]);
         }
+
     }
 
     public void ShowResultScreen(string temp1){
@@ -97,10 +118,12 @@ public class RandomSpawnGenerator : MonoBehaviour
 
     void WinClose(){
         WinningScreen.SetActive(false);
+        ResultScreen.SetActive(false);
     }
 
     void LoseClose(){
         GameoverScreen.SetActive(false);
+        ResultScreen.SetActive(false);
     }
 
 

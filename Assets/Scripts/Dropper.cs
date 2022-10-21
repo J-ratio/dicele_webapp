@@ -85,6 +85,7 @@ public class Dropper : MonoBehaviour
                 ShowStars();
                 MakeWinShare();
                 GameManager.GetComponent<RandomSpawnGenerator>().WinningScreen.SetActive(true);
+                GameManager.GetComponent<RandomSpawnGenerator>().ResultScreen.SetActive(true);
                 //OnFinish(true,finalArr1,swap_count);
             }
             StartCoroutine("delay3");
@@ -143,6 +144,7 @@ public class Dropper : MonoBehaviour
             }
             final_Arr = final_Arr + "]";
             GameManager.GetComponent<RandomSpawnGenerator>().GameoverScreen.SetActive(true);
+            GameManager.GetComponent<RandomSpawnGenerator>().ResultScreen.SetActive(true);
             //OnFinish(false,final_Arr,swap_count);
             foreach(GameObject slot in RandomSpawnGenerator.slotList){
                 slot.GetComponent<Dropper>().current_dice.GetComponent<BoxCollider2D>().enabled = false;
