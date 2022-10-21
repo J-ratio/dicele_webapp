@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Runtime.InteropServices;
 
 public class Dropper : MonoBehaviour
@@ -10,10 +11,6 @@ public class Dropper : MonoBehaviour
     [SerializeField]
     public GameObject GameManager;
     [SerializeField]
-    private GameObject WinningScreen;
-    [SerializeField]
-    private GameObject GameoverScreen;
-    [SerializeField]
     private GameObject[] Stars;
     [SerializeField]
     private Sprite Star;
@@ -21,7 +18,7 @@ public class Dropper : MonoBehaviour
     public int[] slot_pos = new int[2];
     Vector3 delta2 = new Vector3 (0,0,-0.1f);
     public List<int> yellow_arr = new List<int>();
-    private int green_number;
+    public int green_number;
     public static int swap_count;
     public static int matched;
     public int star_count = 5;
@@ -87,7 +84,8 @@ public class Dropper : MonoBehaviour
 
                 ShowStars();
                 MakeWinShare();
-                OnFinish(true,finalArr1,swap_count);
+                GameManager.GetComponent<RandomSpawnGenerator>().WinningScreen.SetActive(true);
+                //OnFinish(true,finalArr1,swap_count);
             }
             StartCoroutine("delay3");
         }
@@ -99,7 +97,7 @@ public class Dropper : MonoBehaviour
 
     void ShowStars(){
         for(var i=0; i<star_count; i++){
-            Stars[i].GetComponent<SpriteRenderer>().sprite = Star;
+            Stars[i].GetComponent<Image>().sprite = Star;
         }
     }    
 
@@ -144,7 +142,8 @@ public class Dropper : MonoBehaviour
                     }
             }
             final_Arr = final_Arr + "]";
-            OnFinish(false,final_Arr,swap_count);
+            GameManager.GetComponent<RandomSpawnGenerator>().GameoverScreen.SetActive(true);
+            //OnFinish(false,final_Arr,swap_count);
             foreach(GameObject slot in RandomSpawnGenerator.slotList){
                 slot.GetComponent<Dropper>().current_dice.GetComponent<BoxCollider2D>().enabled = false;
                 slot.GetComponent<BoxCollider2D>().enabled = false;

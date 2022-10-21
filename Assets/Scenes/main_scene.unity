@@ -416,12 +416,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   current_dice: {fileID: 28591192}
   GameManager: {fileID: 1079598202}
-  WinningScreen: {fileID: 0}
-  GameoverScreen: {fileID: 445305467}
-  Stars: []
-  Star: {fileID: 0}
+  Stars:
+  - {fileID: 1107721732}
+  - {fileID: 491795364}
+  - {fileID: 1935054559}
+  - {fileID: 1278348653}
+  - {fileID: 1719091165}
+  Star: {fileID: 21300000, guid: bd59932b10ea3dc47b91e0b817d29b87, type: 3}
   slot_pos: 0000000000000000
   yellow_arr: 
+  green_number: 0
   star_count: 5
 --- !u!212 &13597407
 SpriteRenderer:
@@ -510,7 +514,11 @@ MonoBehaviour:
   cam: {fileID: 519420031}
   speed: 1000
   HowToPlay: {fileID: 722012405}
+  Stats: {fileID: 318004786}
   Help: {fileID: 2057037970}
+  Stat: {fileID: 1375241345}
+  HelpClose: {fileID: 2022597013}
+  StatClose: {fileID: 1390876705}
   dice_number: 0
   current_slot: {fileID: 13597403}
 --- !u!212 &28591195
@@ -852,15 +860,15 @@ RectTransform:
   m_GameObject: {fileID: 59369185}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6364006, y: 1.0819173, z: 1.6364006}
+  m_LocalScale: {x: 1.6364006, y: 1.0819174, z: 1.6364006}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1736593930}
-  m_RootOrder: 15
+  m_Father: {fileID: 1283310568}
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -310.8}
+  m_AnchoredPosition: {x: 0, y: -284.8}
   m_SizeDelta: {x: 400.32, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &59369187
@@ -1112,82 +1120,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 62979934}
   m_CullTransparentMesh: 1
---- !u!1 &67587417
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 67587418}
-  - component: {fileID: 67587420}
-  - component: {fileID: 67587419}
-  m_Layer: 5
-  m_Name: star (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &67587418
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 67587417}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6000001, y: 1.0666666, z: 1.0666666}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 1736593930}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -130, y: -42.7}
-  m_SizeDelta: {x: 32, y: 32}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &67587419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 67587417}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 0
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 59dd14f7f6610ad439d10101c7ea0c82, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &67587420
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 67587417}
-  m_CullTransparentMesh: 1
 --- !u!1 &76921193
 GameObject:
   m_ObjectHideFlags: 0
@@ -1213,11 +1145,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 76921193}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 0.4, z: -9000}
+  m_LocalPosition: {x: -179.47, y: -26.199997, z: -9000}
   m_LocalScale: {x: 89, y: 89, z: 89}
   m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 899466981}
+  m_Children:
+  - {fileID: 899466981}
+  m_Father: {fileID: 1591819963}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &76921195
@@ -2185,7 +2118,7 @@ Transform:
   - {fileID: 1114628033}
   - {fileID: 1171687954}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &143168765
 GameObject:
@@ -2357,7 +2290,11 @@ MonoBehaviour:
   cam: {fileID: 519420031}
   speed: 1000
   HowToPlay: {fileID: 722012405}
+  Stats: {fileID: 318004786}
   Help: {fileID: 2057037970}
+  Stat: {fileID: 1375241345}
+  HelpClose: {fileID: 2022597013}
+  StatClose: {fileID: 1390876705}
   dice_number: 0
   current_slot: {fileID: 1603979879}
 --- !u!212 &161038748
@@ -2488,7 +2425,11 @@ MonoBehaviour:
   cam: {fileID: 519420031}
   speed: 1000
   HowToPlay: {fileID: 722012405}
+  Stats: {fileID: 318004786}
   Help: {fileID: 2057037970}
+  Stat: {fileID: 1375241345}
+  HelpClose: {fileID: 2022597013}
+  StatClose: {fileID: 1390876705}
   dice_number: 0
   current_slot: {fileID: 1845224139}
 --- !u!212 &174735570
@@ -2793,12 +2734,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   current_dice: {fileID: 441495294}
   GameManager: {fileID: 1079598202}
-  WinningScreen: {fileID: 0}
-  GameoverScreen: {fileID: 445305467}
-  Stars: []
-  Star: {fileID: 0}
+  Stars:
+  - {fileID: 1107721732}
+  - {fileID: 491795364}
+  - {fileID: 1935054559}
+  - {fileID: 1278348653}
+  - {fileID: 1719091165}
+  Star: {fileID: 21300000, guid: bd59932b10ea3dc47b91e0b817d29b87, type: 3}
   slot_pos: 0200000001000000
   yellow_arr: 
+  green_number: 0
   star_count: 5
 --- !u!212 &201262793
 SpriteRenderer:
@@ -3135,7 +3080,7 @@ GameObject:
   - component: {fileID: 224224128}
   - component: {fileID: 224224127}
   m_Layer: 5
-  m_Name: Next Dicele (1)
+  m_Name: copied_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3150,15 +3095,15 @@ RectTransform:
   m_GameObject: {fileID: 224224125}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6364006, y: 1.0819173, z: 1.6364006}
+  m_LocalScale: {x: 1.6364006, y: 1.0819174, z: 1.6364006}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1736593930}
-  m_RootOrder: 14
+  m_Father: {fileID: 1283310568}
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4.999995, y: -400.40002}
+  m_AnchoredPosition: {x: -4.999995, y: -374.40002}
   m_SizeDelta: {x: 400.32, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &224224127
@@ -3293,7 +3238,11 @@ MonoBehaviour:
   cam: {fileID: 519420031}
   speed: 1000
   HowToPlay: {fileID: 722012405}
+  Stats: {fileID: 318004786}
   Help: {fileID: 2057037970}
+  Stat: {fileID: 1375241345}
+  HelpClose: {fileID: 2022597013}
+  StatClose: {fileID: 1390876705}
   dice_number: 0
   current_slot: {fileID: 1286811697}
 --- !u!212 &226894604
@@ -3500,7 +3449,11 @@ MonoBehaviour:
   cam: {fileID: 519420031}
   speed: 1000
   HowToPlay: {fileID: 722012405}
+  Stats: {fileID: 318004786}
   Help: {fileID: 2057037970}
+  Stat: {fileID: 1375241345}
+  HelpClose: {fileID: 2022597013}
+  StatClose: {fileID: 1390876705}
   dice_number: 0
   current_slot: {fileID: 1114628032}
 --- !u!212 &230513013
@@ -4001,7 +3954,7 @@ RectTransform:
   - {fileID: 316115665}
   - {fileID: 1653597676}
   m_Father: {fileID: 655583629}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4058,7 +4011,11 @@ MonoBehaviour:
   cam: {fileID: 519420031}
   speed: 1000
   HowToPlay: {fileID: 722012405}
+  Stats: {fileID: 318004786}
   Help: {fileID: 2057037970}
+  Stat: {fileID: 1375241345}
+  HelpClose: {fileID: 2022597013}
+  StatClose: {fileID: 1390876705}
   dice_number: 0
   current_slot: {fileID: 1543664620}
 --- !u!212 &300791182
@@ -4238,7 +4195,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 318004786}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
@@ -4246,12 +4203,12 @@ RectTransform:
   - {fileID: 795329857}
   - {fileID: 914404309}
   - {fileID: 328350610}
-  m_Father: {fileID: 655583629}
-  m_RootOrder: 3
+  m_Father: {fileID: 966922692}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 64.1}
+  m_AnchoredPosition: {x: 0, y: 73}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &324941305
@@ -4659,7 +4616,11 @@ MonoBehaviour:
   cam: {fileID: 519420031}
   speed: 1000
   HowToPlay: {fileID: 722012405}
+  Stats: {fileID: 318004786}
   Help: {fileID: 2057037970}
+  Stat: {fileID: 1375241345}
+  HelpClose: {fileID: 2022597013}
+  StatClose: {fileID: 1390876705}
   dice_number: 0
   current_slot: {fileID: 1804676679}
 --- !u!212 &381269471
@@ -4905,12 +4866,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   current_dice: {fileID: 713004376}
   GameManager: {fileID: 1079598202}
-  WinningScreen: {fileID: 0}
-  GameoverScreen: {fileID: 445305467}
-  Stars: []
-  Star: {fileID: 0}
+  Stars:
+  - {fileID: 1107721732}
+  - {fileID: 491795364}
+  - {fileID: 1935054559}
+  - {fileID: 1278348653}
+  - {fileID: 1719091165}
+  Star: {fileID: 21300000, guid: bd59932b10ea3dc47b91e0b817d29b87, type: 3}
   slot_pos: 0100000000000000
   yellow_arr: 
+  green_number: 0
   star_count: 5
 --- !u!212 &427390700
 SpriteRenderer:
@@ -5272,7 +5237,11 @@ MonoBehaviour:
   cam: {fileID: 519420031}
   speed: 1000
   HowToPlay: {fileID: 722012405}
+  Stats: {fileID: 318004786}
   Help: {fileID: 2057037970}
+  Stat: {fileID: 1375241345}
+  HelpClose: {fileID: 2022597013}
+  StatClose: {fileID: 1390876705}
   dice_number: 0
   current_slot: {fileID: 201262789}
 --- !u!212 &441495297
@@ -5534,7 +5503,7 @@ RectTransform:
   - {fileID: 1915436520}
   - {fileID: 1736593930}
   m_Father: {fileID: 655583629}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5830,82 +5799,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 462282453}
   m_CullTransparentMesh: 1
---- !u!1 &465174097
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 465174098}
-  - component: {fileID: 465174100}
-  - component: {fileID: 465174099}
-  m_Layer: 5
-  m_Name: star (4)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &465174098
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 465174097}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6000001, y: 1.0666666, z: 1.0666666}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 1736593930}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 130.1, y: -42.700005}
-  m_SizeDelta: {x: 32, y: 32}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &465174099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 465174097}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 0
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 59dd14f7f6610ad439d10101c7ea0c82, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &465174100
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 465174097}
-  m_CullTransparentMesh: 1
 --- !u!1 &468031038
 GameObject:
   m_ObjectHideFlags: 0
@@ -6156,7 +6049,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.1, y: -203.71}
+  m_AnchoredPosition: {x: 0, y: -159}
   m_SizeDelta: {x: 615.43, y: 829.88}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &475632084
@@ -6563,7 +6456,11 @@ MonoBehaviour:
   cam: {fileID: 519420031}
   speed: 1000
   HowToPlay: {fileID: 722012405}
+  Stats: {fileID: 318004786}
   Help: {fileID: 2057037970}
+  Stat: {fileID: 1375241345}
+  HelpClose: {fileID: 2022597013}
+  StatClose: {fileID: 1390876705}
   dice_number: 0
   current_slot: {fileID: 651139092}
 --- !u!212 &491520829
@@ -6717,7 +6614,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bd59932b10ea3dc47b91e0b817d29b87, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 59dd14f7f6610ad439d10101c7ea0c82, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7515,12 +7412,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   current_dice: {fileID: 1147777693}
   GameManager: {fileID: 1079598202}
-  WinningScreen: {fileID: 0}
-  GameoverScreen: {fileID: 445305467}
-  Stars: []
-  Star: {fileID: 0}
+  Stars:
+  - {fileID: 1107721732}
+  - {fileID: 491795364}
+  - {fileID: 1935054559}
+  - {fileID: 1278348653}
+  - {fileID: 1719091165}
+  Star: {fileID: 21300000, guid: bd59932b10ea3dc47b91e0b817d29b87, type: 3}
   slot_pos: 0300000004000000
   yellow_arr: 
+  green_number: 0
   star_count: 5
 --- !u!212 &552337724
 SpriteRenderer:
@@ -7740,7 +7641,7 @@ RectTransform:
   - {fileID: 1981081491}
   - {fileID: 816304051}
   m_Father: {fileID: 655583629}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7934,7 +7835,11 @@ MonoBehaviour:
   cam: {fileID: 519420031}
   speed: 1000
   HowToPlay: {fileID: 722012405}
+  Stats: {fileID: 318004786}
   Help: {fileID: 2057037970}
+  Stat: {fileID: 1375241345}
+  HelpClose: {fileID: 2022597013}
+  StatClose: {fileID: 1390876705}
   dice_number: 0
   current_slot: {fileID: 2026981605}
 --- !u!212 &597497209
@@ -8458,7 +8363,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.000030517578}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 417.82, y: 646.73}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &643908429
@@ -8771,12 +8676,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   current_dice: {fileID: 491520826}
   GameManager: {fileID: 1079598202}
-  WinningScreen: {fileID: 0}
-  GameoverScreen: {fileID: 445305467}
-  Stars: []
-  Star: {fileID: 0}
+  Stars:
+  - {fileID: 1107721732}
+  - {fileID: 491795364}
+  - {fileID: 1935054559}
+  - {fileID: 1278348653}
+  - {fileID: 1719091165}
+  Star: {fileID: 21300000, guid: bd59932b10ea3dc47b91e0b817d29b87, type: 3}
   slot_pos: 0200000004000000
   yellow_arr: 
+  green_number: 0
   star_count: 5
 --- !u!212 &651139096
 SpriteRenderer:
@@ -8964,7 +8873,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 650, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -9003,14 +8912,11 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 722012406}
   - {fileID: 445305468}
   - {fileID: 575172609}
-  - {fileID: 318004787}
-  - {fileID: 1059046634}
   - {fileID: 267713297}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -9271,7 +9177,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -73.9}
+  m_AnchoredPosition: {x: 0, y: -48}
   m_SizeDelta: {x: 400.32, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &688772914
@@ -9294,7 +9200,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You did well, Better luck tomorrow
+  m_text: You did well, better luck tomorrow
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: abac2bfc99df0994db08a8d83d092d5c, type: 2}
   m_sharedMaterial: {fileID: 2081701756064823186, guid: abac2bfc99df0994db08a8d83d092d5c, type: 2}
@@ -9634,7 +9540,11 @@ MonoBehaviour:
   cam: {fileID: 519420031}
   speed: 1000
   HowToPlay: {fileID: 722012405}
+  Stats: {fileID: 318004786}
   Help: {fileID: 2057037970}
+  Stat: {fileID: 1375241345}
+  HelpClose: {fileID: 2022597013}
+  StatClose: {fileID: 1390876705}
   dice_number: 0
   current_slot: {fileID: 427390696}
 --- !u!212 &713004379
@@ -9765,7 +9675,11 @@ MonoBehaviour:
   cam: {fileID: 519420031}
   speed: 1000
   HowToPlay: {fileID: 722012405}
+  Stats: {fileID: 318004786}
   Help: {fileID: 2057037970}
+  Stat: {fileID: 1375241345}
+  HelpClose: {fileID: 2022597013}
+  StatClose: {fileID: 1390876705}
   dice_number: 0
   current_slot: {fileID: 1763443536}
 --- !u!212 &717886054
@@ -9973,12 +9887,12 @@ RectTransform:
   m_Children:
   - {fileID: 62979935}
   - {fileID: 475632083}
-  m_Father: {fileID: 655583629}
+  m_Father: {fileID: 966922692}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 116}
+  m_AnchoredPosition: {x: 0, y: 74}
   m_SizeDelta: {x: 441.55, y: 458.63}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &722012409
@@ -10282,7 +10196,11 @@ MonoBehaviour:
   cam: {fileID: 519420031}
   speed: 1000
   HowToPlay: {fileID: 722012405}
+  Stats: {fileID: 318004786}
   Help: {fileID: 2057037970}
+  Stat: {fileID: 1375241345}
+  HelpClose: {fileID: 2022597013}
+  StatClose: {fileID: 1390876705}
   dice_number: 0
   current_slot: {fileID: 1991703905}
 --- !u!212 &780318531
@@ -10870,7 +10788,11 @@ MonoBehaviour:
   cam: {fileID: 519420031}
   speed: 1000
   HowToPlay: {fileID: 722012405}
+  Stats: {fileID: 318004786}
   Help: {fileID: 2057037970}
+  Stat: {fileID: 1375241345}
+  HelpClose: {fileID: 2022597013}
+  StatClose: {fileID: 1390876705}
   dice_number: 0
   current_slot: {fileID: 1334467124}
 --- !u!212 &826548038
@@ -10993,15 +10915,15 @@ RectTransform:
   m_GameObject: {fileID: 828910427}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6364006, y: 1.0819173, z: 1.6364006}
+  m_LocalScale: {x: 1.6364006, y: 1.0819174, z: 1.6364006}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1736593930}
-  m_RootOrder: 11
+  m_Father: {fileID: 1283310568}
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -89.99999, y: -346.60004}
+  m_AnchoredPosition: {x: -89.99999, y: -320.60004}
   m_SizeDelta: {x: 400.32, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &828910429
@@ -11845,18 +11767,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 899466980}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 101.12359}
+  m_LocalScale: {x: 0.011235954, y: 0.011235954, z: 0.011235954}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 76921194}
-  m_Father: {fileID: 1591819963}
+  m_Children: []
+  m_Father: {fileID: 76921194}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -178.97, y: -26.6}
+  m_AnchoredPosition: {x: 0.0056152344, y: -0.0044937134}
   m_SizeDelta: {x: 40.88, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &899466982
@@ -12945,6 +12866,109 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 965339673}
   m_CullTransparentMesh: 1
+--- !u!1 &966922691
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 966922692}
+  - component: {fileID: 966922695}
+  - component: {fileID: 966922694}
+  - component: {fileID: 966922693}
+  m_Layer: 5
+  m_Name: Canvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &966922692
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966922691}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 722012406}
+  - {fileID: 318004787}
+  - {fileID: 1059046634}
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
+--- !u!114 &966922693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966922691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &966922694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966922691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 650, y: 1080}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 1
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!223 &966922695
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966922691}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 1
+  m_Camera: {fileID: 519420031}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_SortingLayerID: 0
+  m_SortingOrder: 6
+  m_TargetDisplay: 0
 --- !u!1 &973786970
 GameObject:
   m_ObjectHideFlags: 0
@@ -13163,7 +13187,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1481499971}
   m_HandleRect: {fileID: 1481499970}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -13445,7 +13469,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1009120464}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
@@ -13520,7 +13544,7 @@ RectTransform:
   - {fileID: 1524240465}
   - {fileID: 1922199700}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -14007,12 +14031,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   current_dice: {fileID: 1988554304}
   GameManager: {fileID: 1079598202}
-  WinningScreen: {fileID: 0}
-  GameoverScreen: {fileID: 445305467}
-  Stars: []
-  Star: {fileID: 0}
+  Stars:
+  - {fileID: 1107721732}
+  - {fileID: 491795364}
+  - {fileID: 1935054559}
+  - {fileID: 1278348653}
+  - {fileID: 1719091165}
+  Star: {fileID: 21300000, guid: bd59932b10ea3dc47b91e0b817d29b87, type: 3}
   slot_pos: 0100000002000000
   yellow_arr: 
+  green_number: 0
   star_count: 5
 --- !u!212 &1039886896
 SpriteRenderer:
@@ -14236,7 +14264,11 @@ MonoBehaviour:
   cam: {fileID: 519420031}
   speed: 1000
   HowToPlay: {fileID: 722012405}
+  Stats: {fileID: 318004786}
   Help: {fileID: 2057037970}
+  Stat: {fileID: 1375241345}
+  HelpClose: {fileID: 2022597013}
+  StatClose: {fileID: 1390876705}
   dice_number: 0
   current_slot: {fileID: 1171687953}
 --- !u!212 &1053977720
@@ -14355,19 +14387,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1059046633}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1397725115}
   - {fileID: 835179184}
-  m_Father: {fileID: 655583629}
-  m_RootOrder: 4
+  m_Father: {fileID: 966922692}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -223, y: 66.6}
+  m_AnchoredPosition: {x: -225, y: 66}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1072468096
@@ -14456,6 +14488,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1079598203}
   - component: {fileID: 1079598204}
+  - component: {fileID: 1079598205}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -14476,7 +14509,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1079598204
 MonoBehaviour:
@@ -14490,13 +14523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0b979d6fb760da438fc1fdccd78e031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Day: 0
   ShareMsg: 
-  GamesPlayed: 0
-  StarsCollected: 0
-  CurrentStreak: 0
-  HighestStreak: 0
-  starFreq: 
   dice_images:
   - {fileID: 21300000, guid: 7462db1cdc3983e41a6145688c2b1470, type: 3}
   - {fileID: 21300000, guid: 64250b678547ccf43ae24e2c34aa4f0a, type: 3}
@@ -14504,12 +14531,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 40dfc6a24d589fe468ad228197dacbc3, type: 3}
   - {fileID: 21300000, guid: 5b8c2eaba6f957f4085e7676552b19d8, type: 3}
   - {fileID: 21300000, guid: 15e25f76193953042bc4b1538cf07762, type: 3}
-  Help: {fileID: 2057037970}
-  Share: {fileID: 0}
-  row_toggle: {fileID: 0}
-  rowSum_toggle: {fileID: 0}
-  RowSum: {fileID: 904955244}
-  HowToPlay: {fileID: 722012405}
+  Share: {fileID: 1148900837}
   rowSumText:
   - {fileID: 1491570202}
   - {fileID: 847457535}
@@ -14522,10 +14544,24 @@ MonoBehaviour:
   - {fileID: 1038455411}
   - {fileID: 1503023127}
   - {fileID: 1918463593}
-  greenMinBound: {fileID: 0}
-  Sol: {fileID: 0}
   swapCount: {fileID: 1405727055}
-  msg: {fileID: 0}
+  msg: {fileID: 224224125}
+  WinningScreen: {fileID: 575172608}
+  GameoverScreen: {fileID: 445305467}
+  CloseWin: {fileID: 2007046860}
+  CloseLose: {fileID: 1799815230}
+--- !u!114 &1079598205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079598202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09d03ac49ee3f544eb6e6ba40c250047, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1081711209
 GameObject:
   m_ObjectHideFlags: 0
@@ -14873,7 +14909,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bd59932b10ea3dc47b91e0b817d29b87, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 59dd14f7f6610ad439d10101c7ea0c82, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15041,12 +15077,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   current_dice: {fileID: 230513010}
   GameManager: {fileID: 1079598202}
-  WinningScreen: {fileID: 0}
-  GameoverScreen: {fileID: 445305467}
-  Stars: []
-  Star: {fileID: 0}
+  Stars:
+  - {fileID: 1107721732}
+  - {fileID: 491795364}
+  - {fileID: 1935054559}
+  - {fileID: 1278348653}
+  - {fileID: 1719091165}
+  Star: {fileID: 21300000, guid: bd59932b10ea3dc47b91e0b817d29b87, type: 3}
   slot_pos: 0400000002000000
   yellow_arr: 
+  green_number: 0
   star_count: 5
 --- !u!212 &1114628036
 SpriteRenderer:
@@ -15610,15 +15650,15 @@ RectTransform:
   m_GameObject: {fileID: 1139081535}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6364006, y: 1.0819173, z: 1.6364006}
+  m_LocalScale: {x: 1.6364006, y: 1.0819174, z: 1.6364006}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1736593930}
-  m_RootOrder: 10
+  m_Father: {fileID: 1283310568}
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -90, y: -366.6}
+  m_AnchoredPosition: {x: -90, y: -340.6}
   m_SizeDelta: {x: 400.32, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1139081537
@@ -15753,7 +15793,11 @@ MonoBehaviour:
   cam: {fileID: 519420031}
   speed: 1000
   HowToPlay: {fileID: 722012405}
+  Stats: {fileID: 318004786}
   Help: {fileID: 2057037970}
+  Stat: {fileID: 1375241345}
+  HelpClose: {fileID: 2022597013}
+  StatClose: {fileID: 1390876705}
   dice_number: 0
   current_slot: {fileID: 552337720}
 --- !u!212 &1147777696
@@ -15862,7 +15906,7 @@ GameObject:
   - component: {fileID: 1148900838}
   - component: {fileID: 1148900837}
   m_Layer: 5
-  m_Name: Button
+  m_Name: share_button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15875,19 +15919,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1148900835}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 143168766}
   - {fileID: 1772167610}
-  m_Father: {fileID: 1736593930}
-  m_RootOrder: 13
+  m_Father: {fileID: 1283310568}
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 70, y: -358.9}
+  m_AnchoredPosition: {x: 70, y: -332.90002}
   m_SizeDelta: {x: 166.94, y: 35.61}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1148900837
@@ -16122,12 +16166,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   current_dice: {fileID: 1053977717}
   GameManager: {fileID: 1079598202}
-  WinningScreen: {fileID: 0}
-  GameoverScreen: {fileID: 445305467}
-  Stars: []
-  Star: {fileID: 0}
+  Stars:
+  - {fileID: 1107721732}
+  - {fileID: 491795364}
+  - {fileID: 1935054559}
+  - {fileID: 1278348653}
+  - {fileID: 1719091165}
+  Star: {fileID: 21300000, guid: bd59932b10ea3dc47b91e0b817d29b87, type: 3}
   slot_pos: 0400000003000000
   yellow_arr: 
+  green_number: 0
   star_count: 5
 --- !u!212 &1171687957
 SpriteRenderer:
@@ -16742,6 +16790,106 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1243135691}
   m_CullTransparentMesh: 1
+--- !u!1 &1244891754
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1244891758}
+  - component: {fileID: 1244891757}
+  - component: {fileID: 1244891756}
+  - component: {fileID: 1244891755}
+  m_Layer: 5
+  m_Name: Canvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1244891755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244891754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &1244891756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244891754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 650, y: 1080}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 1
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!223 &1244891757
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244891754}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 1
+  m_Camera: {fileID: 519420031}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!224 &1244891758
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244891754}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1 &1269609741
 GameObject:
   m_ObjectHideFlags: 0
@@ -16965,7 +17113,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bd59932b10ea3dc47b91e0b817d29b87, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 59dd14f7f6610ad439d10101c7ea0c82, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -17236,8 +17384,13 @@ RectTransform:
   - {fileID: 351373717}
   - {fileID: 1561493106}
   - {fileID: 1399905165}
+  - {fileID: 1139081536}
+  - {fileID: 828910428}
+  - {fileID: 1148900836}
+  - {fileID: 224224126}
+  - {fileID: 59369186}
   m_Father: {fileID: 1736593930}
-  m_RootOrder: 9
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -17356,12 +17509,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   current_dice: {fileID: 226894601}
   GameManager: {fileID: 1079598202}
-  WinningScreen: {fileID: 0}
-  GameoverScreen: {fileID: 445305467}
-  Stars: []
-  Star: {fileID: 0}
+  Stars:
+  - {fileID: 1107721732}
+  - {fileID: 491795364}
+  - {fileID: 1935054559}
+  - {fileID: 1278348653}
+  - {fileID: 1719091165}
+  Star: {fileID: 21300000, guid: bd59932b10ea3dc47b91e0b817d29b87, type: 3}
   slot_pos: 0000000004000000
   yellow_arr: 
+  green_number: 0
   star_count: 5
 --- !u!212 &1286811701
 SpriteRenderer:
@@ -17454,7 +17611,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 24, y: 302}
+  m_AnchoredPosition: {x: 24, y: 366}
   m_SizeDelta: {x: 46.627, y: 7.145}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1290990444
@@ -18328,7 +18485,11 @@ MonoBehaviour:
   cam: {fileID: 519420031}
   speed: 1000
   HowToPlay: {fileID: 722012405}
+  Stats: {fileID: 318004786}
   Help: {fileID: 2057037970}
+  Stat: {fileID: 1375241345}
+  HelpClose: {fileID: 2022597013}
+  StatClose: {fileID: 1390876705}
   dice_number: 0
   current_slot: {fileID: 1344792302}
 --- !u!212 &1327465805
@@ -18498,12 +18659,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   current_dice: {fileID: 826548035}
   GameManager: {fileID: 1079598202}
-  WinningScreen: {fileID: 0}
-  GameoverScreen: {fileID: 445305467}
-  Stars: []
-  Star: {fileID: 0}
+  Stars:
+  - {fileID: 1107721732}
+  - {fileID: 491795364}
+  - {fileID: 1935054559}
+  - {fileID: 1278348653}
+  - {fileID: 1719091165}
+  Star: {fileID: 21300000, guid: bd59932b10ea3dc47b91e0b817d29b87, type: 3}
   slot_pos: 0200000003000000
   yellow_arr: 
+  green_number: 0
   star_count: 5
 --- !u!212 &1334467128
 SpriteRenderer:
@@ -19040,12 +19205,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   current_dice: {fileID: 1327465802}
   GameManager: {fileID: 1079598202}
-  WinningScreen: {fileID: 0}
-  GameoverScreen: {fileID: 445305467}
-  Stars: []
-  Star: {fileID: 0}
+  Stars:
+  - {fileID: 1107721732}
+  - {fileID: 491795364}
+  - {fileID: 1935054559}
+  - {fileID: 1278348653}
+  - {fileID: 1719091165}
+  Star: {fileID: 21300000, guid: bd59932b10ea3dc47b91e0b817d29b87, type: 3}
   slot_pos: 0100000004000000
   yellow_arr: 
+  green_number: 0
   star_count: 5
 --- !u!212 &1344792306
 SpriteRenderer:
@@ -19099,82 +19268,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1352165997
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1352165998}
-  - component: {fileID: 1352166000}
-  - component: {fileID: 1352165999}
-  m_Layer: 5
-  m_Name: star (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1352165998
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1352165997}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6000001, y: 1.0666666, z: 1.0666666}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 1736593930}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -66, y: -42.700005}
-  m_SizeDelta: {x: 32, y: 32}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1352165999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1352165997}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 0
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 59dd14f7f6610ad439d10101c7ea0c82, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1352166000
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1352165997}
-  m_CullTransparentMesh: 1
 --- !u!1 &1361699725
 GameObject:
   m_ObjectHideFlags: 0
@@ -19286,7 +19379,11 @@ MonoBehaviour:
   cam: {fileID: 519420031}
   speed: 1000
   HowToPlay: {fileID: 722012405}
+  Stats: {fileID: 318004786}
   Help: {fileID: 2057037970}
+  Stat: {fileID: 1375241345}
+  HelpClose: {fileID: 2022597013}
+  StatClose: {fileID: 1390876705}
   dice_number: 0
   current_slot: {fileID: 2093669590}
 --- !u!212 &1364637441
@@ -19778,7 +19875,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1397725115
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20536,7 +20633,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1453395214
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20657,7 +20754,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1453754757
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20798,7 +20895,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -54.497986}
+  m_AnchoredPosition: {x: 0, y: -54.498047}
   m_SizeDelta: {x: 0, y: -109.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1468242695
@@ -21419,7 +21516,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You are a Brillient
+  m_text: You are Brillient
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: abac2bfc99df0994db08a8d83d092d5c, type: 2}
   m_sharedMaterial: {fileID: 2081701756064823186, guid: abac2bfc99df0994db08a8d83d092d5c, type: 2}
@@ -21918,12 +22015,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   current_dice: {fileID: 300791178}
   GameManager: {fileID: 1079598202}
-  WinningScreen: {fileID: 0}
-  GameoverScreen: {fileID: 445305467}
-  Stars: []
-  Star: {fileID: 0}
+  Stars:
+  - {fileID: 1107721732}
+  - {fileID: 491795364}
+  - {fileID: 1935054559}
+  - {fileID: 1278348653}
+  - {fileID: 1719091165}
+  Star: {fileID: 21300000, guid: bd59932b10ea3dc47b91e0b817d29b87, type: 3}
   slot_pos: 0400000004000000
   yellow_arr: 
+  green_number: 0
   star_count: 5
 --- !u!212 &1543664623
 SpriteRenderer:
@@ -22066,12 +22167,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   current_dice: {fileID: 1616651470}
   GameManager: {fileID: 1079598202}
-  WinningScreen: {fileID: 0}
-  GameoverScreen: {fileID: 445305467}
-  Stars: []
-  Star: {fileID: 0}
+  Stars:
+  - {fileID: 1107721732}
+  - {fileID: 491795364}
+  - {fileID: 1935054559}
+  - {fileID: 1278348653}
+  - {fileID: 1719091165}
+  Star: {fileID: 21300000, guid: bd59932b10ea3dc47b91e0b817d29b87, type: 3}
   slot_pos: 0000000002000000
   yellow_arr: 
+  green_number: 0
   star_count: 5
 --- !u!212 &1551817255
 SpriteRenderer:
@@ -22622,7 +22727,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 899466981}
+  - {fileID: 76921194}
   - {fileID: 210742085}
   - {fileID: 1038455410}
   - {fileID: 1503023126}
@@ -22709,12 +22814,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   current_dice: {fileID: 161038745}
   GameManager: {fileID: 1079598202}
-  WinningScreen: {fileID: 0}
-  GameoverScreen: {fileID: 445305467}
-  Stars: []
-  Star: {fileID: 0}
+  Stars:
+  - {fileID: 1107721732}
+  - {fileID: 491795364}
+  - {fileID: 1935054559}
+  - {fileID: 1278348653}
+  - {fileID: 1719091165}
+  Star: {fileID: 21300000, guid: bd59932b10ea3dc47b91e0b817d29b87, type: 3}
   slot_pos: 0000000003000000
   yellow_arr: 
+  green_number: 0
   star_count: 5
 --- !u!212 &1603979883
 SpriteRenderer:
@@ -23170,7 +23279,11 @@ MonoBehaviour:
   cam: {fileID: 519420031}
   speed: 1000
   HowToPlay: {fileID: 722012405}
+  Stats: {fileID: 318004786}
   Help: {fileID: 2057037970}
+  Stat: {fileID: 1375241345}
+  HelpClose: {fileID: 2022597013}
+  StatClose: {fileID: 1390876705}
   dice_number: 0
   current_slot: {fileID: 1551817251}
 --- !u!212 &1616651473
@@ -23441,7 +23554,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 24.000004, y: 224}
+  m_AnchoredPosition: {x: 24.000004, y: 288}
   m_SizeDelta: {x: 46.627, y: 7.145}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1651253136
@@ -23686,7 +23799,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1682991584
 GameObject:
@@ -24096,7 +24209,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bd59932b10ea3dc47b91e0b817d29b87, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 59dd14f7f6610ad439d10101c7ea0c82, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -24224,18 +24337,8 @@ RectTransform:
   - {fileID: 1692414900}
   - {fileID: 688772913}
   - {fileID: 1212468551}
-  - {fileID: 67587418}
-  - {fileID: 1352165998}
-  - {fileID: 1926819115}
-  - {fileID: 1938649981}
-  - {fileID: 465174098}
   - {fileID: 1283310568}
-  - {fileID: 1139081536}
-  - {fileID: 828910428}
   - {fileID: 1799815229}
-  - {fileID: 1148900836}
-  - {fileID: 224224126}
-  - {fileID: 59369186}
   m_Father: {fileID: 445305468}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -24317,7 +24420,11 @@ MonoBehaviour:
   cam: {fileID: 519420031}
   speed: 1000
   HowToPlay: {fileID: 722012405}
+  Stats: {fileID: 318004786}
   Help: {fileID: 2057037970}
+  Stat: {fileID: 1375241345}
+  HelpClose: {fileID: 2022597013}
+  StatClose: {fileID: 1390876705}
   dice_number: 0
   current_slot: {fileID: 1856472681}
 --- !u!212 &1741892733
@@ -24563,12 +24670,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   current_dice: {fileID: 717886051}
   GameManager: {fileID: 1079598202}
-  WinningScreen: {fileID: 0}
-  GameoverScreen: {fileID: 445305467}
-  Stars: []
-  Star: {fileID: 0}
+  Stars:
+  - {fileID: 1107721732}
+  - {fileID: 491795364}
+  - {fileID: 1935054559}
+  - {fileID: 1278348653}
+  - {fileID: 1719091165}
+  Star: {fileID: 21300000, guid: bd59932b10ea3dc47b91e0b817d29b87, type: 3}
   slot_pos: 0000000001000000
   yellow_arr: 
+  green_number: 0
   star_count: 5
 --- !u!212 &1763443540
 SpriteRenderer:
@@ -25139,7 +25250,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1736593930}
-  m_RootOrder: 12
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -25302,12 +25413,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   current_dice: {fileID: 381269468}
   GameManager: {fileID: 1079598202}
-  WinningScreen: {fileID: 0}
-  GameoverScreen: {fileID: 445305467}
-  Stars: []
-  Star: {fileID: 0}
+  Stars:
+  - {fileID: 1107721732}
+  - {fileID: 491795364}
+  - {fileID: 1935054559}
+  - {fileID: 1278348653}
+  - {fileID: 1719091165}
+  Star: {fileID: 21300000, guid: bd59932b10ea3dc47b91e0b817d29b87, type: 3}
   slot_pos: 0200000002000000
   yellow_arr: 
+  green_number: 0
   star_count: 5
 --- !u!212 &1804676683
 SpriteRenderer:
@@ -25724,12 +25839,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   current_dice: {fileID: 174735567}
   GameManager: {fileID: 1079598202}
-  WinningScreen: {fileID: 0}
-  GameoverScreen: {fileID: 445305467}
-  Stars: []
-  Star: {fileID: 0}
+  Stars:
+  - {fileID: 1107721732}
+  - {fileID: 491795364}
+  - {fileID: 1935054559}
+  - {fileID: 1278348653}
+  - {fileID: 1719091165}
+  Star: {fileID: 21300000, guid: bd59932b10ea3dc47b91e0b817d29b87, type: 3}
   slot_pos: 0400000000000000
   yellow_arr: 
+  green_number: 0
   star_count: 5
 --- !u!212 &1845224143
 SpriteRenderer:
@@ -25857,12 +25976,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   current_dice: {fileID: 1741892730}
   GameManager: {fileID: 1079598202}
-  WinningScreen: {fileID: 0}
-  GameoverScreen: {fileID: 445305467}
-  Stars: []
-  Star: {fileID: 0}
+  Stars:
+  - {fileID: 1107721732}
+  - {fileID: 491795364}
+  - {fileID: 1935054559}
+  - {fileID: 1278348653}
+  - {fileID: 1719091165}
+  Star: {fileID: 21300000, guid: bd59932b10ea3dc47b91e0b817d29b87, type: 3}
   slot_pos: 0300000000000000
   yellow_arr: 
+  green_number: 0
   star_count: 5
 --- !u!212 &1856472685
 SpriteRenderer:
@@ -26312,7 +26435,7 @@ Transform:
   - {fileID: 1053977721}
   - {fileID: 300791179}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1899115202
 GameObject:
@@ -26880,82 +27003,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1922199699}
   m_CullTransparentMesh: 1
---- !u!1 &1926819114
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1926819115}
-  - component: {fileID: 1926819117}
-  - component: {fileID: 1926819116}
-  m_Layer: 5
-  m_Name: star
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1926819115
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1926819114}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6000001, y: 1.0666666, z: 1.0666666}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 1736593930}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -42.700005}
-  m_SizeDelta: {x: 32, y: 32}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1926819116
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1926819114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 0
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 59dd14f7f6610ad439d10101c7ea0c82, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1926819117
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1926819114}
-  m_CullTransparentMesh: 1
 --- !u!1 &1935054559
 GameObject:
   m_ObjectHideFlags: 0
@@ -27014,7 +27061,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bd59932b10ea3dc47b91e0b817d29b87, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 59dd14f7f6610ad439d10101c7ea0c82, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -27031,82 +27078,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1935054559}
-  m_CullTransparentMesh: 1
---- !u!1 &1938649980
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1938649981}
-  - component: {fileID: 1938649983}
-  - component: {fileID: 1938649982}
-  m_Layer: 5
-  m_Name: star (3)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1938649981
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1938649980}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.6000001, y: 1.0666666, z: 1.0666666}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 1736593930}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 64.09999, y: -42.700005}
-  m_SizeDelta: {x: 32, y: 32}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1938649982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1938649980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 0
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 59dd14f7f6610ad439d10101c7ea0c82, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1938649983
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1938649980}
   m_CullTransparentMesh: 1
 --- !u!1 &1949595593
 GameObject:
@@ -27717,7 +27688,11 @@ MonoBehaviour:
   cam: {fileID: 519420031}
   speed: 1000
   HowToPlay: {fileID: 722012405}
+  Stats: {fileID: 318004786}
   Help: {fileID: 2057037970}
+  Stat: {fileID: 1375241345}
+  HelpClose: {fileID: 2022597013}
+  StatClose: {fileID: 1390876705}
   dice_number: 0
   current_slot: {fileID: 1039886892}
 --- !u!212 &1988554307
@@ -27887,12 +27862,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   current_dice: {fileID: 780318528}
   GameManager: {fileID: 1079598202}
-  WinningScreen: {fileID: 0}
-  GameoverScreen: {fileID: 445305467}
-  Stars: []
-  Star: {fileID: 0}
+  Stars:
+  - {fileID: 1107721732}
+  - {fileID: 491795364}
+  - {fileID: 1935054559}
+  - {fileID: 1278348653}
+  - {fileID: 1719091165}
+  Star: {fileID: 21300000, guid: bd59932b10ea3dc47b91e0b817d29b87, type: 3}
   slot_pos: 0300000002000000
   yellow_arr: 
+  green_number: 0
   star_count: 5
 --- !u!212 &1991703909
 SpriteRenderer:
@@ -28397,12 +28376,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   current_dice: {fileID: 597497206}
   GameManager: {fileID: 1079598202}
-  WinningScreen: {fileID: 0}
-  GameoverScreen: {fileID: 445305467}
-  Stars: []
-  Star: {fileID: 0}
+  Stars:
+  - {fileID: 1107721732}
+  - {fileID: 491795364}
+  - {fileID: 1935054559}
+  - {fileID: 1278348653}
+  - {fileID: 1719091165}
+  Star: {fileID: 21300000, guid: bd59932b10ea3dc47b91e0b817d29b87, type: 3}
   slot_pos: 0200000000000000
   yellow_arr: 
+  green_number: 0
   star_count: 5
 --- !u!212 &2026981609
 SpriteRenderer:
@@ -29282,12 +29265,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   current_dice: {fileID: 1364637438}
   GameManager: {fileID: 1079598202}
-  WinningScreen: {fileID: 0}
-  GameoverScreen: {fileID: 445305467}
-  Stars: []
-  Star: {fileID: 0}
+  Stars:
+  - {fileID: 1107721732}
+  - {fileID: 491795364}
+  - {fileID: 1935054559}
+  - {fileID: 1278348653}
+  - {fileID: 1719091165}
+  Star: {fileID: 21300000, guid: bd59932b10ea3dc47b91e0b817d29b87, type: 3}
   slot_pos: 0400000001000000
   yellow_arr: 
+  green_number: 0
   star_count: 5
 --- !u!212 &2093669594
 SpriteRenderer:

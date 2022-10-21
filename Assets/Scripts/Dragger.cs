@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Dragger : MonoBehaviour
 {   [SerializeField]
     new bool tag = false;
+    public static bool tag1;
     Vector3 drag_offset;
     [SerializeField]
     private Camera cam;
@@ -14,7 +15,15 @@ public class Dragger : MonoBehaviour
     [SerializeField]
     private GameObject HowToPlay;
     [SerializeField]
+    private GameObject Stats;
+    [SerializeField]
     private Button Help;
+    [SerializeField]
+    private Button Stat;
+    [SerializeField]
+    private Button HelpClose;
+    [SerializeField]
+    private Button StatClose;
 
     public int dice_number;
 
@@ -28,15 +37,49 @@ public class Dragger : MonoBehaviour
     void Awake(){
         cam = Camera.main;
         Help.onClick.AddListener(HelpScreen);
+        Stat.onClick.AddListener(StatScreen);
+        HelpClose.onClick.AddListener(CloseHelp);
+        StatClose.onClick.AddListener(CloseStat);
     }
 
     void HelpScreen(){
-        if(GetComponent<BoxCollider2D>().enabled){
-            GetComponent<BoxCollider2D>().enabled = false;
+        if(HowToPlay.activeSelf && !(current_slot.GetComponent<Dropper>().green_number == dice_number)){
+            GetComponent<BoxCollider2D>().enabled = true;
+            if(gameObject.name == "slot_dice1"){
+                HowToPlay.SetActive(false);
+            }
         }
         else{
-            GetComponent<BoxCollider2D>().enabled = true;
+            GetComponent<BoxCollider2D>().enabled = false;
+            if(gameObject.name == "slot_dice1"){
+                HowToPlay.SetActive(true);
+                Stats.SetActive(false);
+            }
         }
+    }
+
+    void StatScreen(){
+        if(Stats.activeSelf && !(current_slot.GetComponent<Dropper>().green_number == dice_number)){
+            GetComponent<BoxCollider2D>().enabled = true;
+            if(gameObject.name == "slot_dice1"){
+                Stats.SetActive(false);
+            }
+        }
+        else{
+            GetComponent<BoxCollider2D>().enabled = false;
+            if(gameObject.name == "slot_dice1"){
+                HowToPlay.SetActive(false);
+                Stats.SetActive(true);
+            }
+        }
+    }
+
+    void CloseHelp(){
+        HowToPlay.SetActive(false);
+    }
+
+    void CloseStat(){
+        Stats.SetActive(false);
     }
 
     void OnMouseDown(){

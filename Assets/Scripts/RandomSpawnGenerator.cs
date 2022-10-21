@@ -16,40 +16,35 @@ public class RandomSpawnGenerator : MonoBehaviour
     private int[] column_sum = new int[5];
     private int[] row_sum = new int[5];
     private bool RowLogic = true;
-    public int Day;
+    int Day;
     public string ShareMsg = "";
     public string[,] s = new string[5,5];
     public static bool isSolved = false;
-    public int GamesPlayed;
-    public int StarsCollected;
-    public int CurrentStreak;
-    public int HighestStreak;
-    public int[] starFreq;
+    int GamesPlayed;
+    int StarsCollected;
+    int CurrentStreak;
+    int HighestStreak;
+    int[] starFreq;
 
     public Sprite[] dice_images;
     public static List<GameObject> slotList = new List<GameObject>();
-    public Button Help;
     [SerializeField]
-    private Button Share;
-    public Toggle row_toggle;
-    public Toggle rowSum_toggle;
-    [SerializeField]
-    private GameObject RowSum;
-    [SerializeField]
-    private GameObject HowToPlay;
+    Button Share;
 
     [SerializeField]
     TextMeshProUGUI[] rowSumText;
     [SerializeField]
     TextMeshProUGUI[] ColumnSumText;
     [SerializeField]
-    TMP_InputField greenMinBound;
-    [SerializeField]
-    TextMeshProUGUI Sol;
-    [SerializeField]
     public TextMeshProUGUI swapCount;
     [SerializeField]
     GameObject msg;
+    public GameObject WinningScreen;
+    public GameObject GameoverScreen;
+    [SerializeField]
+    Button CloseWin;
+    [SerializeField]
+    Button CloseLose;
 
     [DllImport("__Internal")]
     public static extern void shareTrigger(string msg);
@@ -100,11 +95,20 @@ public class RandomSpawnGenerator : MonoBehaviour
 
     }
 
+    void WinClose(){
+        WinningScreen.SetActive(false);
+    }
+
+    void LoseClose(){
+        GameoverScreen.SetActive(false);
+    }
+
 
     void Start()
     {
-        Help.onClick.AddListener(HelpScreen);
         Share.onClick.AddListener(Share_msg);
+        CloseWin.onClick.AddListener(WinClose);
+        CloseLose.onClick.AddListener(LoseClose);
 
         for(int i = 0; i<5;i++){
             for(int j = 0; j<5; j++){
@@ -164,15 +168,6 @@ public class RandomSpawnGenerator : MonoBehaviour
         shareTrigger(ShareMsg);
     }
 
-
-    void HelpScreen(){
-        if(HowToPlay.activeSelf){
-            HowToPlay.SetActive(false);
-        }
-        else{
-            HowToPlay.SetActive(true);
-        }
-    }
 
 
     public List<int> Get_Yellow_numbers(int slot_pos0, int slot_pos1){
