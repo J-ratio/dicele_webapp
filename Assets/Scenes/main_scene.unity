@@ -5846,8 +5846,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 18.699997, y: 1.5}
-  m_SizeDelta: {x: -39.8, y: 0}
+  m_AnchoredPosition: {x: 14.93, y: 1.5}
+  m_SizeDelta: {x: -46.429, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &468031040
 MonoBehaviour:
@@ -8443,7 +8443,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.312
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -14343,6 +14343,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5b8c2eaba6f957f4085e7676552b19d8, type: 3}
   - {fileID: 21300000, guid: 15e25f76193953042bc4b1538cf07762, type: 3}
   Share: {fileID: 1148900837}
+  Share_stats: {fileID: 2088472059}
   rowSumText:
   - {fileID: 1491570202}
   - {fileID: 847457535}
@@ -14369,7 +14370,22 @@ MonoBehaviour:
   highestStreak:
   - {fileID: 606518919}
   - {fileID: 1117697610}
+  StarStats:
+  - {fileID: 324941307}
+  - {fileID: 10843084}
+  - {fileID: 1126125747}
+  - {fileID: 1883702812}
+  - {fileID: 34138329}
+  - {fileID: 2062822895}
+  StarFreq:
+  - {fileID: 1981584796}
+  - {fileID: 1350237089}
+  - {fileID: 1552468983}
+  - {fileID: 1882281863}
+  - {fileID: 1370655158}
+  - {fileID: 623286102}
   msg: {fileID: 224224125}
+  msg_stats: {fileID: 1133304998}
   WinningScreen: {fileID: 575172608}
   GameoverScreen: {fileID: 445305467}
   ResultScreen: {fileID: 1283310567}
@@ -18487,7 +18503,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.312
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -18738,7 +18754,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 61.32, y: -0}
+  m_AnchoredPosition: {x: 61.32, y: 0}
   m_SizeDelta: {x: 354.77, y: 69.78}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1370655158
@@ -18788,7 +18804,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.312
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -21522,7 +21538,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.312
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -25436,7 +25452,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.312
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -27074,14 +27090,14 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1899839011}
+  m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 1529554818}
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.312
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

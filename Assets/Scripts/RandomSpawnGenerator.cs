@@ -30,6 +30,8 @@ public class RandomSpawnGenerator : MonoBehaviour
     public static List<GameObject> slotList = new List<GameObject>();
     [SerializeField]
     Button Share;
+    [SerializeField]
+    Button Share_stats;
 
     [SerializeField]
     TextMeshProUGUI[] rowSumText;
@@ -47,7 +49,13 @@ public class RandomSpawnGenerator : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI[] highestStreak;
     [SerializeField]
+    TextMeshProUGUI[] StarStats;
+    [SerializeField]
+    Slider[] StarFreq;
+    [SerializeField]
     GameObject msg;
+    [SerializeField]
+    GameObject msg_stats;
     public GameObject WinningScreen;
     public GameObject GameoverScreen;
     public GameObject ResultScreen;
@@ -68,20 +76,18 @@ public class RandomSpawnGenerator : MonoBehaviour
 
     public void UpdateStats(string temp){
         string[] Temp = temp.Split(",");
-        gamesPlayed[0].text = Temp[0];
-        starsCollected[0].text = Temp[1];
-        currentStreak[0].text = Temp[2];
-        highestStreak[0].text = Temp[3];
-        gamesPlayed[1].text = Temp[0];
-        starsCollected[1].text = Temp[1];
-        currentStreak[1].text = Temp[2];
-        highestStreak[1].text = Temp[3];
+        gamesPlayed[0].text = Temp[0]; gamesPlayed[1].text = Temp[0];
+        starsCollected[0].text = Temp[1]; starsCollected[1].text = Temp[1];
+        currentStreak[0].text = Temp[2]; currentStreak[1].text = Temp[2];
+        highestStreak[0].text = Temp[3]; highestStreak[1].text = Temp[3];
         GamesPlayed = int.Parse(Temp[0]);
         StarsCollected = int.Parse(Temp[1]);
         CurrentStreak = int.Parse(Temp[2]);
         HighestStreak = int.Parse(Temp[3]);
         for(var i =0; i<5;i++){
             starFreq[i] = int.Parse(Temp[i+4]);
+            StarStats[i].text = Temp[i+4];
+            StarFreq[i].value = (starFreq[i]/GamesPlayed);
         }
 
     }
@@ -129,7 +135,8 @@ public class RandomSpawnGenerator : MonoBehaviour
 
     void Start()
     {
-        Share.onClick.AddListener(Share_msg);
+        Share.onClick.AddListener(Share_msg1);
+        Share_stats.onClick.AddListener(Share_msg2);
         CloseWin.onClick.AddListener(WinClose);
         CloseLose.onClick.AddListener(LoseClose);
 
@@ -186,12 +193,15 @@ public class RandomSpawnGenerator : MonoBehaviour
         ShareMsg = strings[0] + "\n" + strings[1] + "\n" + strings[2] + "\n" + strings[3] + "\n" + strings[4];
     }
 
-    void Share_msg(){
+    void Share_msg1(){
         msg.SetActive(true);
         shareTrigger(ShareMsg);
     }
 
-
+    void Share_msg2(){
+        msg_stats.SetActive(true);
+        shareTrigger(ShareMsg);
+    }
 
     public List<int> Get_Yellow_numbers(int slot_pos0, int slot_pos1){
         List<int> column_arr = new List<int>();
