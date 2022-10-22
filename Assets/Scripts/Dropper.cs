@@ -87,7 +87,8 @@ public class Dropper : MonoBehaviour
                 RandomSpawnGenerator.isSolved = true;
                 GameManager.GetComponent<RandomSpawnGenerator>().WinningScreen.SetActive(true);
                 GameManager.GetComponent<RandomSpawnGenerator>().ResultScreen.SetActive(true);
-                //OnFinish(true,finalArr1,swap_count);
+                GameManager.GetComponent<RandomSpawnGenerator>().UpdateStats("1,5,5,5,0,1,0,0,0,");
+                OnFinish(true,finalArr1,swap_count);
             }
             StartCoroutine("delay3");
         }
@@ -147,12 +148,11 @@ public class Dropper : MonoBehaviour
             RandomSpawnGenerator.isSolved = true;
             GameManager.GetComponent<RandomSpawnGenerator>().GameoverScreen.SetActive(true);
             GameManager.GetComponent<RandomSpawnGenerator>().ResultScreen.SetActive(true);
-            //OnFinish(false,final_Arr,swap_count);
+            OnFinish(false,final_Arr,swap_count);
             foreach(GameObject slot in RandomSpawnGenerator.slotList){
                 slot.GetComponent<Dropper>().current_dice.GetComponent<BoxCollider2D>().enabled = false;
                 slot.GetComponent<BoxCollider2D>().enabled = false;
             }
-            
         }         
     }
     

@@ -24,7 +24,7 @@ public class RandomSpawnGenerator : MonoBehaviour
     int StarsCollected;
     int CurrentStreak;
     int HighestStreak;
-    int[] starFreq;
+    int[] starFreq = new int[6];
 
     public Sprite[] dice_images;
     public static List<GameObject> slotList = new List<GameObject>();
@@ -102,7 +102,9 @@ public class RandomSpawnGenerator : MonoBehaviour
             starFreq[i] = int.Parse(Temp[i+4]);
             StarStats[i].text = Temp[i+4];
             StarFreq[i].value = (starFreq[i]/GamesPlayed);
+            Debug.Log(starFreq[i]/GamesPlayed);
         }
+        
 
     }
 
