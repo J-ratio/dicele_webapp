@@ -8,6 +8,8 @@ public class JS_bridge : MonoBehaviour
 {   
     [SerializeField]   
     TextMeshProUGUI Timer;
+    [SerializeField]   
+    TextMeshProUGUI Timer2;
     int Total_sec = 34865;
     int minutes;
     int hours;
@@ -66,5 +68,6 @@ public class JS_bridge : MonoBehaviour
     void Update()
     {
         Timer.text = h + ":" + m + ":" + s;
+        Timer2.text = h + ":" + m + ":" + s;
     }
 }

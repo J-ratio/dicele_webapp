@@ -84,6 +84,7 @@ public class Dropper : MonoBehaviour
 
                 ShowStars();
                 MakeWinShare();
+                RandomSpawnGenerator.isSolved = true;
                 GameManager.GetComponent<RandomSpawnGenerator>().WinningScreen.SetActive(true);
                 GameManager.GetComponent<RandomSpawnGenerator>().ResultScreen.SetActive(true);
                 //OnFinish(true,finalArr1,swap_count);
@@ -143,6 +144,7 @@ public class Dropper : MonoBehaviour
                     }
             }
             final_Arr = final_Arr + "]";
+            RandomSpawnGenerator.isSolved = true;
             GameManager.GetComponent<RandomSpawnGenerator>().GameoverScreen.SetActive(true);
             GameManager.GetComponent<RandomSpawnGenerator>().ResultScreen.SetActive(true);
             //OnFinish(false,final_Arr,swap_count);

@@ -63,6 +63,20 @@ public class RandomSpawnGenerator : MonoBehaviour
     Button CloseWin;
     [SerializeField]
     Button CloseLose;
+    [SerializeField]
+    public GameObject HowToPlay;
+    [SerializeField]
+    public GameObject Stats;
+    [SerializeField]
+    private GameObject Stats_NextDay;
+    [SerializeField]
+    private Button Help;
+    [SerializeField]
+    private Button Stat;
+    [SerializeField]
+    private Button HelpClose;
+    [SerializeField]
+    private Button StatClose;
 
 
     [DllImport("__Internal")]
@@ -132,6 +146,37 @@ public class RandomSpawnGenerator : MonoBehaviour
         ResultScreen.SetActive(false);
     }
 
+    void HelpScreen(){
+        if(HowToPlay.activeSelf){
+                HowToPlay.SetActive(false);
+        }
+        else{
+                HowToPlay.SetActive(true);
+                Stats.SetActive(false);
+        }
+    }
+
+    void StatScreen(){
+        if(Stats.activeSelf){
+                Stats.SetActive(false);
+        }
+        else{
+            HowToPlay.SetActive(false);
+            Stats.SetActive(true);
+            if(isSolved){
+                Stats_NextDay.SetActive(true);
+            }
+        }
+    }
+
+    void CloseHelp(){
+        HowToPlay.SetActive(false);
+    }
+
+    void CloseStat(){
+        Stats.SetActive(false);
+    }
+
 
     void Start()
     {
@@ -139,6 +184,10 @@ public class RandomSpawnGenerator : MonoBehaviour
         Share_stats.onClick.AddListener(Share_msg2);
         CloseWin.onClick.AddListener(WinClose);
         CloseLose.onClick.AddListener(LoseClose);
+        Help.onClick.AddListener(HelpScreen);
+        Stat.onClick.AddListener(StatScreen);
+        HelpClose.onClick.AddListener(CloseHelp);
+        StatClose.onClick.AddListener(CloseStat);
 
         for(int i = 0; i<5;i++){
             for(int j = 0; j<5; j++){

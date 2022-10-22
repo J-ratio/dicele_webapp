@@ -10,12 +10,8 @@ public class Dragger : MonoBehaviour
     Vector3 drag_offset;
     [SerializeField]
     private Camera cam;
-    [SerializeField]
-    private float speed;
-    [SerializeField]
-    private GameObject HowToPlay;
-    [SerializeField]
-    private GameObject Stats;
+    private float speed = 3000;
+
     [SerializeField]
     private Button Help;
     [SerializeField]
@@ -38,48 +34,34 @@ public class Dragger : MonoBehaviour
         cam = Camera.main;
         Help.onClick.AddListener(HelpScreen);
         Stat.onClick.AddListener(StatScreen);
-        HelpClose.onClick.AddListener(CloseHelp);
-        StatClose.onClick.AddListener(CloseStat);
+        HelpClose.onClick.AddListener(HelpScreen);
+        StatClose.onClick.AddListener(StatScreen);
     }
 
     void HelpScreen(){
-        if(HowToPlay.activeSelf && !(current_slot.GetComponent<Dropper>().green_number == dice_number)){
+        Invoke("helpScreen",0.5f);
+    }
+
+    void helpScreen(){
+        if(!current_slot.GetComponent<Dropper>().GameManager.GetComponent<RandomSpawnGenerator>().HowToPlay.activeSelf && !(current_slot.GetComponent<Dropper>().green_number == dice_number)){
             GetComponent<BoxCollider2D>().enabled = true;
-            if(gameObject.name == "slot_dice1"){
-                HowToPlay.SetActive(false);
-            }
         }
         else{
             GetComponent<BoxCollider2D>().enabled = false;
-            if(gameObject.name == "slot_dice1"){
-                HowToPlay.SetActive(true);
-                Stats.SetActive(false);
-            }
         }
     }
 
     void StatScreen(){
-        if(Stats.activeSelf && !(current_slot.GetComponent<Dropper>().green_number == dice_number)){
+        Invoke("statScreen",0.5f);
+    }
+
+    void statScreen(){
+        if(!current_slot.GetComponent<Dropper>().GameManager.GetComponent<RandomSpawnGenerator>().Stats.activeSelf && !(current_slot.GetComponent<Dropper>().green_number == dice_number)){
             GetComponent<BoxCollider2D>().enabled = true;
-            if(gameObject.name == "slot_dice1"){
-                Stats.SetActive(false);
-            }
         }
         else{
             GetComponent<BoxCollider2D>().enabled = false;
-            if(gameObject.name == "slot_dice1"){
-                HowToPlay.SetActive(false);
-                Stats.SetActive(true);
-            }
         }
-    }
-
-    void CloseHelp(){
-        HowToPlay.SetActive(false);
-    }
-
-    void CloseStat(){
-        Stats.SetActive(false);
     }
 
     void OnMouseDown(){
