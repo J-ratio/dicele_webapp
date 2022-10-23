@@ -131,12 +131,19 @@ public class RandomSpawnGenerator : MonoBehaviour
     }
 
     void ShowWin(){
-        
+        WinningScreen.SetActive(true);
+        ResultScreen.SetActive(true);
     }
 
     void ShowLose(){
-
+        GameoverScreen.SetActive(true);
+        ResultScreen.SetActive(true);
     }
+
+    void ShowHelp(){
+        HowToPlay.SetActive(true);
+    }
+
 
     void WinClose(){
         WinningScreen.SetActive(false);
