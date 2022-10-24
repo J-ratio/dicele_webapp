@@ -98,7 +98,7 @@ public class RandomSpawnGenerator : MonoBehaviour
         StarsCollected = int.Parse(Temp[1]);
         CurrentStreak = int.Parse(Temp[2]);
         HighestStreak = int.Parse(Temp[3]);
-        for(var i =0; i<5;i++){
+        for(var i =0; i<6;i++){
             starFreq[i] = int.Parse(Temp[i+4]);
             StarStats[i].text = Temp[i+4];
             StarFreq[i].value = (starFreq[i]/GamesPlayed);
