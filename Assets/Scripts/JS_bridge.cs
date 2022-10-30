@@ -10,10 +10,10 @@ public class JS_bridge : MonoBehaviour
     TextMeshProUGUI Timer;
     [SerializeField]   
     TextMeshProUGUI Timer2;
-    int Total_sec = 34865;
-    int minutes;
-    int hours;
-    int seconds;
+    float Total_sec = 34865;
+    float minutes;
+    float hours;
+    float seconds;
     string s = "";
     string m = "";
     string h = "";
@@ -23,7 +23,8 @@ public class JS_bridge : MonoBehaviour
 
     public void GetSecondsUntilEOD(string totalSeconds){
         Total_sec = int.Parse(totalSeconds);
-        StartCoroutine("timer");    
+        StartCoroutine("timer");
+        
     }
 
 
@@ -33,34 +34,34 @@ public class JS_bridge : MonoBehaviour
     {
         while(true){
             yield return new WaitForSeconds(1);
-            Total_sec -= 1;
+            Total_sec -= 0.5f;
             seconds = ((Total_sec) % 60);
             minutes = (Total_sec / 60) % 60;
             hours = (Total_sec/3600) % 24;
             if(seconds>9){
-                s = seconds.ToString();
+                s = seconds.ToString("F0");
             }
             else{
-                s = "0" +seconds.ToString();
+                s = "0" +seconds.ToString("F0");
             }
             if(minutes>9){
-                m =  minutes.ToString();
+                m =  minutes.ToString("F0");
             }
             else{
-                m = "0" + minutes.ToString();
+                m = "0" + minutes.ToString("F0");
             }
             if(hours>9){
-                h = hours.ToString();
+                h = hours.ToString("F0");
             }
             else{
-                h = "0" + hours.ToString();
+                h = "0" + hours.ToString("F0");
             }
         }
     }
-
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine("timer");
     }
 
     // Update is called once per frame
