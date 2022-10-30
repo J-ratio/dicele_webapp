@@ -190,6 +190,7 @@ public class Dropper : MonoBehaviour
         else{
             GameManager.GetComponent<RandomSpawnGenerator>().ShareMsg = "🟩🟩🟩🟩🟩\n🟩⭐🟩⭐🟩\n🟩🟩⭐🟩🟩\n🟩⭐🟩⭐🟩\n🟩🟩🟩🟩🟩";
         }
+        Debug.Log(GameManager.GetComponent<RandomSpawnGenerator>().ShareMsg);
     }
 
 }

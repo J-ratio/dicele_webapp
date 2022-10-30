@@ -16,7 +16,7 @@ public class RandomSpawnGenerator : MonoBehaviour
     private int[] column_sum = new int[5];
     private int[] row_sum = new int[5];
     private bool RowLogic = true;
-    public int Day;
+    int Day;
     public string ShareMsg = "";
     public string[,] s = new string[5,5];
     public static bool isSolved = false;
@@ -79,8 +79,6 @@ public class RandomSpawnGenerator : MonoBehaviour
     private Button StatClose;
 
 
-
-
     [DllImport("__Internal")]
     public static extern void shareTrigger(string msg);
     
@@ -104,6 +102,7 @@ public class RandomSpawnGenerator : MonoBehaviour
             starFreq[i] = int.Parse(Temp[i+4]);
             StarStats[i].text = Temp[i+4];
             StarFreq[i].value = (starFreq[i]/GamesPlayed);
+            Debug.Log(starFreq[i]/GamesPlayed);
         }
         
 
