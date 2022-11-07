@@ -928,9 +928,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af9b29f4f937e0347b92c37492aeba60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  archive_number: 0
   DayText: {fileID: 3751993513474084977}
   DateText: {fileID: 3751993513902174802}
-  Unattempted: {fileID: 3751993512557273593}
+  Unattempted: {fileID: 3751993512557273575}
   Stars:
   - {fileID: 3751993513781543234}
   - {fileID: 3751993513335840946}
@@ -938,6 +939,7 @@ MonoBehaviour:
   - {fileID: 3751993513561846148}
   - {fileID: 3751993513721950304}
   HeartBreak: {fileID: 6494323991784159779}
+  archiveManager: {fileID: 0}
 --- !u!1 &6494323991784159779
 GameObject:
   m_ObjectHideFlags: 0

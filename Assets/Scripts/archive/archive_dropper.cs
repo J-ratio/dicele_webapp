@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Runtime.InteropServices;
 
 public class archive_dropper : MonoBehaviour
 {
@@ -20,6 +21,10 @@ public class archive_dropper : MonoBehaviour
     public static int archive_swap_count;
     public static int archive_matched;
     public int star_count = 5;
+
+    [DllImport("__Internal")]
+    public static extern void OnArchiveFinish(bool isSolved,int swap_count,int archive_number);
+
 
     void OnEnable(){
         archiveManager.ArchiveSlotList.Remove(this.gameObject);
@@ -43,7 +48,7 @@ public class archive_dropper : MonoBehaviour
         archiveManager.ArchiveSlotList.Add(this.gameObject);
         current_dice.GetComponent<SpriteRenderer>().sprite = ArchiveManager.GetComponent<archiveManager>().dice_images[ArchiveManager.GetComponent<archiveManager>().spawn_Arr[slot_pos[0],slot_pos[1]]];
         current_dice.GetComponent<archive_dragger>().dice_number = ArchiveManager.GetComponent<archiveManager>().spawn_Arr[slot_pos[0],slot_pos[1]];
-        Check_color();       
+        Invoke("Check_color",0.2f);     
     }
 
     public void Check_color(){
@@ -54,31 +59,15 @@ public class archive_dropper : MonoBehaviour
             GetComponent<BoxCollider2D>().enabled = false;
             current_dice.GetComponent<BoxCollider2D>().enabled = false;
             archive_matched++;
+            Debug.Log(archive_matched);
             if(archive_matched == 21){
                 if(archive_swap_count<6){
                     star_count = archive_swap_count;
                 }
-                string finalArr1 = "[";
-                for(var i=0;i<5;i++){
-                    finalArr1 = finalArr1 + "[";
-                        for(var j=0;j<5;j++){
-                        finalArr1 = finalArr1 + ArchiveManager.GetComponent<archiveManager>().spawn_Arr[i,j].ToString();
-                        if(j!=4){
-                            finalArr1 = finalArr1 + ",";
-                        }
-                        }
-                    finalArr1 = finalArr1 + "]";
-                    if(i!=4){
-                        finalArr1 = finalArr1 + ",";
-                    }
-                }
-                finalArr1 = finalArr1 + "]";
-
                 ShowStars();
-                MakeWinShare();
-                /*if(!RandomSpawnGenerator.isSolved){
-                    OnFinish(true,finalArr1,swap_count);
-                }*/
+                MakeWinShare(); 
+                ArchiveManager.GetComponent<archiveManager>().LastArchiveSwapCount = archive_swap_count;
+                OnArchiveFinish(true,archive_swap_count,ArchiveManager.GetComponent<archiveManager>().LastArchiveOpened);
                 ArchiveManager.GetComponent<archiveManager>().WinningScreen.SetActive(true);
                 ArchiveManager.GetComponent<archiveManager>().ResultScreen.SetActive(true);
             }
@@ -123,25 +112,8 @@ public class archive_dropper : MonoBehaviour
         archive_swap_count--;
         ArchiveManager.GetComponent<archiveManager>().swapCount.text = archive_swap_count.ToString();
         if(archive_swap_count == 0 && archive_matched!=19){
-            string final_Arr = "[";
-            for(var i=0;i<5;i++){
-                final_Arr = final_Arr + "[";
-                for(var j=0;j<5;j++){
-                    final_Arr = final_Arr + (ArchiveManager.GetComponent<archiveManager>().spawn_Arr[i,j]).ToString();
-                    if(j!=4){
-                        final_Arr = final_Arr + ",";
-                    }
-                }
-                final_Arr = final_Arr + "]";
-                if(i!=4){
-                        final_Arr = final_Arr + ",";
-                    }
-            }
-            final_Arr = final_Arr + "]";
-            /*if(!RandomSpawnGenerator.isSolved){
-                OnFinish(false,final_Arr,swap_count);
-            }
-            RandomSpawnGenerator.isSolved = true;*/
+
+            OnArchiveFinish(false,archive_swap_count,ArchiveManager.GetComponent<archiveManager>().LastArchiveOpened);
             ArchiveManager.GetComponent<archiveManager>().GameoverScreen.SetActive(true);
             ArchiveManager.GetComponent<archiveManager>().ResultScreen.SetActive(true);
             foreach(GameObject slot in archiveManager.ArchiveSlotList){

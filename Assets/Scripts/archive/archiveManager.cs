@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 public class archiveManager : MonoBehaviour
 {
@@ -19,10 +20,16 @@ public class archiveManager : MonoBehaviour
     private bool RowLogic = true;
     public string ShareMsg = "";
     public string[,] s = new string[5,5];
-
+    public int LastArchiveOpened;
+    public int LastArchiveSwapCount;
+    List<int> ArchiveList = new List<int>();
+    List<int> ArchiveSwapList = new List<int>();
 
     public Sprite[] dice_images;
+    [SerializeField]
+    Sprite star_image;
     public static List<GameObject> ArchiveSlotList = new List<GameObject>();
+    List <GameObject> ArchiveBlock = new List<GameObject>();
     [SerializeField]
     TextMeshProUGUI[] rowSumText;
     [SerializeField]
@@ -45,14 +52,55 @@ public class archiveManager : MonoBehaviour
     [SerializeField]
     GameObject archive_canvas;
 
+    [SerializeField]
+    Button gameoverclose;
+    [SerializeField]
+    Button winClose;
+
 
 
     int Day;
     int m2, d2;
 
-    // Start is called before the first frame update
+    [DllImport("__Internal")]
+    public static extern void ArchiveShareTrigger(string msg,int ArchiveNumber, int swap_count);
+
+    public void UpdateArchiveStats(string temp1,string temp2){
+        string[] arList = temp1.Split(",");
+        string[] arSwapList = temp2.Split(",");
+        ArchiveList.Clear();
+        ArchiveSwapList.Clear();
+        for(var i=0;i<arList.Length;i++){
+            Debug.Log(arList[i]  + "    " +arSwapList[i]);
+            ArchiveList.Add(int.Parse(arList[i]));
+            ArchiveSwapList.Add(int.Parse(arSwapList[i]));
+        }
+        foreach(GameObject block in ArchiveBlock){
+            if(ArchiveList[block.GetComponent<archive_block>().archive_number]==1){
+                block.GetComponent<archive_block>().HeartBreak.SetActive(true);
+                block.GetComponent<archive_block>().Unattempted.SetActive(false);
+            }
+            else if(ArchiveList[block.GetComponent<archive_block>().archive_number]==2){
+                for(var j = 0;j<5;j++){
+                    block.GetComponent<archive_block>().Stars[j].SetActive(true);
+                    if(j<(ArchiveSwapList[block.GetComponent<archive_block>().archive_number]>5?5:ArchiveSwapList[block.GetComponent<archive_block>().archive_number])){
+                    block.GetComponent<archive_block>().Stars[j].GetComponent<Image>().sprite = star_image;
+                    }
+                }
+                block.GetComponent<archive_block>().Unattempted.SetActive(false);
+            }
+        }
+    }
+
+
     void Start()
-    {
+    {   
+        for(var l =0;l<GameManager.GetComponent<RandomSpawnGenerator>().ArchiveList.Count;l++){
+            ArchiveList.Add(GameManager.GetComponent<RandomSpawnGenerator>().ArchiveList[l]);
+            ArchiveSwapList.Add(GameManager.GetComponent<RandomSpawnGenerator>().ArchiveSwapList[l]);
+        }
+
+
         Day = GameManager.GetComponent<RandomSpawnGenerator>().Day;
         for(var i = 0; i<(Day-1) ; i++){
         var archive_lvl1 = Instantiate(archive_lvl, new Vector3(-2.5f,-0.7f - i*0.95f, transform.position.z) , Quaternion.identity, transform);
@@ -60,11 +108,43 @@ public class archiveManager : MonoBehaviour
         archive_lvl1.GetComponent<archive_block>().archive_number = Day-2-i;
         archive_lvl1.GetComponent<archive_block>().DayText.text = "#" + (Day-1-i).ToString();
         archive_lvl1.GetComponent<archive_block>().DateText.text = addDays(10,10,2022,Day - 2 -i);
+        if(ArchiveList[Day-2-i]==1){
+            archive_lvl1.GetComponent<archive_block>().HeartBreak.SetActive(true);
+            archive_lvl1.GetComponent<archive_block>().Unattempted.SetActive(false);
+        }
+        else if(ArchiveList[Day-2-i]==2){
+            for(var j = 0;j<5;j++){
+                archive_lvl1.GetComponent<archive_block>().Stars[j].SetActive(true);
+                if(j<(ArchiveSwapList[Day-2-i]>5?5:ArchiveSwapList[Day-2-i])){
+                archive_lvl1.GetComponent<archive_block>().Stars[j].GetComponent<Image>().sprite = star_image;
+                }
+        }
+            archive_lvl1.GetComponent<archive_block>().Unattempted.SetActive(false);
+
+        }
         archive_lvl1.GetComponent<archive_block>().archiveManager = this.gameObject;
+        ArchiveBlock.Add(archive_lvl1);
         }
 
         Archive_close.onClick.AddListener(Close_archive);
         Archive_back.GetComponent<Button>().onClick.AddListener(BackToArchive);
+        Share.onClick.AddListener(ShareArchiveMsg);
+        gameoverclose.onClick.AddListener(closelosescreen);
+        winClose.onClick.AddListener(closewinscreen);
+    }
+
+    void closelosescreen(){
+        GameoverScreen.SetActive(false);
+        ResultScreen.SetActive(false);
+    }
+
+    void closewinscreen(){
+        WinningScreen.SetActive(false);
+        ResultScreen.SetActive(false);
+    }
+
+    void ShareArchiveMsg(){
+        ArchiveShareTrigger(ShareMsg,LastArchiveOpened,LastArchiveSwapCount);
     }
 
     void Close_archive(){
@@ -174,6 +254,7 @@ bool isLeap(int y){
 
 
     public void StartArchiveGame(int archive_number){
+        LastArchiveOpened = archive_number;
         DayHeader.text = "#" + (archive_number+1);
         for(int i = 0; i<5;i++){
             for(int j = 0; j<5; j++){
@@ -243,12 +324,12 @@ bool isLeap(int y){
         return solutionArr[slot_pos0,slot_pos1];
     }
 
-    public static void update_color()
-    {
-    foreach(GameObject slot in archiveManager.ArchiveSlotList)
-    {
-        slot.GetComponent<archive_dropper>().Check_color();
-    }
+    public static void update_color(){
+
+        foreach(GameObject slot in archiveManager.ArchiveSlotList)
+        {
+            slot.GetComponent<archive_dropper>().Check_color();
+        }
     }
 
     public void MakeLoseShareMsg(){

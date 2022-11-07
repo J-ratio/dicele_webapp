@@ -60,7 +60,7 @@ public class archive_dragger : MonoBehaviour
                 current_slot.GetComponent<archive_dropper>().current_dice = this.gameObject;
                 tag = false;
                 archiveManager.update_color();
-                if(archive_dropper.archive_swap_count == 0 && archive_dropper.archive_matched!=19){current_slot.GetComponent<archive_dropper>().ArchiveManager.GetComponent<archiveManager>().MakeLoseShareMsg();}
+                if(archive_dropper.archive_swap_count == 0 && archive_dropper.archive_matched!=19){current_slot.GetComponent<archive_dropper>().ArchiveManager.GetComponent<archiveManager>().MakeLoseShareMsg(); current_slot.GetComponent<archive_dropper>().ArchiveManager.GetComponent<archiveManager>().LastArchiveSwapCount = archive_dropper.archive_swap_count;}
                 break;
             }   
         }

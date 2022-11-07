@@ -17,9 +17,15 @@ public class Dragger : MonoBehaviour
     [SerializeField]
     private Button Stat;
     [SerializeField]
+    private Button Menu;
+    [SerializeField]
     private Button HelpClose;
     [SerializeField]
     private Button StatClose;
+    [SerializeField]
+    private Button MenuClose;
+    [SerializeField]
+    private Button ArchiveClose;
 
     public int dice_number;
 
@@ -34,8 +40,11 @@ public class Dragger : MonoBehaviour
         cam = Camera.main;
         Help.onClick.AddListener(HelpScreen);
         Stat.onClick.AddListener(StatScreen);
+        Menu.onClick.AddListener(MenuScreen);
         HelpClose.onClick.AddListener(HelpScreen);
         StatClose.onClick.AddListener(StatScreen);
+        MenuClose.onClick.AddListener(MenuScreen);
+        ArchiveClose.onClick.AddListener(OnArchiveClose);
     }
 
     void HelpScreen(){
@@ -61,6 +70,22 @@ public class Dragger : MonoBehaviour
         }
         else{
             GetComponent<BoxCollider2D>().enabled = false;
+        }
+    }
+
+    void MenuScreen(){
+        Invoke("menuScreen",0.5f);
+    }
+
+    void menuScreen(){
+        if(!current_slot.GetComponent<Dropper>().GameManager.GetComponent<RandomSpawnGenerator>().Menu.activeSelf && !(current_slot.GetComponent<Dropper>().green_number == dice_number)){
+            GetComponent<BoxCollider2D>().enabled = true;}
+        else{GetComponent<BoxCollider2D>().enabled = false;}
+    }
+
+    void OnArchiveClose(){
+        if(!(current_slot.GetComponent<Dropper>().green_number == dice_number)){
+            GetComponent<BoxCollider2D>().enabled = true;
         }
     }
 

@@ -9,11 +9,11 @@ public class archive_block : MonoBehaviour
     public int archive_number;
     public TextMeshProUGUI DayText;
     public TextMeshProUGUI DateText;
-    public TextMeshProUGUI Unattempted;
+    public GameObject Unattempted;
     [SerializeField]
-    GameObject[] Stars;
+    public GameObject[] Stars;
     [SerializeField]
-    GameObject HeartBreak;
+    public GameObject HeartBreak;
     public GameObject archiveManager;
 
 

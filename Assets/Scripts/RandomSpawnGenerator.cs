@@ -25,6 +25,8 @@ public class RandomSpawnGenerator : MonoBehaviour
     int CurrentStreak;
     int HighestStreak;
     int[] starFreq = new int[6];
+    public List<int> ArchiveList;
+    public List<int> ArchiveSwapList;
 
     public Sprite[] dice_images;
     public static List<GameObject> slotList = new List<GameObject>();
@@ -70,13 +72,31 @@ public class RandomSpawnGenerator : MonoBehaviour
     [SerializeField]
     private GameObject Stats_NextDay;
     [SerializeField]
+    public GameObject Menu;
+    [SerializeField]
+    private GameObject Archive;
+    [SerializeField]
     private Button Help;
     [SerializeField]
     private Button Stat;
     [SerializeField]
+    private Button MenuBtn;
+    [SerializeField]
+    private Button ArchiveBtn;
+    [SerializeField]
     private Button HelpClose;
     [SerializeField]
     private Button StatClose;
+    [SerializeField]
+    private Button MenuClose;
+    [SerializeField]
+    private Button MenuStat;
+    [SerializeField]
+    private Button MenuHelp;
+    [SerializeField]
+    private GameObject ArchiveManager;
+
+    
 
 
 
@@ -107,6 +127,23 @@ public class RandomSpawnGenerator : MonoBehaviour
         }
         
 
+    }
+
+    public void StoreArchiveStats(string temp){
+        string[] Temp = temp.Split("|");
+        string[] arList = Temp[0].Split(",");
+        string[] arSwapList = Temp[1].Split(",");
+
+        for(var i=0;i<arList.Length;i++){
+            ArchiveList.Add(int.Parse(arList[i]));
+            ArchiveSwapList.Add(int.Parse(arSwapList[i]));
+        }
+    }
+
+    public void UpdateArchiveStats(string temp){
+        string[] Temp = temp.Split("|");
+        Debug.Log(Temp[0] + "    " +Temp[1]);
+        ArchiveManager.GetComponent<archiveManager>().UpdateArchiveStats(Temp[0],Temp[1]);
     }
 
     public void ShowResultScreen(string temp1){
@@ -163,20 +200,38 @@ public class RandomSpawnGenerator : MonoBehaviour
         else{
                 HowToPlay.SetActive(true);
                 Stats.SetActive(false);
+                Menu.SetActive(false);
+        }
+    }
+
+    void MenuScreen(){
+        if(Menu.activeSelf){
+                Menu.SetActive(false);
+        }
+        else{
+                Menu.SetActive(true);
+                Stats.SetActive(false);
+                HowToPlay.SetActive(false);
         }
     }
 
     void StatScreen(){
         if(Stats.activeSelf){
-                Stats.SetActive(false);
+            Stats.SetActive(false);
         }
         else{
             HowToPlay.SetActive(false);
+            Menu.SetActive(false);
             Stats.SetActive(true);
             if(isSolved){
                 Stats_NextDay.SetActive(true);
             }
         }
+    }
+
+    void ShowArchive(){
+        Archive.SetActive(true);
+        Menu.SetActive(false);
     }
 
     void CloseHelp(){
@@ -187,9 +242,13 @@ public class RandomSpawnGenerator : MonoBehaviour
         Stats.SetActive(false);
     }
 
+    void CloseMenu(){
+        Menu.SetActive(false);
+    }
+
 
     void Start()
-    {
+    {   
         Share.onClick.AddListener(Share_msg1);
         Share_stats.onClick.AddListener(Share_msg2);
         CloseWin.onClick.AddListener(WinClose);
@@ -198,6 +257,11 @@ public class RandomSpawnGenerator : MonoBehaviour
         Stat.onClick.AddListener(StatScreen);
         HelpClose.onClick.AddListener(CloseHelp);
         StatClose.onClick.AddListener(CloseStat);
+        MenuBtn.onClick.AddListener(MenuScreen);
+        MenuClose.onClick.AddListener(CloseMenu);
+        MenuStat.onClick.AddListener(StatScreen);
+        MenuHelp.onClick.AddListener(HelpScreen);
+        ArchiveBtn.onClick.AddListener(ShowArchive);
 
         for(int i = 0; i<5;i++){
             for(int j = 0; j<5; j++){
