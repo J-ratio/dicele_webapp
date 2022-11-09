@@ -86,6 +86,7 @@ public class Dropper : MonoBehaviour
                 MakeWinShare();
                 if(!RandomSpawnGenerator.isSolved){
                     OnFinish(true,finalArr1,swap_count);
+                    archive_dropper.OnArchiveFinish(true,swap_count,GameManager.GetComponent<RandomSpawnGenerator>().ArchiveManager.GetComponent<archiveManager>().LastArchiveOpened);
                 }
                 RandomSpawnGenerator.isSolved = true;
                 GameManager.GetComponent<RandomSpawnGenerator>().WinningScreen.SetActive(true);
@@ -148,6 +149,7 @@ public class Dropper : MonoBehaviour
             final_Arr = final_Arr + "]";
             if(!RandomSpawnGenerator.isSolved){
                 OnFinish(false,final_Arr,swap_count);
+                archive_dropper.OnArchiveFinish(false,swap_count,GameManager.GetComponent<RandomSpawnGenerator>().ArchiveManager.GetComponent<archiveManager>().LastArchiveOpened);
             }
             RandomSpawnGenerator.isSolved = true;
             GameManager.GetComponent<RandomSpawnGenerator>().GameoverScreen.SetActive(true);

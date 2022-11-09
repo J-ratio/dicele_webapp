@@ -42,6 +42,8 @@ public class archiveManager : MonoBehaviour
     public GameObject ResultScreen;
     [SerializeField]
     Button Share;
+    [SerializeField]
+    GameObject Shared;
 
     [SerializeField]
     Button Archive_close;
@@ -56,6 +58,14 @@ public class archiveManager : MonoBehaviour
     Button gameoverclose;
     [SerializeField]
     Button winClose;
+
+    [SerializeField]
+    TextMeshProUGUI ArchivePlayed;
+    [SerializeField]
+    TextMeshProUGUI ArchiveCompleted;
+    [SerializeField]
+    TextMeshProUGUI Archive5starsCount;
+
 
 
 
@@ -90,6 +100,14 @@ public class archiveManager : MonoBehaviour
                 block.GetComponent<archive_block>().Unattempted.SetActive(false);
             }
         }
+
+        int Ones = ArchiveList.ToArray().Count(x => x==1);
+        int Twos = ArchiveList.ToArray().Count(x => x==2);
+        int Fives = ArchiveSwapList.ToArray().Count(x => x == 0) + ArchiveSwapList.ToArray().Count(x => x == 1) + ArchiveSwapList.ToArray().Count(x => x == 2) + ArchiveSwapList.ToArray().Count(x => x == 3) + ArchiveSwapList.ToArray().Count(x => x == 4);
+
+        ArchivePlayed.text = (Ones + Twos).ToString() + "/" + (Day-1).ToString() + " (" + ((Ones + Twos)*100/(Day -1)).ToString() + "%)";
+        ArchiveCompleted.text = (Twos).ToString() + "/" + (Day-1).ToString() + " (" + (Twos*100/(Day -1)).ToString() + "%)";
+        Archive5starsCount.text = (Day - 1 - Fives).ToString() + "/" + (Day-1).ToString() + " (" + ((Day - 1 - Fives)*100/(Day -1)).ToString() + "%)";
     }
 
 
@@ -100,8 +118,17 @@ public class archiveManager : MonoBehaviour
             ArchiveSwapList.Add(GameManager.GetComponent<RandomSpawnGenerator>().ArchiveSwapList[l]);
         }
 
-
         Day = GameManager.GetComponent<RandomSpawnGenerator>().Day;
+
+        int Ones = ArchiveList.ToArray().Count(x => x==1);
+        int Twos = ArchiveList.ToArray().Count(x => x==2);
+        int Fives = ArchiveSwapList.ToArray().Count(x => x == 0) + ArchiveSwapList.ToArray().Count(x => x == 1) + ArchiveSwapList.ToArray().Count(x => x == 2) + ArchiveSwapList.ToArray().Count(x => x == 3) + ArchiveSwapList.ToArray().Count(x => x == 4);
+
+        ArchivePlayed.text = (Ones + Twos).ToString() + "/" + (Day-1).ToString() + " (" + ((Ones + Twos)/(Day -1)).ToString() + "%)";
+        ArchiveCompleted.text = (Twos).ToString() + "/" + (Day-1).ToString() + " (" + (Twos/(Day -1)).ToString() + "%)";
+        Archive5starsCount.text = (Day - 1 - Fives).ToString() + "/" + (Day-1).ToString() + " (" + ((Day - 1 - Fives)/(Day -1)).ToString() + "%)";
+
+
         for(var i = 0; i<(Day-1) ; i++){
         var archive_lvl1 = Instantiate(archive_lvl, new Vector3(-2.5f,-0.7f - i*0.95f, transform.position.z) , Quaternion.identity, transform);
         archive_lvl1.name = "archivelvl_" + (Day-1-i).ToString();
@@ -145,6 +172,7 @@ public class archiveManager : MonoBehaviour
 
     void ShareArchiveMsg(){
         ArchiveShareTrigger(ShareMsg,LastArchiveOpened,LastArchiveSwapCount);
+        Shared.SetActive(true);
     }
 
     void Close_archive(){

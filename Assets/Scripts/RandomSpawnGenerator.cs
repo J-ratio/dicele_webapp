@@ -94,7 +94,7 @@ public class RandomSpawnGenerator : MonoBehaviour
     [SerializeField]
     private Button MenuHelp;
     [SerializeField]
-    private GameObject ArchiveManager;
+    public GameObject ArchiveManager;
 
     
 
