@@ -11,7 +11,7 @@ public class archiveManager : MonoBehaviour
     [SerializeField]
     GameObject archive_lvl;
     [SerializeField]
-    GameObject GameManager;
+    public GameObject GameManager;
 
     public int[,] solutionArr = new int[5,5];
     public int[,] spawn_Arr = new int[5,5];
@@ -22,8 +22,8 @@ public class archiveManager : MonoBehaviour
     public string[,] s = new string[5,5];
     public int LastArchiveOpened;
     public int LastArchiveSwapCount;
-    List<int> ArchiveList = new List<int>();
-    List<int> ArchiveSwapList = new List<int>();
+    public List<int> ArchiveList = new List<int>();
+    public List<int> ArchiveSwapList = new List<int>();
 
     public Sprite[] dice_images;
     [SerializeField]
@@ -66,6 +66,10 @@ public class archiveManager : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI Archive5starsCount;
 
+    public TextMeshProUGUI Timer;
+    public TextMeshProUGUI Moves;
+    
+
 
 
 
@@ -105,8 +109,8 @@ public class archiveManager : MonoBehaviour
         int Twos = ArchiveList.ToArray().Count(x => x==2);
         int Fives = ArchiveSwapList.ToArray().Count(x => x == 0) + ArchiveSwapList.ToArray().Count(x => x == 1) + ArchiveSwapList.ToArray().Count(x => x == 2) + ArchiveSwapList.ToArray().Count(x => x == 3) + ArchiveSwapList.ToArray().Count(x => x == 4);
 
-        ArchivePlayed.text = (Ones + Twos).ToString() + "/" + (Day-1).ToString() + " (" + ((Ones + Twos)*100/(Day -1)).ToString() + "%)";
-        ArchiveCompleted.text = (Twos).ToString() + "/" + (Day-1).ToString() + " (" + (Twos*100/(Day -1)).ToString() + "%)";
+        ArchivePlayed.text = (Ones + Twos).ToString() + "/" + (Day-1).ToString() + " (" + ((Ones + Twos)*100/(Day-1)).ToString() + "%)";
+        ArchiveCompleted.text = (Twos).ToString() + "/" + (Day-1).ToString() + " (" + (Twos*100/(Day-1)).ToString() + "%)";
         Archive5starsCount.text = (Day - 1 - Fives).ToString() + "/" + (Day-1).ToString() + " (" + ((Day - 1 - Fives)*100/(Day -1)).ToString() + "%)";
     }
 

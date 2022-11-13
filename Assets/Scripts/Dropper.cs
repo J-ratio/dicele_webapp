@@ -22,6 +22,7 @@ public class Dropper : MonoBehaviour
     public static int swap_count;
     public static int matched;
     public int star_count = 5;
+    static int Total_sec;
     
 
     [DllImport("__Internal")]
@@ -38,6 +39,7 @@ public class Dropper : MonoBehaviour
         if(!RandomSpawnGenerator.isSolved){
         swap_count = 21;
         matched = 0;
+        Total_sec = 0;
         GetComponent<BoxCollider2D>().enabled = true;
         current_dice.GetComponent<BoxCollider2D>().enabled = true;
         }
@@ -51,18 +53,21 @@ public class Dropper : MonoBehaviour
         current_dice.GetComponent<SpriteRenderer>().sprite = GameManager.GetComponent<RandomSpawnGenerator>().dice_images[GameManager.GetComponent<RandomSpawnGenerator>().spawn_Arr[slot_pos[0],slot_pos[1]]];
         current_dice.GetComponent<Dragger>().dice_number = GameManager.GetComponent<RandomSpawnGenerator>().spawn_Arr[slot_pos[0],slot_pos[1]];
         Check_color();
-
     }
 
     public void Check_color(){
         
         if(current_dice.GetComponent<Dragger>().dice_number == green_number){
-            current_dice.GetComponent<SpriteRenderer>().color = new Color(106/255f,192/255f,81/255f);
+            current_dice.GetComponent<SpriteRenderer>().sprite = GameManager.GetComponent<RandomSpawnGenerator>().GreenDiceImages[current_dice.GetComponent<Dragger>().dice_number];//new Color(106/255f,192/255f,81/255f);
+            //current_dice.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = GameManager.GetComponent<RandomSpawnGenerator>().GreenDiceImages[current_dice.GetComponent<Dragger>().dice_number];
             GameManager.GetComponent<RandomSpawnGenerator>().solutionArr[slot_pos[0],slot_pos[1]] = 6;
             GetComponent<BoxCollider2D>().enabled = false;
             current_dice.GetComponent<BoxCollider2D>().enabled = false;
             matched++;
             if(matched == 21){
+                StopCoroutine("GameTimer");
+                ShowGameTime();
+                GameManager.GetComponent<RandomSpawnGenerator>().Moves.text = (21-swap_count).ToString() + "/21";
                 if(swap_count<6){
                     star_count = swap_count;
                 }
@@ -104,7 +109,23 @@ public class Dropper : MonoBehaviour
         for(var i=0; i<star_count; i++){
             Stars[i].GetComponent<Image>().sprite = Star;
         }
+        StartCoroutine("StarAnim");
     }    
+
+    IEnumerator StarAnim(){
+        yield return new WaitForSeconds(0.7f);
+        for(var i = 0; i < 5; i++){
+        yield return new WaitForSeconds(0.1f);
+        StartCoroutine(IncreaseStarVisibility(Stars[i]));
+        }
+    }
+
+    IEnumerator IncreaseStarVisibility(GameObject star){
+        for(var i = 0; i<100;i++){
+            yield return new WaitForSeconds(0.008f);
+            star.GetComponent<Image>().color = new Color(1,1,1,i*0.01f);
+        }
+    }
 
     IEnumerator delay3(){
         yield return new WaitForSeconds(1f*Time.deltaTime);
@@ -129,9 +150,15 @@ public class Dropper : MonoBehaviour
         GameManager.GetComponent<RandomSpawnGenerator>().spawn_Arr[slot_pos[0],slot_pos[1]] = new_slot.GetComponent<Dropper>().current_dice.GetComponent<Dragger>().dice_number;
         new_slot.GetComponent<Dropper>().current_dice = current_dice;
         current_dice.GetComponent<Dragger>().current_slot = new_slot;
+        if(swap_count == 21){
+            StartCoroutine("GameTimer");
+        }
         swap_count--;
         GameManager.GetComponent<RandomSpawnGenerator>().swapCount.text = swap_count.ToString();
         if(swap_count == 0 && matched!=19){
+            StopCoroutine("GameTimer");
+            ShowGameTime();
+            GameManager.GetComponent<RandomSpawnGenerator>().Moves.text = (21-swap_count).ToString() + "/21";
             string final_Arr = "[";
             for(var i=0;i<5;i++){
                 final_Arr = final_Arr + "[";
@@ -159,6 +186,23 @@ public class Dropper : MonoBehaviour
                 slot.GetComponent<BoxCollider2D>().enabled = false;
             }
         }         
+    }
+
+    void ShowGameTime(){
+        if(Total_sec<60){
+            GameManager.GetComponent<RandomSpawnGenerator>().Timer.text = Total_sec.ToString() + "s";
+        }
+        else if(Total_sec<3600){
+            GameManager.GetComponent<RandomSpawnGenerator>().Timer.text = (Total_sec/60).ToString() + "m " + (Total_sec%60).ToString() + "s";
+        }
+        
+    }
+
+    IEnumerator GameTimer(){
+        while(!(swap_count==0 && matched==21)){
+            yield return new WaitForSeconds(1f);
+            Total_sec += 1;
+        }
     }
     
     public IEnumerator Routine1(GameObject new_slot,GameObject current_dice)

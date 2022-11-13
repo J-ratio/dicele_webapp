@@ -29,6 +29,7 @@ public class RandomSpawnGenerator : MonoBehaviour
     public List<int> ArchiveSwapList;
 
     public Sprite[] dice_images;
+    public Sprite[] GreenDiceImages;
     public static List<GameObject> slotList = new List<GameObject>();
     [SerializeField]
     Button Share;
@@ -95,6 +96,12 @@ public class RandomSpawnGenerator : MonoBehaviour
     private Button MenuHelp;
     [SerializeField]
     public GameObject ArchiveManager;
+    public TextMeshProUGUI Timer;
+    public TextMeshProUGUI Moves;
+    [SerializeField]
+    GameObject RedDot_Menu;
+    [SerializeField]
+    GameObject RedDot_Archive;
 
     
 
@@ -232,6 +239,8 @@ public class RandomSpawnGenerator : MonoBehaviour
     void ShowArchive(){
         Archive.SetActive(true);
         Menu.SetActive(false);
+        RedDot_Archive.SetActive(false);
+        RedDot_Menu.SetActive(false);
     }
 
     void CloseHelp(){

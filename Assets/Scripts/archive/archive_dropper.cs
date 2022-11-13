@@ -21,6 +21,7 @@ public class archive_dropper : MonoBehaviour
     public static int archive_swap_count;
     public static int archive_matched;
     public int star_count = 5;
+    static int Total_sec;
 
     [DllImport("__Internal")]
     public static extern void OnArchiveFinish(bool isSolved,int swap_count,int archive_number);
@@ -32,7 +33,7 @@ public class archive_dropper : MonoBehaviour
     }
 
     IEnumerator delay(){
-        yield return new WaitForSeconds(0.1f*Time.deltaTime);
+        yield return new WaitForSeconds(0.4f*Time.deltaTime);
         GetComponent<BoxCollider2D>().enabled = true;
         current_dice.GetComponent<BoxCollider2D>().enabled = true;
         GetComponent<archive_dropper>().enabled = true;
@@ -43,6 +44,7 @@ public class archive_dropper : MonoBehaviour
     {
         archive_swap_count = 21;
         archive_matched = 0;
+        Total_sec = 0;
         ArchiveManager.GetComponent<archiveManager>().swapCount.text = archive_swap_count.ToString();
         green_number = ArchiveManager.GetComponent<archiveManager>().Get_Green_number(slot_pos[0],slot_pos[1]);
         archiveManager.ArchiveSlotList.Add(this.gameObject);
@@ -54,13 +56,17 @@ public class archive_dropper : MonoBehaviour
     public void Check_color(){
         
         if(current_dice.GetComponent<archive_dragger>().dice_number == green_number){
-            current_dice.GetComponent<SpriteRenderer>().color = new Color(106/255f,192/255f,81/255f);
+            current_dice.GetComponent<SpriteRenderer>().sprite = ArchiveManager.GetComponent<archiveManager>().GameManager.GetComponent<RandomSpawnGenerator>().GreenDiceImages[current_dice.GetComponent<archive_dragger>().dice_number];//new Color(106/255f,192/255f,81/255f);
+            current_dice.GetComponent<SpriteRenderer>().color = Color.white; 
+            //current_dice.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = ArchiveManager.GetComponent<archiveManager>().GameManager.GetComponent<RandomSpawnGenerator>().GreenDiceImages[current_dice.GetComponent<archive_dragger>().dice_number];
             ArchiveManager.GetComponent<archiveManager>().solutionArr[slot_pos[0],slot_pos[1]] = 6;
             GetComponent<BoxCollider2D>().enabled = false;
             current_dice.GetComponent<BoxCollider2D>().enabled = false;
             archive_matched++;
-            Debug.Log(archive_matched);
             if(archive_matched == 21){
+                StopCoroutine("GameTimer");
+                ShowGameTime();
+                ArchiveManager.GetComponent<archiveManager>().Moves.text = (21-archive_swap_count).ToString() + "/21";
                 if(archive_swap_count<6){
                     star_count = archive_swap_count;
                 }
@@ -83,7 +89,23 @@ public class archive_dropper : MonoBehaviour
         for(var i=0; i<star_count; i++){
             Stars[i].GetComponent<Image>().sprite = Star;
         }
-    }    
+        StartCoroutine("StarAnim");
+    }   
+
+    IEnumerator StarAnim(){
+        yield return new WaitForSeconds(0.7f);
+        for(var i = 0; i < 5; i++){
+        yield return new WaitForSeconds(0.1f);
+        StartCoroutine(IncreaseStarVisibility(Stars[i]));
+        }
+    }
+
+    IEnumerator IncreaseStarVisibility(GameObject star){
+        for(var i = 0; i<100;i++){
+            yield return new WaitForSeconds(0.008f);
+            star.GetComponent<Image>().color = new Color(1,1,1,i*0.01f);
+        }
+    } 
 
     IEnumerator delay3(){
         yield return new WaitForSeconds(1f*Time.deltaTime);
@@ -109,9 +131,16 @@ public class archive_dropper : MonoBehaviour
         ArchiveManager.GetComponent<archiveManager>().spawn_Arr[slot_pos[0],slot_pos[1]] = new_slot.GetComponent<archive_dropper>().current_dice.GetComponent<archive_dragger>().dice_number;
         new_slot.GetComponent<archive_dropper>().current_dice = current_dice;
         current_dice.GetComponent<archive_dragger>().current_slot = new_slot;
+        if(archive_swap_count == 21){
+            StartCoroutine("GameTimer");
+        }
         archive_swap_count--;
         ArchiveManager.GetComponent<archiveManager>().swapCount.text = archive_swap_count.ToString();
         if(archive_swap_count == 0 && archive_matched!=19){
+
+            StopCoroutine("GameTimer");
+            ShowGameTime();
+            ArchiveManager.GetComponent<archiveManager>().Moves.text = (21-archive_swap_count).ToString() + "/21";
 
             OnArchiveFinish(false,archive_swap_count,ArchiveManager.GetComponent<archiveManager>().LastArchiveOpened);
             ArchiveManager.GetComponent<archiveManager>().GameoverScreen.SetActive(true);
@@ -121,6 +150,24 @@ public class archive_dropper : MonoBehaviour
                 slot.GetComponent<BoxCollider2D>().enabled = false;
             }
         }        
+    }
+
+
+    void ShowGameTime(){
+        if(Total_sec<60){
+            ArchiveManager.GetComponent<archiveManager>().Timer.text = Total_sec.ToString() + "s";
+        }
+        else if(Total_sec<3600){
+            ArchiveManager.GetComponent<archiveManager>().Timer.text = (Total_sec/60).ToString() + "m " + (Total_sec%60).ToString() + "s";
+        }
+        
+    }
+
+    IEnumerator GameTimer(){
+        while(!(archive_swap_count==0 && archive_matched==21)){
+            yield return new WaitForSeconds(1f);
+            Total_sec += 1;
+        }
     }
     
     public IEnumerator Routine1(GameObject new_slot,GameObject current_dice)
