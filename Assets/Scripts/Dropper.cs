@@ -21,12 +21,12 @@ public class Dropper : MonoBehaviour
     public int green_number;
     public static int swap_count;
     public static int matched;
-    public int star_count = 5;
-    static int Total_sec;
+    public static int star_count = 5;
+    public static int Total_sec;
     
 
     [DllImport("__Internal")]
-    public static extern void OnFinish(bool isSolved, string finalArr,int swap_count);
+    public static extern void OnFinish(bool isSolved, string finalArr,int swap_count, int play_time);
     
 
     void Awake(){
@@ -40,6 +40,7 @@ public class Dropper : MonoBehaviour
         swap_count = 21;
         matched = 0;
         Total_sec = 0;
+        star_count = 5;
         GetComponent<BoxCollider2D>().enabled = true;
         current_dice.GetComponent<BoxCollider2D>().enabled = true;
         }
@@ -59,6 +60,7 @@ public class Dropper : MonoBehaviour
         
         if(current_dice.GetComponent<Dragger>().dice_number == green_number){
             current_dice.GetComponent<SpriteRenderer>().sprite = GameManager.GetComponent<RandomSpawnGenerator>().GreenDiceImages[current_dice.GetComponent<Dragger>().dice_number];//new Color(106/255f,192/255f,81/255f);
+            current_dice.GetComponent<SpriteRenderer>().color = Color.white;
             //current_dice.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = GameManager.GetComponent<RandomSpawnGenerator>().GreenDiceImages[current_dice.GetComponent<Dragger>().dice_number];
             GameManager.GetComponent<RandomSpawnGenerator>().solutionArr[slot_pos[0],slot_pos[1]] = 6;
             GetComponent<BoxCollider2D>().enabled = false;
@@ -87,15 +89,18 @@ public class Dropper : MonoBehaviour
                 }
                 finalArr1 = finalArr1 + "]";
 
-                ShowStars();
+                GameManager.GetComponent<RandomSpawnGenerator>().PlayWinAnim();
                 MakeWinShare();
                 if(!RandomSpawnGenerator.isSolved){
-                    OnFinish(true,finalArr1,swap_count);
-                    archive_dropper.OnArchiveFinish(true,swap_count,GameManager.GetComponent<RandomSpawnGenerator>().ArchiveManager.GetComponent<archiveManager>().LastArchiveOpened);
+                    OnFinish(true,finalArr1,swap_count,Total_sec);
+                    archive_dropper.OnArchiveFinish(true,swap_count,GameManager.GetComponent<RandomSpawnGenerator>().Day-1);
+                    Invoke("ShowWinScreen",4.0f);
+                }
+                else{
+                    ShowWinScreen();
                 }
                 RandomSpawnGenerator.isSolved = true;
-                GameManager.GetComponent<RandomSpawnGenerator>().WinningScreen.SetActive(true);
-                GameManager.GetComponent<RandomSpawnGenerator>().ResultScreen.SetActive(true);
+                
             }
             StartCoroutine("delay3");
         }
@@ -105,25 +110,31 @@ public class Dropper : MonoBehaviour
         
     }
 
+    void ShowWinScreen(){
+        GameManager.GetComponent<RandomSpawnGenerator>().WinningScreen.SetActive(true);
+        GameManager.GetComponent<RandomSpawnGenerator>().ResultScreen.SetActive(true);
+        ShowStars();
+    }
+
     void ShowStars(){
-        for(var i=0; i<star_count; i++){
-            Stars[i].GetComponent<Image>().sprite = Star;
-        }
         StartCoroutine("StarAnim");
     }    
 
     IEnumerator StarAnim(){
         yield return new WaitForSeconds(0.7f);
-        for(var i = 0; i < 5; i++){
-        yield return new WaitForSeconds(0.1f);
+        for(var i = 0; i < star_count; i++){
+        yield return new WaitForSeconds(0.2f);
         StartCoroutine(IncreaseStarVisibility(Stars[i]));
         }
+        yield return new WaitForSeconds(0.1f*star_count);
+        GameManager.GetComponent<RandomSpawnGenerator>().ResultsMsg.SetActive(true);
+
     }
 
     IEnumerator IncreaseStarVisibility(GameObject star){
-        for(var i = 0; i<100;i++){
-            yield return new WaitForSeconds(0.008f);
-            star.GetComponent<Image>().color = new Color(1,1,1,i*0.01f);
+        for(var i = 0; i<51;i++){
+            yield return new WaitForSeconds(0.001f);
+            star.GetComponent<Image>().color = new Color(1,1,1,i*0.02f);
         }
     }
 
@@ -150,7 +161,7 @@ public class Dropper : MonoBehaviour
         GameManager.GetComponent<RandomSpawnGenerator>().spawn_Arr[slot_pos[0],slot_pos[1]] = new_slot.GetComponent<Dropper>().current_dice.GetComponent<Dragger>().dice_number;
         new_slot.GetComponent<Dropper>().current_dice = current_dice;
         current_dice.GetComponent<Dragger>().current_slot = new_slot;
-        if(swap_count == 21){
+        if(swap_count == 21  && !RandomSpawnGenerator.isSolved){
             StartCoroutine("GameTimer");
         }
         swap_count--;
@@ -158,7 +169,7 @@ public class Dropper : MonoBehaviour
         if(swap_count == 0 && matched!=19){
             StopCoroutine("GameTimer");
             ShowGameTime();
-            GameManager.GetComponent<RandomSpawnGenerator>().Moves.text = (21-swap_count).ToString() + "/21";
+            GameManager.GetComponent<RandomSpawnGenerator>().Moves.text =  "21/21";
             string final_Arr = "[";
             for(var i=0;i<5;i++){
                 final_Arr = final_Arr + "[";
@@ -175,8 +186,8 @@ public class Dropper : MonoBehaviour
             }
             final_Arr = final_Arr + "]";
             if(!RandomSpawnGenerator.isSolved){
-                OnFinish(false,final_Arr,swap_count);
-                archive_dropper.OnArchiveFinish(false,swap_count,GameManager.GetComponent<RandomSpawnGenerator>().ArchiveManager.GetComponent<archiveManager>().LastArchiveOpened);
+                OnFinish(false,final_Arr,swap_count,Total_sec);
+                archive_dropper.OnArchiveFinish(false,swap_count,GameManager.GetComponent<RandomSpawnGenerator>().Day-1);
             }
             RandomSpawnGenerator.isSolved = true;
             GameManager.GetComponent<RandomSpawnGenerator>().GameoverScreen.SetActive(true);

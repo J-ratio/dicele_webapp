@@ -20,8 +20,9 @@ public class archive_dropper : MonoBehaviour
     public int green_number;
     public static int archive_swap_count;
     public static int archive_matched;
-    public int star_count = 5;
-    static int Total_sec;
+    public static int star_count = 5;
+    public static int Total_sec;
+    public static int Shared_Total_sec;
 
     [DllImport("__Internal")]
     public static extern void OnArchiveFinish(bool isSolved,int swap_count,int archive_number);
@@ -45,6 +46,7 @@ public class archive_dropper : MonoBehaviour
         archive_swap_count = 21;
         archive_matched = 0;
         Total_sec = 0;
+        star_count = 5;
         ArchiveManager.GetComponent<archiveManager>().swapCount.text = archive_swap_count.ToString();
         green_number = ArchiveManager.GetComponent<archiveManager>().Get_Green_number(slot_pos[0],slot_pos[1]);
         archiveManager.ArchiveSlotList.Add(this.gameObject);
@@ -58,7 +60,6 @@ public class archive_dropper : MonoBehaviour
         if(current_dice.GetComponent<archive_dragger>().dice_number == green_number){
             current_dice.GetComponent<SpriteRenderer>().sprite = ArchiveManager.GetComponent<archiveManager>().GameManager.GetComponent<RandomSpawnGenerator>().GreenDiceImages[current_dice.GetComponent<archive_dragger>().dice_number];//new Color(106/255f,192/255f,81/255f);
             current_dice.GetComponent<SpriteRenderer>().color = Color.white; 
-            //current_dice.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = ArchiveManager.GetComponent<archiveManager>().GameManager.GetComponent<RandomSpawnGenerator>().GreenDiceImages[current_dice.GetComponent<archive_dragger>().dice_number];
             ArchiveManager.GetComponent<archiveManager>().solutionArr[slot_pos[0],slot_pos[1]] = 6;
             GetComponent<BoxCollider2D>().enabled = false;
             current_dice.GetComponent<BoxCollider2D>().enabled = false;
@@ -70,12 +71,12 @@ public class archive_dropper : MonoBehaviour
                 if(archive_swap_count<6){
                     star_count = archive_swap_count;
                 }
-                ShowStars();
+                ArchiveManager.GetComponent<archiveManager>().PlayWinAnim();
                 MakeWinShare(); 
                 ArchiveManager.GetComponent<archiveManager>().LastArchiveSwapCount = archive_swap_count;
                 OnArchiveFinish(true,archive_swap_count,ArchiveManager.GetComponent<archiveManager>().LastArchiveOpened);
-                ArchiveManager.GetComponent<archiveManager>().WinningScreen.SetActive(true);
-                ArchiveManager.GetComponent<archiveManager>().ResultScreen.SetActive(true);
+
+                Invoke("ShowWinScreen",4.0f);            
             }
             StartCoroutine("delay3");
         }
@@ -85,25 +86,30 @@ public class archive_dropper : MonoBehaviour
         
     }
 
+    void ShowWinScreen(){
+        ArchiveManager.GetComponent<archiveManager>().WinningScreen.SetActive(true);
+        ArchiveManager.GetComponent<archiveManager>().ResultScreen.SetActive(true);
+        ShowStars();
+    }
+
     void ShowStars(){
-        for(var i=0; i<star_count; i++){
-            Stars[i].GetComponent<Image>().sprite = Star;
-        }
         StartCoroutine("StarAnim");
     }   
 
     IEnumerator StarAnim(){
         yield return new WaitForSeconds(0.7f);
-        for(var i = 0; i < 5; i++){
-        yield return new WaitForSeconds(0.1f);
+        for(var i = 0; i < star_count; i++){
+        yield return new WaitForSeconds(0.2f);
         StartCoroutine(IncreaseStarVisibility(Stars[i]));
         }
+        yield return new WaitForSeconds(0.1f*star_count);
+        ArchiveManager.GetComponent<archiveManager>().ResultsMsg.SetActive(true);
     }
 
     IEnumerator IncreaseStarVisibility(GameObject star){
-        for(var i = 0; i<100;i++){
-            yield return new WaitForSeconds(0.008f);
-            star.GetComponent<Image>().color = new Color(1,1,1,i*0.01f);
+        for(var i = 0; i<51;i++){
+            yield return new WaitForSeconds(0.001f);
+            star.GetComponent<Image>().color = new Color(1,1,1,i*0.02f);
         }
     } 
 
@@ -160,7 +166,7 @@ public class archive_dropper : MonoBehaviour
         else if(Total_sec<3600){
             ArchiveManager.GetComponent<archiveManager>().Timer.text = (Total_sec/60).ToString() + "m " + (Total_sec%60).ToString() + "s";
         }
-        
+        Shared_Total_sec = Total_sec;
     }
 
     IEnumerator GameTimer(){

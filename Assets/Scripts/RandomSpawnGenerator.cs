@@ -102,6 +102,9 @@ public class RandomSpawnGenerator : MonoBehaviour
     GameObject RedDot_Menu;
     [SerializeField]
     GameObject RedDot_Archive;
+    public GameObject ResultsMsg; 
+    [SerializeField]
+    ParticleSystem ConfettiVFX;
 
     
 
@@ -110,6 +113,8 @@ public class RandomSpawnGenerator : MonoBehaviour
 
     [DllImport("__Internal")]
     public static extern void shareTrigger(string msg);
+    [DllImport("__Internal")]
+    public static extern void storeShare(string msg);
     
     
     public void GetDay(string day){
@@ -130,7 +135,7 @@ public class RandomSpawnGenerator : MonoBehaviour
         for(var i =0; i<6;i++){
             starFreq[i] = int.Parse(Temp[i+4]);
             StarStats[i].text = Temp[i+4];
-            StarFreq[i].value = (starFreq[i]/GamesPlayed);
+            StarFreq[i].value = (starFreq[i]*1.0f/GamesPlayed);
         }
         
 
@@ -145,6 +150,10 @@ public class RandomSpawnGenerator : MonoBehaviour
             ArchiveList.Add(int.Parse(arList[i]));
             ArchiveSwapList.Add(int.Parse(arSwapList[i]));
         }
+        if(ArchiveList.SkipLast(1).Contains(0)){
+            RedDot_Archive.SetActive(true);
+            RedDot_Menu.SetActive(true);
+        }
     }
 
     public void UpdateArchiveStats(string temp){
@@ -157,9 +166,10 @@ public class RandomSpawnGenerator : MonoBehaviour
         string[] temp = (temp1).Split(",");
         isSolved = true;
         int Swaps = int.Parse(temp[1]);
+        int Time = int.Parse(temp[2]);
         int[] Board_state = new int[25];
         for(var i=0;i<25;i++){
-            Board_state[i] = int.Parse(temp[i+2]);
+            Board_state[i] = int.Parse(temp[i+3]);
         }
         for(var j=0;j<5;j++){
             for(var k=0;k<5;k++){
@@ -167,6 +177,15 @@ public class RandomSpawnGenerator : MonoBehaviour
             }
         }
         Dropper.swap_count = Swaps;
+        Moves.text = (21-Swaps).ToString() + "/21";
+        Dropper.Total_sec = Time;
+        if(Time<60){
+            Timer.text = Time.ToString() + "s";
+        }
+        else if(Time<3600){
+            Timer.text = (Time/60).ToString() + "m " + (Time%60).ToString() + "s";
+        }
+        
         if(int.Parse(temp[0])==0){
             ShowLose();            
         }
@@ -255,6 +274,10 @@ public class RandomSpawnGenerator : MonoBehaviour
         Menu.SetActive(false);
     }
 
+    public void PlayWinAnim(){
+        ConfettiVFX.Play();
+    }
+
 
     void Start()
     {   
@@ -274,9 +297,9 @@ public class RandomSpawnGenerator : MonoBehaviour
 
         for(int i = 0; i<5;i++){
             for(int j = 0; j<5; j++){
-                solutionArr[i,j] = GetComponent<str>().sol_arr[Day,i,j];
+                solutionArr[i,j] = GetComponent<str>().sol_arr[Day-1,i,j];
                 if(!isSolved){
-                    spawn_Arr[i,j] = GetComponent<str>().spawn_arr[Day,i,j];
+                    spawn_Arr[i,j] = GetComponent<str>().spawn_arr[Day-1,i,j];
                 }        
             }
         }
@@ -323,6 +346,7 @@ public class RandomSpawnGenerator : MonoBehaviour
             }
         }
         ShareMsg = strings[0] + "\n" + strings[1] + "\n" + strings[2] + "\n" + strings[3] + "\n" + strings[4];
+        storeShare(ShareMsg);
     }
 
     void Share_msg1(){

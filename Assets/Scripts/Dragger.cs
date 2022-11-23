@@ -126,7 +126,8 @@ public class Dragger : MonoBehaviour
                 tag = false;
                 RandomSpawnGenerator.update_color();
                 if(Dropper.swap_count == 0 && Dropper.matched!=19){
-                    current_slot.GetComponent<Dropper>().GameManager.GetComponent<RandomSpawnGenerator>().MakeLoseShareMsg();                }
+                    current_slot.GetComponent<Dropper>().GameManager.GetComponent<RandomSpawnGenerator>().MakeLoseShareMsg();
+                    }
                 break;
             }   
         }
