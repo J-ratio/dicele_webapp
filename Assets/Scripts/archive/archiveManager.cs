@@ -68,7 +68,9 @@ public class archiveManager : MonoBehaviour
 
     public TextMeshProUGUI Timer;
     public TextMeshProUGUI Moves;
+    public TextMeshProUGUI ResultMsg;
     public GameObject ResultsMsg;
+
 
     [SerializeField]
     ParticleSystem ConfettiVFX;
@@ -183,6 +185,7 @@ public class archiveManager : MonoBehaviour
     void ShareArchiveMsg(){
         ArchiveShareTrigger(ShareMsg,LastArchiveOpened,LastArchiveSwapCount,archive_dropper.Shared_Total_sec);
         Shared.SetActive(true);
+        RandomSpawnGenerator.GameShare(0);
     }
 
     void Close_archive(){
@@ -299,6 +302,7 @@ bool isLeap(int y){
 
 
     public void StartArchiveGame(int archive_number){
+        RandomSpawnGenerator.GameOpen(archive_number+1);
         LastArchiveOpened = archive_number;
         DayHeader.text = "#" + (archive_number+1);
         for(int i = 0; i<5;i++){

@@ -24,5 +24,36 @@ var JsPlugin = {
     {
         window.onArchiveFinish(isSolved,swaps,archiveNum);
     },
+    GameLoaded: function()
+    {
+        window.gameLoadEvent();
+    },
+    GameOpen: function(levelNum)
+    {
+        window.gameOpenEvent(levelNum);
+    },
+    GameStart: function(time)
+    {
+        window.gameStartEvent(time);
+    },
+    GameEnd: function(result,gameTime,movesCount,matchCount,movesTimes)
+    {
+        window.gameEndEvent(result,gameTime,movesCount,matchCount)
+    },
+    GameShare: function(Sharetype){
+        window.gameShareEvent(Sharetype);
+    },
+    StatOpen: function()
+    {
+        window.statOpenEvent();
+    },
+    HelpOpen: function()
+    {
+        window.helpOpenEvent();
+    },
+    ArchiveOpen: function()
+    {
+        window.archiveOpenEvent();
+    },
 };
 mergeInto(LibraryManager.library, JsPlugin);

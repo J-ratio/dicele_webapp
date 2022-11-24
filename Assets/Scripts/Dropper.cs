@@ -27,7 +27,9 @@ public class Dropper : MonoBehaviour
 
     [DllImport("__Internal")]
     public static extern void OnFinish(bool isSolved, string finalArr,int swap_count, int play_time);
-    
+    [DllImport("__Internal")]
+    public static extern void GameEnd(int result, int gameTime,int swap_count, int match_count);
+
 
     void Awake(){
         RandomSpawnGenerator.slotList.Remove(this.gameObject);
@@ -92,6 +94,7 @@ public class Dropper : MonoBehaviour
                 GameManager.GetComponent<RandomSpawnGenerator>().PlayWinAnim();
                 MakeWinShare();
                 if(!RandomSpawnGenerator.isSolved){
+                    GameEnd(1,Total_sec,swap_count,matched);
                     OnFinish(true,finalArr1,swap_count,Total_sec);
                     archive_dropper.OnArchiveFinish(true,swap_count,GameManager.GetComponent<RandomSpawnGenerator>().Day-1);
                     Invoke("ShowWinScreen",4.0f);
@@ -100,7 +103,6 @@ public class Dropper : MonoBehaviour
                     ShowWinScreen();
                 }
                 RandomSpawnGenerator.isSolved = true;
-                
             }
             StartCoroutine("delay3");
         }
@@ -163,6 +165,7 @@ public class Dropper : MonoBehaviour
         current_dice.GetComponent<Dragger>().current_slot = new_slot;
         if(swap_count == 21  && !RandomSpawnGenerator.isSolved){
             StartCoroutine("GameTimer");
+            GameManager.GetComponent<RandomSpawnGenerator>().StopTime();
         }
         swap_count--;
         GameManager.GetComponent<RandomSpawnGenerator>().swapCount.text = swap_count.ToString();
@@ -186,6 +189,7 @@ public class Dropper : MonoBehaviour
             }
             final_Arr = final_Arr + "]";
             if(!RandomSpawnGenerator.isSolved){
+                GameEnd(0,Total_sec,swap_count,matched);
                 OnFinish(false,final_Arr,swap_count,Total_sec);
                 archive_dropper.OnArchiveFinish(false,swap_count,GameManager.GetComponent<RandomSpawnGenerator>().Day-1);
             }
@@ -230,21 +234,26 @@ public class Dropper : MonoBehaviour
 
     void MakeWinShare(){
         if(star_count == 0){
+            GameManager.GetComponent<RandomSpawnGenerator>().ResultMsg.text = "Phew! That was close";
             GameManager.GetComponent<RandomSpawnGenerator>().ShareMsg = "🟩🟩🟩🟩🟩\n🟩⬜🟩⬜🟩\n🟩🟩🟩🟩🟩\n🟩⬜🟩⬜🟩\n🟩🟩🟩🟩🟩";
         }
         else if(star_count ==1){
+            GameManager.GetComponent<RandomSpawnGenerator>().ResultMsg.text = "You solved it!";
             GameManager.GetComponent<RandomSpawnGenerator>().ShareMsg = "🟩🟩🟩🟩🟩\n🟩⬜🟩⬜🟩\n🟩🟩⭐🟩🟩\n🟩⬜🟩⬜🟩\n🟩🟩🟩🟩🟩";
         }
         else if(star_count == 2){
+            GameManager.GetComponent<RandomSpawnGenerator>().ResultMsg.text = "Good Job!";
             GameManager.GetComponent<RandomSpawnGenerator>().ShareMsg = "🟩🟩🟩🟩🟩\n🟩⭐🟩⬜🟩\n🟩🟩🟩🟩🟩\n🟩⬜🟩⭐🟩\n🟩🟩🟩🟩🟩";
         }
         else if(star_count == 3){
+            GameManager.GetComponent<RandomSpawnGenerator>().ResultMsg.text = "Well done";
             GameManager.GetComponent<RandomSpawnGenerator>().ShareMsg = "🟩🟩🟩🟩🟩\n🟩⭐🟩⬜🟩\n🟩🟩⭐🟩🟩\n🟩⬜🟩⭐🟩\n🟩🟩🟩🟩🟩";
         }
         else if(star_count == 4){
             GameManager.GetComponent<RandomSpawnGenerator>().ShareMsg = "🟩🟩🟩🟩🟩\n🟩⭐🟩⭐🟩\n🟩🟩🟩🟩🟩\n🟩⭐🟩⭐🟩\n🟩🟩🟩🟩🟩";
         }
         else{
+            GameManager.GetComponent<RandomSpawnGenerator>().ResultMsg.text = "Aren't you a genius!";
             GameManager.GetComponent<RandomSpawnGenerator>().ShareMsg = "🟩🟩🟩🟩🟩\n🟩⭐🟩⭐🟩\n🟩🟩⭐🟩🟩\n🟩⭐🟩⭐🟩\n🟩🟩🟩🟩🟩";
         }
     }

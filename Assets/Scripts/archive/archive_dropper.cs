@@ -190,21 +190,27 @@ public class archive_dropper : MonoBehaviour
 
     void MakeWinShare(){
         if(star_count == 0){
+            ArchiveManager.GetComponent<archiveManager>().ResultMsg.text = "Phew! That was close";
             ArchiveManager.GetComponent<archiveManager>().ShareMsg = "🟩🟩🟩🟩🟩\n🟩⬜🟩⬜🟩\n🟩🟩🟩🟩🟩\n🟩⬜🟩⬜🟩\n🟩🟩🟩🟩🟩";
         }
         else if(star_count ==1){
+            ArchiveManager.GetComponent<archiveManager>().ResultMsg.text = "You solved it!";
             ArchiveManager.GetComponent<archiveManager>().ShareMsg = "🟩🟩🟩🟩🟩\n🟩⬜🟩⬜🟩\n🟩🟩⭐🟩🟩\n🟩⬜🟩⬜🟩\n🟩🟩🟩🟩🟩";
         }
         else if(star_count == 2){
+            ArchiveManager.GetComponent<archiveManager>().ResultMsg.text = "Good Job!";
             ArchiveManager.GetComponent<archiveManager>().ShareMsg = "🟩🟩🟩🟩🟩\n🟩⭐🟩⬜🟩\n🟩🟩🟩🟩🟩\n🟩⬜🟩⭐🟩\n🟩🟩🟩🟩🟩";
         }
         else if(star_count == 3){
+            ArchiveManager.GetComponent<archiveManager>().ResultMsg.text = "Well done";
             ArchiveManager.GetComponent<archiveManager>().ShareMsg = "🟩🟩🟩🟩🟩\n🟩⭐🟩⬜🟩\n🟩🟩⭐🟩🟩\n🟩⬜🟩⭐🟩\n🟩🟩🟩🟩🟩";
         }
         else if(star_count == 4){
+            ArchiveManager.GetComponent<archiveManager>().ResultMsg.text = "You are brilliant";
             ArchiveManager.GetComponent<archiveManager>().ShareMsg = "🟩🟩🟩🟩🟩\n🟩⭐🟩⭐🟩\n🟩🟩🟩🟩🟩\n🟩⭐🟩⭐🟩\n🟩🟩🟩🟩🟩";
         }
         else{
+            ArchiveManager.GetComponent<archiveManager>().ResultMsg.text = "Aren't you a genius!";
             ArchiveManager.GetComponent<archiveManager>().ShareMsg = "🟩🟩🟩🟩🟩\n🟩⭐🟩⭐🟩\n🟩🟩⭐🟩🟩\n🟩⭐🟩⭐🟩\n🟩🟩🟩🟩🟩";
         }
     }

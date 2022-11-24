@@ -31,6 +31,7 @@ public class RandomSpawnGenerator : MonoBehaviour
     public Sprite[] dice_images;
     public Sprite[] GreenDiceImages;
     public static List<GameObject> slotList = new List<GameObject>();
+    public static float start_time;
     [SerializeField]
     Button Share;
     [SerializeField]
@@ -98,6 +99,7 @@ public class RandomSpawnGenerator : MonoBehaviour
     public GameObject ArchiveManager;
     public TextMeshProUGUI Timer;
     public TextMeshProUGUI Moves;
+    public TextMeshProUGUI ResultMsg;
     [SerializeField]
     GameObject RedDot_Menu;
     [SerializeField]
@@ -107,14 +109,39 @@ public class RandomSpawnGenerator : MonoBehaviour
     ParticleSystem ConfettiVFX;
 
     
+    public void StartTime(){
+        StartCoroutine("startTime");
+    }
+    public void StopTime(){
+        StopCoroutine("startTime");
+        GameStart(start_time);
+    }
 
-
-
+    IEnumerator startTime(){
+        yield return new WaitForSeconds(0.1f);
+        start_time += 0.1f;
+    }
 
     [DllImport("__Internal")]
     public static extern void shareTrigger(string msg);
     [DllImport("__Internal")]
     public static extern void storeShare(string msg);
+    [DllImport("__Internal")]
+    public static extern void GameLoaded();
+    [DllImport("__Internal")]
+    public static extern void GameOpen(int levelNum);
+    [DllImport("__Internal")]
+    public static extern void GameStart(float time);
+    [DllImport("__Internal")]
+    public static extern void GameShare(int shareType);
+    [DllImport("__Internal")]
+    public static extern void StatOpen();
+    [DllImport("__Internal")]
+    public static extern void HelpOpen();
+    [DllImport("__Internal")]
+    public static extern void ArchiveOpen();
+
+
     
     
     public void GetDay(string day){
@@ -227,6 +254,7 @@ public class RandomSpawnGenerator : MonoBehaviour
                 HowToPlay.SetActive(true);
                 Stats.SetActive(false);
                 Menu.SetActive(false);
+                HelpOpen();
         }
     }
 
@@ -252,6 +280,7 @@ public class RandomSpawnGenerator : MonoBehaviour
             if(isSolved){
                 Stats_NextDay.SetActive(true);
             }
+            StatOpen();
         }
     }
 
@@ -260,6 +289,7 @@ public class RandomSpawnGenerator : MonoBehaviour
         Menu.SetActive(false);
         RedDot_Archive.SetActive(false);
         RedDot_Menu.SetActive(false);
+        ArchiveOpen();
     }
 
     void CloseHelp(){
@@ -281,6 +311,7 @@ public class RandomSpawnGenerator : MonoBehaviour
 
     void Start()
     {   
+        GameLoaded();
         Share.onClick.AddListener(Share_msg1);
         Share_stats.onClick.AddListener(Share_msg2);
         CloseWin.onClick.AddListener(WinClose);
@@ -299,6 +330,8 @@ public class RandomSpawnGenerator : MonoBehaviour
             for(int j = 0; j<5; j++){
                 solutionArr[i,j] = GetComponent<str>().sol_arr[Day-1,i,j];
                 if(!isSolved){
+                    GameOpen(Day);
+                    StartTime();
                     spawn_Arr[i,j] = GetComponent<str>().spawn_arr[Day-1,i,j];
                 }        
             }
@@ -352,11 +385,13 @@ public class RandomSpawnGenerator : MonoBehaviour
     void Share_msg1(){
         msg.SetActive(true);
         shareTrigger(ShareMsg);
+        GameShare(0);
     }
 
     void Share_msg2(){
         msg_stats.SetActive(true);
         shareTrigger(ShareMsg);
+        GameShare(1);
     }
 
     public List<int> Get_Yellow_numbers(int slot_pos0, int slot_pos1){
