@@ -832,9 +832,9 @@ MonoBehaviour:
   Stat: {fileID: 1375241345}
   Menu: {fileID: 1453395215}
   HelpClose: {fileID: 2022597013}
-  StatClose: {fileID: 0}
-  MenuClose: {fileID: 0}
-  ArchiveClose: {fileID: 0}
+  StatClose: {fileID: 1731515874}
+  MenuClose: {fileID: 1382611128}
+  ArchiveClose: {fileID: 2019765976}
   dice_number: 0
   current_slot: {fileID: 13597403}
 --- !u!212 &28591195
@@ -3109,9 +3109,9 @@ MonoBehaviour:
   Stat: {fileID: 1375241345}
   Menu: {fileID: 1453395215}
   HelpClose: {fileID: 2022597013}
-  StatClose: {fileID: 0}
-  MenuClose: {fileID: 0}
-  ArchiveClose: {fileID: 0}
+  StatClose: {fileID: 1731515874}
+  MenuClose: {fileID: 1382611128}
+  ArchiveClose: {fileID: 2019765976}
   dice_number: 0
   current_slot: {fileID: 1603979879}
 --- !u!212 &161038748
@@ -3456,9 +3456,9 @@ MonoBehaviour:
   Stat: {fileID: 1375241345}
   Menu: {fileID: 1453395215}
   HelpClose: {fileID: 2022597013}
-  StatClose: {fileID: 0}
-  MenuClose: {fileID: 0}
-  ArchiveClose: {fileID: 0}
+  StatClose: {fileID: 1731515874}
+  MenuClose: {fileID: 1382611128}
+  ArchiveClose: {fileID: 2019765976}
   dice_number: 0
   current_slot: {fileID: 1845224139}
 --- !u!212 &174735570
@@ -4586,9 +4586,9 @@ MonoBehaviour:
   Stat: {fileID: 1375241345}
   Menu: {fileID: 1453395215}
   HelpClose: {fileID: 2022597013}
-  StatClose: {fileID: 0}
-  MenuClose: {fileID: 0}
-  ArchiveClose: {fileID: 0}
+  StatClose: {fileID: 1731515874}
+  MenuClose: {fileID: 1382611128}
+  ArchiveClose: {fileID: 2019765976}
   dice_number: 0
   current_slot: {fileID: 1286811697}
 --- !u!212 &226894604
@@ -4873,9 +4873,9 @@ MonoBehaviour:
   Stat: {fileID: 1375241345}
   Menu: {fileID: 1453395215}
   HelpClose: {fileID: 2022597013}
-  StatClose: {fileID: 0}
-  MenuClose: {fileID: 0}
-  ArchiveClose: {fileID: 0}
+  StatClose: {fileID: 1731515874}
+  MenuClose: {fileID: 1382611128}
+  ArchiveClose: {fileID: 2019765976}
   dice_number: 0
   current_slot: {fileID: 1114628032}
 --- !u!212 &230513013
@@ -5843,9 +5843,9 @@ MonoBehaviour:
   Stat: {fileID: 1375241345}
   Menu: {fileID: 1453395215}
   HelpClose: {fileID: 2022597013}
-  StatClose: {fileID: 0}
-  MenuClose: {fileID: 0}
-  ArchiveClose: {fileID: 0}
+  StatClose: {fileID: 1731515874}
+  MenuClose: {fileID: 1382611128}
+  ArchiveClose: {fileID: 2019765976}
   dice_number: 0
   current_slot: {fileID: 1543664620}
 --- !u!212 &300791182
@@ -7071,9 +7071,9 @@ MonoBehaviour:
   Stat: {fileID: 1375241345}
   Menu: {fileID: 1453395215}
   HelpClose: {fileID: 2022597013}
-  StatClose: {fileID: 0}
-  MenuClose: {fileID: 0}
-  ArchiveClose: {fileID: 0}
+  StatClose: {fileID: 1731515874}
+  MenuClose: {fileID: 1382611128}
+  ArchiveClose: {fileID: 2019765976}
   dice_number: 0
   current_slot: {fileID: 1804676679}
 --- !u!212 &381269471
@@ -8269,9 +8269,9 @@ MonoBehaviour:
   Stat: {fileID: 1375241345}
   Menu: {fileID: 1453395215}
   HelpClose: {fileID: 2022597013}
-  StatClose: {fileID: 0}
-  MenuClose: {fileID: 0}
-  ArchiveClose: {fileID: 0}
+  StatClose: {fileID: 1731515874}
+  MenuClose: {fileID: 1382611128}
+  ArchiveClose: {fileID: 2019765976}
   dice_number: 0
   current_slot: {fileID: 201262789}
 --- !u!212 &441495297
@@ -9332,8 +9332,8 @@ RectTransform:
   m_Children:
   - {fileID: 174963697}
   - {fileID: 2117418010}
-  - {fileID: 2143524516}
   - {fileID: 2022597012}
+  - {fileID: 2143524516}
   - {fileID: 990139841}
   - {fileID: 619733324}
   m_Father: {fileID: 722012406}
@@ -9885,9 +9885,9 @@ MonoBehaviour:
   Stat: {fileID: 1375241345}
   Menu: {fileID: 1453395215}
   HelpClose: {fileID: 2022597013}
-  StatClose: {fileID: 0}
-  MenuClose: {fileID: 0}
-  ArchiveClose: {fileID: 0}
+  StatClose: {fileID: 1731515874}
+  MenuClose: {fileID: 1382611128}
+  ArchiveClose: {fileID: 2019765976}
   dice_number: 0
   current_slot: {fileID: 651139092}
 --- !u!212 &491520829
@@ -10525,6 +10525,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -10631,6 +10632,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56666c5a40171f54783dd416a44f42bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EventMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_MaxRayIntersections: 0
 --- !u!1 &522006896
 GameObject:
   m_ObjectHideFlags: 0
@@ -11263,9 +11280,9 @@ MonoBehaviour:
   Stat: {fileID: 1375241345}
   Menu: {fileID: 1453395215}
   HelpClose: {fileID: 2022597013}
-  StatClose: {fileID: 0}
-  MenuClose: {fileID: 0}
-  ArchiveClose: {fileID: 0}
+  StatClose: {fileID: 1731515874}
+  MenuClose: {fileID: 1382611128}
+  ArchiveClose: {fileID: 2019765976}
   dice_number: 0
   current_slot: {fileID: 2026981605}
 --- !u!212 &597497209
@@ -15222,9 +15239,9 @@ MonoBehaviour:
   Stat: {fileID: 1375241345}
   Menu: {fileID: 1453395215}
   HelpClose: {fileID: 2022597013}
-  StatClose: {fileID: 0}
-  MenuClose: {fileID: 0}
-  ArchiveClose: {fileID: 0}
+  StatClose: {fileID: 1731515874}
+  MenuClose: {fileID: 1382611128}
+  ArchiveClose: {fileID: 2019765976}
   dice_number: 0
   current_slot: {fileID: 427390696}
 --- !u!212 &713004379
@@ -15357,9 +15374,9 @@ MonoBehaviour:
   Stat: {fileID: 1375241345}
   Menu: {fileID: 1453395215}
   HelpClose: {fileID: 2022597013}
-  StatClose: {fileID: 0}
-  MenuClose: {fileID: 0}
-  ArchiveClose: {fileID: 0}
+  StatClose: {fileID: 1731515874}
+  MenuClose: {fileID: 1382611128}
+  ArchiveClose: {fileID: 2019765976}
   dice_number: 0
   current_slot: {fileID: 1763443536}
 --- !u!212 &717886054
@@ -16302,9 +16319,9 @@ MonoBehaviour:
   Stat: {fileID: 1375241345}
   Menu: {fileID: 1453395215}
   HelpClose: {fileID: 2022597013}
-  StatClose: {fileID: 0}
-  MenuClose: {fileID: 0}
-  ArchiveClose: {fileID: 0}
+  StatClose: {fileID: 1731515874}
+  MenuClose: {fileID: 1382611128}
+  ArchiveClose: {fileID: 2019765976}
   dice_number: 0
   current_slot: {fileID: 1991703905}
 --- !u!212 &780318531
@@ -17096,9 +17113,9 @@ MonoBehaviour:
   Stat: {fileID: 1375241345}
   Menu: {fileID: 1453395215}
   HelpClose: {fileID: 2022597013}
-  StatClose: {fileID: 0}
-  MenuClose: {fileID: 0}
-  ArchiveClose: {fileID: 0}
+  StatClose: {fileID: 1731515874}
+  MenuClose: {fileID: 1382611128}
+  ArchiveClose: {fileID: 2019765976}
   dice_number: 0
   current_slot: {fileID: 1334467124}
 --- !u!212 &826548038
@@ -19549,13 +19566,13 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1.5124999, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1361699726}
   - {fileID: 1640398444}
   - {fileID: 2071701359}
   - {fileID: 478401144}
-  - {fileID: 2124227252}
+  - {fileID: 1953952572}
   - {fileID: 233657449}
   - {fileID: 95356750}
   m_Father: {fileID: 318004787}
@@ -22647,9 +22664,9 @@ MonoBehaviour:
   Stat: {fileID: 1375241345}
   Menu: {fileID: 1453395215}
   HelpClose: {fileID: 2022597013}
-  StatClose: {fileID: 0}
-  MenuClose: {fileID: 0}
-  ArchiveClose: {fileID: 0}
+  StatClose: {fileID: 1731515874}
+  MenuClose: {fileID: 1382611128}
+  ArchiveClose: {fileID: 2019765976}
   dice_number: 0
   current_slot: {fileID: 1171687953}
 --- !u!212 &1053977720
@@ -23140,7 +23157,7 @@ MonoBehaviour:
   MenuBtn: {fileID: 1453395215}
   ArchiveBtn: {fileID: 1453754758}
   HelpClose: {fileID: 2022597013}
-  StatClose: {fileID: 2124227254}
+  StatClose: {fileID: 1731515874}
   MenuClose: {fileID: 1382611128}
   MenuStat: {fileID: 1290990444}
   MenuHelp: {fileID: 1651253136}
@@ -24877,9 +24894,9 @@ MonoBehaviour:
   Stat: {fileID: 1375241345}
   Menu: {fileID: 1453395215}
   HelpClose: {fileID: 2022597013}
-  StatClose: {fileID: 0}
-  MenuClose: {fileID: 0}
-  ArchiveClose: {fileID: 0}
+  StatClose: {fileID: 1731515874}
+  MenuClose: {fileID: 1382611128}
+  ArchiveClose: {fileID: 2019765976}
   dice_number: 0
   current_slot: {fileID: 552337720}
 --- !u!212 &1147777696
@@ -29139,9 +29156,9 @@ MonoBehaviour:
   Stat: {fileID: 1375241345}
   Menu: {fileID: 1453395215}
   HelpClose: {fileID: 2022597013}
-  StatClose: {fileID: 0}
-  MenuClose: {fileID: 0}
-  ArchiveClose: {fileID: 0}
+  StatClose: {fileID: 1731515874}
+  MenuClose: {fileID: 1382611128}
+  ArchiveClose: {fileID: 2019765976}
   dice_number: 0
   current_slot: {fileID: 1344792302}
 --- !u!212 &1327465805
@@ -30013,9 +30030,9 @@ MonoBehaviour:
   Stat: {fileID: 1375241345}
   Menu: {fileID: 1453395215}
   HelpClose: {fileID: 2022597013}
-  StatClose: {fileID: 0}
-  MenuClose: {fileID: 0}
-  ArchiveClose: {fileID: 0}
+  StatClose: {fileID: 1731515874}
+  MenuClose: {fileID: 1382611128}
+  ArchiveClose: {fileID: 2019765976}
   dice_number: 0
   current_slot: {fileID: 2093669590}
 --- !u!212 &1364637441
@@ -35410,9 +35427,9 @@ MonoBehaviour:
   Stat: {fileID: 1375241345}
   Menu: {fileID: 1453395215}
   HelpClose: {fileID: 2022597013}
-  StatClose: {fileID: 0}
-  MenuClose: {fileID: 0}
-  ArchiveClose: {fileID: 0}
+  StatClose: {fileID: 1731515874}
+  MenuClose: {fileID: 1382611128}
+  ArchiveClose: {fileID: 2019765976}
   dice_number: 0
   current_slot: {fileID: 1551817251}
 --- !u!212 &1616651473
@@ -37135,6 +37152,88 @@ RectTransform:
   m_AnchoredPosition: {x: 21, y: -149}
   m_SizeDelta: {x: 273.76, y: 39.49}
   m_Pivot: {x: 0.5, y: 1}
+--- !u!114 &1731515874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953952571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 3
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1731515875}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1731515875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953952571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 9318b3a9c5708e642badf7b82caeb855, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1731515876
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953952571}
+  m_CullTransparentMesh: 1
 --- !u!1 &1735209881
 GameObject:
   m_ObjectHideFlags: 0
@@ -37523,9 +37622,9 @@ MonoBehaviour:
   Stat: {fileID: 1375241345}
   Menu: {fileID: 1453395215}
   HelpClose: {fileID: 2022597013}
-  StatClose: {fileID: 0}
-  MenuClose: {fileID: 0}
-  ArchiveClose: {fileID: 0}
+  StatClose: {fileID: 1731515874}
+  MenuClose: {fileID: 1382611128}
+  ArchiveClose: {fileID: 2019765976}
   dice_number: 0
   current_slot: {fileID: 1856472681}
 --- !u!212 &1741892733
@@ -42198,6 +42297,66 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1953813136}
   m_CullTransparentMesh: 1
+--- !u!1 &1953952571
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1953952572}
+  - component: {fileID: 1731515876}
+  - component: {fileID: 1731515875}
+  - component: {fileID: 1731515874}
+  - component: {fileID: 1953952573}
+  m_Layer: 5
+  m_Name: X_button (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1953952572
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953952571}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0562401, y: 0.7211902, z: 1.0260001}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 914404309}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 273.43848, y: 37.699997}
+  m_SizeDelta: {x: 40.51, y: 35.555}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &1953952573
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953952571}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a1df68197a6f71f41b685fe6320fc4f4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1974065846
 GameObject:
   m_ObjectHideFlags: 0
@@ -42764,9 +42923,9 @@ MonoBehaviour:
   Stat: {fileID: 1375241345}
   Menu: {fileID: 1453395215}
   HelpClose: {fileID: 2022597013}
-  StatClose: {fileID: 0}
-  MenuClose: {fileID: 0}
-  ArchiveClose: {fileID: 0}
+  StatClose: {fileID: 1731515874}
+  MenuClose: {fileID: 1382611128}
+  ArchiveClose: {fileID: 2019765976}
   dice_number: 0
   current_slot: {fileID: 1039886892}
 --- !u!212 &1988554307
@@ -43865,11 +44024,11 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 475632083}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 259, y: 367}
+  m_AnchoredPosition: {x: 258.99997, y: 367}
   m_SizeDelta: {x: 40.51, y: 35.555}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2022597013
@@ -46068,148 +46227,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &2124227251
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2124227252}
-  - component: {fileID: 2124227256}
-  - component: {fileID: 2124227255}
-  - component: {fileID: 2124227254}
-  - component: {fileID: 2124227253}
-  m_Layer: 5
-  m_Name: X_button (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2124227252
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2124227251}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.05624, y: 0.72119015, z: 1.026}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 914404309}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 273.43848, y: 37.7}
-  m_SizeDelta: {x: 40.51, y: 35.555}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &2124227253
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2124227251}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a1df68197a6f71f41b685fe6320fc4f4, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2124227254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2124227251}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 3
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 2124227255}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &2124227255
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2124227251}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9318b3a9c5708e642badf7b82caeb855, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 1
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &2124227256
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2124227251}
-  m_CullTransparentMesh: 1
 --- !u!1 &2130129718
 GameObject:
   m_ObjectHideFlags: 0
@@ -46687,7 +46704,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 475632083}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
