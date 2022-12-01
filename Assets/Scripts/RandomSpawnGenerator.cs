@@ -72,6 +72,8 @@ public class RandomSpawnGenerator : MonoBehaviour
     [SerializeField]
     public GameObject Stats;
     [SerializeField]
+    public GameObject Tutorial;
+    [SerializeField]
     private GameObject Stats_NextDay;
     [SerializeField]
     public GameObject Menu;
@@ -118,8 +120,10 @@ public class RandomSpawnGenerator : MonoBehaviour
     }
 
     IEnumerator startTime(){
-        yield return new WaitForSeconds(0.1f);
-        start_time += 0.1f;
+        while(Dropper.swap_count==21){
+            yield return new WaitForSeconds(1f);
+            start_time += 1f;
+        }
     }
 
     [DllImport("__Internal")]
@@ -235,6 +239,10 @@ public class RandomSpawnGenerator : MonoBehaviour
         HowToPlay.SetActive(true);
     }
 
+    void ShowTutorial(){
+        Tutorial.SetActive(true);
+    }
+
 
     void WinClose(){
         WinningScreen.SetActive(false);
@@ -326,12 +334,15 @@ public class RandomSpawnGenerator : MonoBehaviour
         MenuHelp.onClick.AddListener(HelpScreen);
         ArchiveBtn.onClick.AddListener(ShowArchive);
 
+        if(!isSolved){
+                GameOpen(Day);
+                StartTime();
+            }
+
         for(int i = 0; i<5;i++){
             for(int j = 0; j<5; j++){
                 solutionArr[i,j] = GetComponent<str>().sol_arr[Day-1,i,j];
                 if(!isSolved){
-                    GameOpen(Day);
-                    StartTime();
                     spawn_Arr[i,j] = GetComponent<str>().spawn_arr[Day-1,i,j];
                 }        
             }

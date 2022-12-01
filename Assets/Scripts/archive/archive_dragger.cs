@@ -10,7 +10,7 @@ public class archive_dragger : MonoBehaviour
     Vector3 drag_offset;
     [SerializeField]
     private Camera cam;
-    private float speed = 3000;
+    private float speed = 10000;
 
 
     public int dice_number;

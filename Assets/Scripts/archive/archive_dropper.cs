@@ -52,6 +52,9 @@ public class archive_dropper : MonoBehaviour
         archiveManager.ArchiveSlotList.Add(this.gameObject);
         current_dice.GetComponent<SpriteRenderer>().sprite = ArchiveManager.GetComponent<archiveManager>().dice_images[ArchiveManager.GetComponent<archiveManager>().spawn_Arr[slot_pos[0],slot_pos[1]]];
         current_dice.GetComponent<archive_dragger>().dice_number = ArchiveManager.GetComponent<archiveManager>().spawn_Arr[slot_pos[0],slot_pos[1]];
+        for(var i = 0; i<5;i++){
+            Stars[i].GetComponent<Image>().color = new Color(1,1,1,0);
+        }
         Invoke("Check_color",0.2f);     
     }
 
@@ -76,7 +79,7 @@ public class archive_dropper : MonoBehaviour
                 ArchiveManager.GetComponent<archiveManager>().LastArchiveSwapCount = archive_swap_count;
                 OnArchiveFinish(true,archive_swap_count,ArchiveManager.GetComponent<archiveManager>().LastArchiveOpened);
 
-                Invoke("ShowWinScreen",4.0f);            
+                Invoke("ShowWinScreen",0.5f);            
             }
             StartCoroutine("delay3");
         }
@@ -99,19 +102,20 @@ public class archive_dropper : MonoBehaviour
     IEnumerator StarAnim(){
         yield return new WaitForSeconds(0.7f);
         for(var i = 0; i < star_count; i++){
-        yield return new WaitForSeconds(0.2f);
-        StartCoroutine(IncreaseStarVisibility(Stars[i]));
+        yield return new WaitForSeconds(0.01f);
+        //StartCoroutine(IncreaseStarVisibility(Stars[i]));
+        Stars[i].GetComponent<Image>().color = new Color(1,1,1,1);
         }
         yield return new WaitForSeconds(0.1f*star_count);
         ArchiveManager.GetComponent<archiveManager>().ResultsMsg.SetActive(true);
     }
 
-    IEnumerator IncreaseStarVisibility(GameObject star){
+    /*IEnumerator IncreaseStarVisibility(GameObject star){
         for(var i = 0; i<51;i++){
-            yield return new WaitForSeconds(0.001f);
+            yield return new WaitForSeconds(0.0005f);
             star.GetComponent<Image>().color = new Color(1,1,1,i*0.02f);
         }
-    } 
+    }*/
 
     IEnumerator delay3(){
         yield return new WaitForSeconds(1f*Time.deltaTime);

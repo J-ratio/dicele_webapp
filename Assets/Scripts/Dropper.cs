@@ -97,7 +97,7 @@ public class Dropper : MonoBehaviour
                     GameEnd(1,Total_sec,swap_count,matched);
                     OnFinish(true,finalArr1,swap_count,Total_sec);
                     archive_dropper.OnArchiveFinish(true,swap_count,GameManager.GetComponent<RandomSpawnGenerator>().Day-1);
-                    Invoke("ShowWinScreen",4.0f);
+                    Invoke("ShowWinScreen",0.5f);
                 }
                 else{
                     ShowWinScreen();
@@ -125,20 +125,21 @@ public class Dropper : MonoBehaviour
     IEnumerator StarAnim(){
         yield return new WaitForSeconds(0.7f);
         for(var i = 0; i < star_count; i++){
-        yield return new WaitForSeconds(0.2f);
-        StartCoroutine(IncreaseStarVisibility(Stars[i]));
+        yield return new WaitForSeconds(0.01f);
+        Stars[i].GetComponent<Image>().color = new Color(1,1,1,1);
+        //StartCoroutine(IncreaseStarVisibility(Stars[i]));
         }
         yield return new WaitForSeconds(0.1f*star_count);
         GameManager.GetComponent<RandomSpawnGenerator>().ResultsMsg.SetActive(true);
 
     }
 
-    IEnumerator IncreaseStarVisibility(GameObject star){
+    /*IEnumerator IncreaseStarVisibility(GameObject star){
         for(var i = 0; i<51;i++){
             yield return new WaitForSeconds(0.001f);
             star.GetComponent<Image>().color = new Color(1,1,1,i*0.02f);
         }
-    }
+    }*/
 
     IEnumerator delay3(){
         yield return new WaitForSeconds(1f*Time.deltaTime);
@@ -166,6 +167,7 @@ public class Dropper : MonoBehaviour
         if(swap_count == 21  && !RandomSpawnGenerator.isSolved){
             StartCoroutine("GameTimer");
             GameManager.GetComponent<RandomSpawnGenerator>().StopTime();
+            GameManager.GetComponent<RandomSpawnGenerator>().Tutorial.SetActive(false);
         }
         swap_count--;
         GameManager.GetComponent<RandomSpawnGenerator>().swapCount.text = swap_count.ToString();
